@@ -12,7 +12,7 @@ struct ContentView : View {
     var body: some View {
         let graph = GraphView()
         let loadButton = Button(action: {
-            graph.loadDataFromCSV()
+            graph.loadDataFromCSV(getFileURL())
         }) {
             Text("Load data")
         }
@@ -22,6 +22,10 @@ struct ContentView : View {
             loadButton;
         }
     }
+}
+
+func getFileURL() -> URL {
+    return URL(fileURLWithPath: Bundle.main.path(forResource: "dummy-data", ofType: "csv")!)
 }
 
 #if DEBUG

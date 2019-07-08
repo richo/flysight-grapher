@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7B2EA9D122D3FCA7009BCC39 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B4BE64922D3CE0F00F91850 /* Charts.framework */; };
 		7B2EA9D222D3FCA7009BCC39 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7B4BE64922D3CE0F00F91850 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7B2EA9D722D4037A009BCC39 /* dummy-data.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7B2EA9D622D4037A009BCC39 /* dummy-data.csv */; };
 		7B68430422D3F65300B421E1 /* GraphRepresentedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68430322D3F65300B421E1 /* GraphRepresentedView.swift */; };
 		7B6DD21D22D3BF04009C6A7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6DD21C22D3BF04009C6A7E /* AppDelegate.swift */; };
 		7B6DD21F22D3BF04009C6A7E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6DD21E22D3BF04009C6A7E /* SceneDelegate.swift */; };
@@ -80,6 +81,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7B2EA9D622D4037A009BCC39 /* dummy-data.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dummy-data.csv"; sourceTree = "<group>"; };
 		7B4BE63522D3C7B700F91850 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B4BE64322D3CE0F00F91850 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = ../Charts/Charts.xcodeproj; sourceTree = "<group>"; };
 		7B6842FA22D3D58B00B421E1 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = ../Charts/Charts.xcodeproj; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 		7B6DD21022D3BF04009C6A7E = {
 			isa = PBXGroup;
 			children = (
+				7B2EA9D622D4037A009BCC39 /* dummy-data.csv */,
 				7B6DD21B22D3BF04009C6A7E /* flysight-grapher */,
 				7B6DD23222D3BF04009C6A7E /* flysight-grapherTests */,
 				7B6DD23D22D3BF04009C6A7E /* flysight-grapherUITests */,
@@ -362,6 +365,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B2EA9D722D4037A009BCC39 /* dummy-data.csv in Resources */,
 				7B6DD22922D3BF04009C6A7E /* LaunchScreen.storyboard in Resources */,
 				7B6DD22622D3BF04009C6A7E /* Preview Assets.xcassets in Resources */,
 				7B6DD22322D3BF04009C6A7E /* Assets.xcassets in Resources */,

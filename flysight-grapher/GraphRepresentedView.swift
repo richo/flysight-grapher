@@ -15,7 +15,7 @@ struct GraphRepresentedView: UIViewRepresentable {
     
     func makeUIView(context: UIViewRepresentableContext<GraphRepresentedView>) -> GraphRepresentedView.UIViewType {
         // Configure the lineChart
-        view.noDataText = "No data provided"
+        view.noDataText = "No data loaded."
         
         return view
     }
@@ -24,7 +24,7 @@ struct GraphRepresentedView: UIViewRepresentable {
         // Update the view.
     }
     
-    func loadDataFromCSV() {
+    func loadDataFromCSV(data: Data) {
         view.data = getData(25, range: 5)
     }
 }
@@ -36,8 +36,10 @@ struct GraphView: View {
         self.graph
     }
     
-    func loadDataFromCSV() {
-        self.graph.loadDataFromCSV()
+    func loadDataFromCSV(_ url: URL) {
+        // TODO(richo) Errors
+        var data = try! Data(contentsOf: url)
+        self.graph.loadDataFromCSV(data: data)
     }
 }
 
