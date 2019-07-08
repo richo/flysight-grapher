@@ -10,6 +10,9 @@
 		7B2EA9D122D3FCA7009BCC39 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B4BE64922D3CE0F00F91850 /* Charts.framework */; };
 		7B2EA9D222D3FCA7009BCC39 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7B4BE64922D3CE0F00F91850 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7B2EA9D722D4037A009BCC39 /* dummy-data.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7B2EA9D622D4037A009BCC39 /* dummy-data.csv */; };
+		7B2EAA2122D40567009BCC39 /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2EAA2022D40567009BCC39 /* DataLoader.swift */; };
+		7B2EAA2222D405A7009BCC39 /* SwiftCSV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B2EAA1322D4053F009BCC39 /* SwiftCSV.framework */; };
+		7B2EAA2322D405A7009BCC39 /* SwiftCSV.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7B2EAA1322D4053F009BCC39 /* SwiftCSV.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7B68430422D3F65300B421E1 /* GraphRepresentedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68430322D3F65300B421E1 /* GraphRepresentedView.swift */; };
 		7B6DD21D22D3BF04009C6A7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6DD21C22D3BF04009C6A7E /* AppDelegate.swift */; };
 		7B6DD21F22D3BF04009C6A7E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6DD21E22D3BF04009C6A7E /* SceneDelegate.swift */; };
@@ -22,6 +25,55 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		7B2EAA1222D4053F009BCC39 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7B2EAA0822D4053F009BCC39 /* SwiftCSV.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3D1E59B41945FFAC001CF760;
+			remoteInfo = SwiftCSV;
+		};
+		7B2EAA1422D4053F009BCC39 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7B2EAA0822D4053F009BCC39 /* SwiftCSV.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3D1E59BF1945FFAD001CF760;
+			remoteInfo = SwiftCSVTests;
+		};
+		7B2EAA1622D4053F009BCC39 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7B2EAA0822D4053F009BCC39 /* SwiftCSV.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5FB74B911CCB9274009DDBF1;
+			remoteInfo = "SwiftCSV OSX";
+		};
+		7B2EAA1822D4053F009BCC39 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7B2EAA0822D4053F009BCC39 /* SwiftCSV.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5FB74B9A1CCB9274009DDBF1;
+			remoteInfo = "SwiftCSV OSXTests";
+		};
+		7B2EAA1A22D4053F009BCC39 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7B2EAA0822D4053F009BCC39 /* SwiftCSV.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5FB74BAD1CCB929D009DDBF1;
+			remoteInfo = "SwiftCSV tvOS";
+		};
+		7B2EAA1C22D4053F009BCC39 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7B2EAA0822D4053F009BCC39 /* SwiftCSV.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5FB74BB61CCB929D009DDBF1;
+			remoteInfo = "SwiftCSV tvOSTests";
+		};
+		7B2EAA1E22D4053F009BCC39 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7B2EAA0822D4053F009BCC39 /* SwiftCSV.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5FB74BC91CCB92BA009DDBF1;
+			remoteInfo = "SwiftCSV watchOS";
+		};
 		7B4BE64822D3CE0F00F91850 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7B4BE64322D3CE0F00F91850 /* Charts.xcodeproj */;
@@ -74,6 +126,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				7B2EA9D222D3FCA7009BCC39 /* Charts.framework in Embed Frameworks */,
+				7B2EAA2322D405A7009BCC39 /* SwiftCSV.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -82,6 +135,8 @@
 
 /* Begin PBXFileReference section */
 		7B2EA9D622D4037A009BCC39 /* dummy-data.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dummy-data.csv"; sourceTree = "<group>"; };
+		7B2EAA0822D4053F009BCC39 /* SwiftCSV.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftCSV.xcodeproj; path = ../SwiftCSV/SwiftCSV.xcodeproj; sourceTree = "<group>"; };
+		7B2EAA2022D40567009BCC39 /* DataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
 		7B4BE63522D3C7B700F91850 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B4BE64322D3CE0F00F91850 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = ../Charts/Charts.xcodeproj; sourceTree = "<group>"; };
 		7B6842FA22D3D58B00B421E1 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = ../Charts/Charts.xcodeproj; sourceTree = "<group>"; };
@@ -108,6 +163,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B2EA9D122D3FCA7009BCC39 /* Charts.framework in Frameworks */,
+				7B2EAA2222D405A7009BCC39 /* SwiftCSV.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,6 +184,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7B2EAA0922D4053F009BCC39 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7B2EAA1322D4053F009BCC39 /* SwiftCSV.framework */,
+				7B2EAA1522D4053F009BCC39 /* SwiftCSVTests.xctest */,
+				7B2EAA1722D4053F009BCC39 /* SwiftCSV.framework */,
+				7B2EAA1922D4053F009BCC39 /* SwiftCSVTests.xctest */,
+				7B2EAA1B22D4053F009BCC39 /* SwiftCSV.framework */,
+				7B2EAA1D22D4053F009BCC39 /* SwiftCSVTests.xctest */,
+				7B2EAA1F22D4053F009BCC39 /* SwiftCSV.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		7B4BE63422D3C7B700F91850 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -164,6 +234,7 @@
 				7B6DD23D22D3BF04009C6A7E /* flysight-grapherUITests */,
 				7B6DD21A22D3BF04009C6A7E /* Products */,
 				7B4BE63422D3C7B700F91850 /* Frameworks */,
+				7B2EAA0822D4053F009BCC39 /* SwiftCSV.xcodeproj */,
 				7B6842FA22D3D58B00B421E1 /* Charts.xcodeproj */,
 			);
 			sourceTree = "<group>";
@@ -185,6 +256,7 @@
 				7B6DD21E22D3BF04009C6A7E /* SceneDelegate.swift */,
 				7B6DD22022D3BF04009C6A7E /* ContentView.swift */,
 				7B68430322D3F65300B421E1 /* GraphRepresentedView.swift */,
+				7B2EAA2022D40567009BCC39 /* DataLoader.swift */,
 				7B6DD22222D3BF04009C6A7E /* Assets.xcassets */,
 				7B6DD22722D3BF04009C6A7E /* LaunchScreen.storyboard */,
 				7B6DD22A22D3BF04009C6A7E /* Info.plist */,
@@ -319,6 +391,10 @@
 					ProductGroup = 7B6842FB22D3D58B00B421E1 /* Products */;
 					ProjectRef = 7B6842FA22D3D58B00B421E1 /* Charts.xcodeproj */;
 				},
+				{
+					ProductGroup = 7B2EAA0922D4053F009BCC39 /* Products */;
+					ProjectRef = 7B2EAA0822D4053F009BCC39 /* SwiftCSV.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -330,6 +406,55 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		7B2EAA1322D4053F009BCC39 /* SwiftCSV.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftCSV.framework;
+			remoteRef = 7B2EAA1222D4053F009BCC39 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7B2EAA1522D4053F009BCC39 /* SwiftCSVTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SwiftCSVTests.xctest;
+			remoteRef = 7B2EAA1422D4053F009BCC39 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7B2EAA1722D4053F009BCC39 /* SwiftCSV.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftCSV.framework;
+			remoteRef = 7B2EAA1622D4053F009BCC39 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7B2EAA1922D4053F009BCC39 /* SwiftCSVTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SwiftCSVTests.xctest;
+			remoteRef = 7B2EAA1822D4053F009BCC39 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7B2EAA1B22D4053F009BCC39 /* SwiftCSV.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftCSV.framework;
+			remoteRef = 7B2EAA1A22D4053F009BCC39 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7B2EAA1D22D4053F009BCC39 /* SwiftCSVTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SwiftCSVTests.xctest;
+			remoteRef = 7B2EAA1C22D4053F009BCC39 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7B2EAA1F22D4053F009BCC39 /* SwiftCSV.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftCSV.framework;
+			remoteRef = 7B2EAA1E22D4053F009BCC39 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		7B4BE64922D3CE0F00F91850 /* Charts.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -393,6 +518,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B2EAA2122D40567009BCC39 /* DataLoader.swift in Sources */,
 				7B6DD21D22D3BF04009C6A7E /* AppDelegate.swift in Sources */,
 				7B6DD21F22D3BF04009C6A7E /* SceneDelegate.swift in Sources */,
 				7B6DD22122D3BF04009C6A7E /* ContentView.swift in Sources */,
