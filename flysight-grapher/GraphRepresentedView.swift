@@ -11,11 +11,11 @@ import SwiftUI
 import Charts
 
 struct GraphRepresentedView: UIViewRepresentable {
+    var view: LineChartView = LineChartView()
+    
     func makeUIView(context: UIViewRepresentableContext<GraphRepresentedView>) -> GraphRepresentedView.UIViewType {
         // Configure the lineChart
-        let view = LineChartView()
         view.noDataText = "No data provided"
-        view.data = getData(25, range: 5)
         
         return view
     }
@@ -23,11 +23,21 @@ struct GraphRepresentedView: UIViewRepresentable {
     func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<GraphRepresentedView>) {
         // Update the view.
     }
+    
+    func loadDataFromCSV() {
+        view.data = getData(25, range: 5)
+    }
 }
 
 struct GraphView: View {
+    var graph: GraphRepresentedView = GraphRepresentedView()
+    
     var body: some View {
-        GraphRepresentedView()
+        self.graph
+    }
+    
+    func loadDataFromCSV() {
+        self.graph.loadDataFromCSV()
     }
 }
 

@@ -10,9 +10,17 @@ import SwiftUI
 
 struct ContentView : View {
     var body: some View {
-        let view = GraphView()
+        let graph = GraphView()
+        let loadButton = Button(action: {
+            graph.loadDataFromCSV()
+        }) {
+            Text("Load data")
+        }
 
-        return view
+        return VStack {
+            graph;
+            loadButton;
+        }
     }
 }
 
