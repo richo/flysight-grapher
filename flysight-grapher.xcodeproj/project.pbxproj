@@ -1,0 +1,597 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7B6DD21D22D3BF04009C6A7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6DD21C22D3BF04009C6A7E /* AppDelegate.swift */; };
+		7B6DD21F22D3BF04009C6A7E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6DD21E22D3BF04009C6A7E /* SceneDelegate.swift */; };
+		7B6DD22122D3BF04009C6A7E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6DD22022D3BF04009C6A7E /* ContentView.swift */; };
+		7B6DD22322D3BF04009C6A7E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B6DD22222D3BF04009C6A7E /* Assets.xcassets */; };
+		7B6DD22622D3BF04009C6A7E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B6DD22522D3BF04009C6A7E /* Preview Assets.xcassets */; };
+		7B6DD22922D3BF04009C6A7E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B6DD22722D3BF04009C6A7E /* LaunchScreen.storyboard */; };
+		7B6DD23422D3BF04009C6A7E /* flysight_grapherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6DD23322D3BF04009C6A7E /* flysight_grapherTests.swift */; };
+		7B6DD23F22D3BF04009C6A7E /* flysight_grapherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6DD23E22D3BF04009C6A7E /* flysight_grapherUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7B6DD23022D3BF04009C6A7E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7B6DD21122D3BF04009C6A7E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7B6DD21822D3BF04009C6A7E;
+			remoteInfo = "flysight-grapher";
+		};
+		7B6DD23B22D3BF04009C6A7E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7B6DD21122D3BF04009C6A7E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7B6DD21822D3BF04009C6A7E;
+			remoteInfo = "flysight-grapher";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		7B6DD21922D3BF04009C6A7E /* flysight-grapher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "flysight-grapher.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B6DD21C22D3BF04009C6A7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7B6DD21E22D3BF04009C6A7E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		7B6DD22022D3BF04009C6A7E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		7B6DD22222D3BF04009C6A7E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7B6DD22522D3BF04009C6A7E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		7B6DD22822D3BF04009C6A7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7B6DD22A22D3BF04009C6A7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7B6DD22F22D3BF04009C6A7E /* flysight-grapherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "flysight-grapherTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B6DD23322D3BF04009C6A7E /* flysight_grapherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = flysight_grapherTests.swift; sourceTree = "<group>"; };
+		7B6DD23522D3BF04009C6A7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7B6DD23A22D3BF04009C6A7E /* flysight-grapherUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "flysight-grapherUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B6DD23E22D3BF04009C6A7E /* flysight_grapherUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = flysight_grapherUITests.swift; sourceTree = "<group>"; };
+		7B6DD24022D3BF04009C6A7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7B6DD21622D3BF04009C6A7E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7B6DD22C22D3BF04009C6A7E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7B6DD23722D3BF04009C6A7E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7B6DD21022D3BF04009C6A7E = {
+			isa = PBXGroup;
+			children = (
+				7B6DD21B22D3BF04009C6A7E /* flysight-grapher */,
+				7B6DD23222D3BF04009C6A7E /* flysight-grapherTests */,
+				7B6DD23D22D3BF04009C6A7E /* flysight-grapherUITests */,
+				7B6DD21A22D3BF04009C6A7E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7B6DD21A22D3BF04009C6A7E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7B6DD21922D3BF04009C6A7E /* flysight-grapher.app */,
+				7B6DD22F22D3BF04009C6A7E /* flysight-grapherTests.xctest */,
+				7B6DD23A22D3BF04009C6A7E /* flysight-grapherUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7B6DD21B22D3BF04009C6A7E /* flysight-grapher */ = {
+			isa = PBXGroup;
+			children = (
+				7B6DD21C22D3BF04009C6A7E /* AppDelegate.swift */,
+				7B6DD21E22D3BF04009C6A7E /* SceneDelegate.swift */,
+				7B6DD22022D3BF04009C6A7E /* ContentView.swift */,
+				7B6DD22222D3BF04009C6A7E /* Assets.xcassets */,
+				7B6DD22722D3BF04009C6A7E /* LaunchScreen.storyboard */,
+				7B6DD22A22D3BF04009C6A7E /* Info.plist */,
+				7B6DD22422D3BF04009C6A7E /* Preview Content */,
+			);
+			path = "flysight-grapher";
+			sourceTree = "<group>";
+		};
+		7B6DD22422D3BF04009C6A7E /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				7B6DD22522D3BF04009C6A7E /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		7B6DD23222D3BF04009C6A7E /* flysight-grapherTests */ = {
+			isa = PBXGroup;
+			children = (
+				7B6DD23322D3BF04009C6A7E /* flysight_grapherTests.swift */,
+				7B6DD23522D3BF04009C6A7E /* Info.plist */,
+			);
+			path = "flysight-grapherTests";
+			sourceTree = "<group>";
+		};
+		7B6DD23D22D3BF04009C6A7E /* flysight-grapherUITests */ = {
+			isa = PBXGroup;
+			children = (
+				7B6DD23E22D3BF04009C6A7E /* flysight_grapherUITests.swift */,
+				7B6DD24022D3BF04009C6A7E /* Info.plist */,
+			);
+			path = "flysight-grapherUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7B6DD21822D3BF04009C6A7E /* flysight-grapher */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7B6DD24322D3BF04009C6A7E /* Build configuration list for PBXNativeTarget "flysight-grapher" */;
+			buildPhases = (
+				7B6DD21522D3BF04009C6A7E /* Sources */,
+				7B6DD21622D3BF04009C6A7E /* Frameworks */,
+				7B6DD21722D3BF04009C6A7E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "flysight-grapher";
+			productName = "flysight-grapher";
+			productReference = 7B6DD21922D3BF04009C6A7E /* flysight-grapher.app */;
+			productType = "com.apple.product-type.application";
+		};
+		7B6DD22E22D3BF04009C6A7E /* flysight-grapherTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7B6DD24622D3BF04009C6A7E /* Build configuration list for PBXNativeTarget "flysight-grapherTests" */;
+			buildPhases = (
+				7B6DD22B22D3BF04009C6A7E /* Sources */,
+				7B6DD22C22D3BF04009C6A7E /* Frameworks */,
+				7B6DD22D22D3BF04009C6A7E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7B6DD23122D3BF04009C6A7E /* PBXTargetDependency */,
+			);
+			name = "flysight-grapherTests";
+			productName = "flysight-grapherTests";
+			productReference = 7B6DD22F22D3BF04009C6A7E /* flysight-grapherTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		7B6DD23922D3BF04009C6A7E /* flysight-grapherUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7B6DD24922D3BF04009C6A7E /* Build configuration list for PBXNativeTarget "flysight-grapherUITests" */;
+			buildPhases = (
+				7B6DD23622D3BF04009C6A7E /* Sources */,
+				7B6DD23722D3BF04009C6A7E /* Frameworks */,
+				7B6DD23822D3BF04009C6A7E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7B6DD23C22D3BF04009C6A7E /* PBXTargetDependency */,
+			);
+			name = "flysight-grapherUITests";
+			productName = "flysight-grapherUITests";
+			productReference = 7B6DD23A22D3BF04009C6A7E /* flysight-grapherUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7B6DD21122D3BF04009C6A7E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1100;
+				ORGANIZATIONNAME = "richö butts";
+				TargetAttributes = {
+					7B6DD21822D3BF04009C6A7E = {
+						CreatedOnToolsVersion = 11.0;
+					};
+					7B6DD22E22D3BF04009C6A7E = {
+						CreatedOnToolsVersion = 11.0;
+						TestTargetID = 7B6DD21822D3BF04009C6A7E;
+					};
+					7B6DD23922D3BF04009C6A7E = {
+						CreatedOnToolsVersion = 11.0;
+						TestTargetID = 7B6DD21822D3BF04009C6A7E;
+					};
+				};
+			};
+			buildConfigurationList = 7B6DD21422D3BF04009C6A7E /* Build configuration list for PBXProject "flysight-grapher" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7B6DD21022D3BF04009C6A7E;
+			productRefGroup = 7B6DD21A22D3BF04009C6A7E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7B6DD21822D3BF04009C6A7E /* flysight-grapher */,
+				7B6DD22E22D3BF04009C6A7E /* flysight-grapherTests */,
+				7B6DD23922D3BF04009C6A7E /* flysight-grapherUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7B6DD21722D3BF04009C6A7E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B6DD22922D3BF04009C6A7E /* LaunchScreen.storyboard in Resources */,
+				7B6DD22622D3BF04009C6A7E /* Preview Assets.xcassets in Resources */,
+				7B6DD22322D3BF04009C6A7E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7B6DD22D22D3BF04009C6A7E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7B6DD23822D3BF04009C6A7E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7B6DD21522D3BF04009C6A7E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B6DD21D22D3BF04009C6A7E /* AppDelegate.swift in Sources */,
+				7B6DD21F22D3BF04009C6A7E /* SceneDelegate.swift in Sources */,
+				7B6DD22122D3BF04009C6A7E /* ContentView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7B6DD22B22D3BF04009C6A7E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B6DD23422D3BF04009C6A7E /* flysight_grapherTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7B6DD23622D3BF04009C6A7E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B6DD23F22D3BF04009C6A7E /* flysight_grapherUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7B6DD23122D3BF04009C6A7E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7B6DD21822D3BF04009C6A7E /* flysight-grapher */;
+			targetProxy = 7B6DD23022D3BF04009C6A7E /* PBXContainerItemProxy */;
+		};
+		7B6DD23C22D3BF04009C6A7E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7B6DD21822D3BF04009C6A7E /* flysight-grapher */;
+			targetProxy = 7B6DD23B22D3BF04009C6A7E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		7B6DD22722D3BF04009C6A7E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7B6DD22822D3BF04009C6A7E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7B6DD24122D3BF04009C6A7E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		7B6DD24222D3BF04009C6A7E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7B6DD24422D3BF04009C6A7E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "flysight-grapher/Preview\\ Content";
+				DEVELOPMENT_TEAM = S93SSHN8SD;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "flysight-grapher/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "psych0tik.net.flysight-grapher";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7B6DD24522D3BF04009C6A7E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "flysight-grapher/Preview\\ Content";
+				DEVELOPMENT_TEAM = S93SSHN8SD;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "flysight-grapher/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "psych0tik.net.flysight-grapher";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		7B6DD24722D3BF04009C6A7E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S93SSHN8SD;
+				INFOPLIST_FILE = "flysight-grapherTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "psych0tik.net.flysight-grapherTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/flysight-grapher.app/flysight-grapher";
+			};
+			name = Debug;
+		};
+		7B6DD24822D3BF04009C6A7E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S93SSHN8SD;
+				INFOPLIST_FILE = "flysight-grapherTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "psych0tik.net.flysight-grapherTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/flysight-grapher.app/flysight-grapher";
+			};
+			name = Release;
+		};
+		7B6DD24A22D3BF04009C6A7E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S93SSHN8SD;
+				INFOPLIST_FILE = "flysight-grapherUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "psych0tik.net.flysight-grapherUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "flysight-grapher";
+			};
+			name = Debug;
+		};
+		7B6DD24B22D3BF04009C6A7E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S93SSHN8SD;
+				INFOPLIST_FILE = "flysight-grapherUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "psych0tik.net.flysight-grapherUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "flysight-grapher";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7B6DD21422D3BF04009C6A7E /* Build configuration list for PBXProject "flysight-grapher" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7B6DD24122D3BF04009C6A7E /* Debug */,
+				7B6DD24222D3BF04009C6A7E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7B6DD24322D3BF04009C6A7E /* Build configuration list for PBXNativeTarget "flysight-grapher" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7B6DD24422D3BF04009C6A7E /* Debug */,
+				7B6DD24522D3BF04009C6A7E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7B6DD24622D3BF04009C6A7E /* Build configuration list for PBXNativeTarget "flysight-grapherTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7B6DD24722D3BF04009C6A7E /* Debug */,
+				7B6DD24822D3BF04009C6A7E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7B6DD24922D3BF04009C6A7E /* Build configuration list for PBXNativeTarget "flysight-grapherUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7B6DD24A22D3BF04009C6A7E /* Debug */,
+				7B6DD24B22D3BF04009C6A7E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7B6DD21122D3BF04009C6A7E /* Project object */;
+}
