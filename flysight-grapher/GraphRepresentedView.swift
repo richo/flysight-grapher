@@ -54,12 +54,18 @@ func parseGraphDataFromCSV(_ csv: CSV) -> LineChartData? {
         var velD: Array<ChartDataEntry> = []
         
         var header = false
+        var locked = false
         try csv.enumerateAsDict { dict in
             if !header {
                 header = true
                 return
             }
-
+            if !locked {
+                if Int32(dict["numSV"]!)! < 7 {
+                    return
+                }
+                locked = true
+            }
             
             let ts = dateFormatter.date(from: dict["time"]!)!
             let secs = ts.timeIntervalSince1970
