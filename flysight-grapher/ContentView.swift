@@ -13,7 +13,11 @@ struct ContentView : View {
         let graph = GraphView()
         let map = MapView()
         let loadButton = Button(action: {
-            graph.loadDataFromCSV(getFileURL())
+            let url = getFileURL();
+            let csv = getCSV(url)!
+            
+            graph.loadDataFromCSV(csv)
+            map.loadDataFromCSV(csv)
         }) {
             Text("Load data")
         }
