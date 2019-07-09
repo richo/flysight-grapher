@@ -11,23 +11,42 @@ import SwiftCSV
 import Charts
 
 func loadAndParseDataFromCSV(_ url: URL) -> LineChartData? {
+    let dateFormatter = DateFormatter()
+    
+    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ"
+    
     do {
         let csv = try CSV(url: url)
         var hMSL: Array<ChartDataEntry> = []
         var velD: Array<ChartDataEntry> = []
         
+        var header = false
+        var i = 0
         try csv.enumerateAsDict { dict in
-            hMSL.append(ChartDataEntry(x: Double(dict["time"]!)!, y: Double(dict["hMSL"]!)!))
+            if !header {
+                header = true
+                return
+            }
+            i += 1
             
-            velD.append(ChartDataEntry(x: Double(dict["time"]!)!, y: Double(dict["velD"]!)!))
+            if i < 10 {
+                return
+            }
+            i = 0
+            
+            let ts = dateFormatter.date(from: dict["time"]!)!
+            let secs = ts.timeIntervalSince1970
+
+            hMSL.append(ChartDataEntry(x: secs, y: Double(dict["hMSL"]!)!))
+            
+            velD.append(ChartDataEntry(x: secs, y: Double(dict["velD"]!)!))
         }
         
         let alt = LineChartDataSet(entries: hMSL, label: "altitude")
         alt.axisDependency = .left
         alt.setColor(UIColor(red: 51/255, green: 181/255, blue: 229/255, alpha: 1))
-        alt.setCircleColor(.white)
-        alt.lineWidth = 2
-        alt.circleRadius = 3
+        alt.drawCirclesEnabled = false
+        alt.lineWidth = 5
         alt.fillAlpha = 65/255
         alt.fillColor = UIColor(red: 51/255, green: 181/255, blue: 229/255, alpha: 1)
         alt.highlightColor = UIColor(red: 244/255, green: 117/255, blue: 117/255, alpha: 1)
@@ -36,13 +55,12 @@ func loadAndParseDataFromCSV(_ url: URL) -> LineChartData? {
         let vSpeed = LineChartDataSet(entries: velD, label: "v speed")
         vSpeed.axisDependency = .right
         vSpeed.setColor(.red)
-        vSpeed.setCircleColor(.white)
+        vSpeed.drawCirclesEnabled = false
         vSpeed.lineWidth = 2
-        vSpeed.circleRadius = 3
         vSpeed.fillAlpha = 65/255
         vSpeed.fillColor = .red
         vSpeed.highlightColor = UIColor(red: 244/255, green: 117/255, blue: 117/255, alpha: 1)
-        vSpeed.drawCircleHoleEnabled = false
+        // vSpeed.drawCircleHoleEnabled = false
         
         let data = LineChartData(dataSets: [alt, vSpeed])
         data.setValueTextColor(.white)
