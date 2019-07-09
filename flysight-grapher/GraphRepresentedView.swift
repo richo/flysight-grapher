@@ -53,25 +53,12 @@ func parseGraphDataFromCSV(_ csv: CSV) -> LineChartData? {
         var hMSL: Array<ChartDataEntry> = []
         var velD: Array<ChartDataEntry> = []
         
-        var header = false
-        var locked = false
-        try csv.enumerateAsDict { dict in
-            if !header {
-                header = true
-                return
-            }
-            if !locked {
-                if Int32(dict["numSV"]!)! < 7 {
-                    return
-                }
-                locked = true
-            }
-            
+
+        try csv.validRows { dict in
             let ts = dateFormatter.date(from: dict["time"]!)!
             let secs = ts.timeIntervalSince1970
-            
+        
             hMSL.append(ChartDataEntry(x: secs, y: Double(dict["hMSL"]!)!))
-            
             velD.append(ChartDataEntry(x: secs, y: Double(dict["velD"]!)!))
         }
         
@@ -105,3 +92,5 @@ func parseGraphDataFromCSV(_ csv: CSV) -> LineChartData? {
         return nil
     }
 }
+
+

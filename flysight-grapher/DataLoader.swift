@@ -18,3 +18,25 @@ func getCSV(_ url: URL) -> CSV? {
         return nil
     }
 }
+
+extension CSV {
+
+    func validRows(block: @escaping ([String : String]) -> ()) throws {
+        var header = false
+        var locked = false
+        try self.enumerateAsDict { dict in
+            if !header {
+                header = true
+                return
+            }
+            if !locked {
+                if Int32(dict["numSV"]!)! < 7 {
+                    return
+                }
+                locked = true
+            }
+            
+            block(dict)
+        }
+    }
+}

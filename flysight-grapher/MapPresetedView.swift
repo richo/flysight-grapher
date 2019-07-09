@@ -79,13 +79,7 @@ func parseMapDataFromCSV(_ csv: CSV) -> Array<CLLocationCoordinate2D>? {
     do {
         var points: Array<CLLocationCoordinate2D> = []
 
-        var header = false
-        try csv.enumerateAsDict { dict in
-            if !header {
-                header = true
-                return
-            }
-            
+        try csv.validRows { dict in
             let lat = Double(dict["lat"]!)!
             let lon = Double(dict["lon"]!)!
   
