@@ -7,12 +7,11 @@
 //
 
 import SwiftUI
-import MapKit
 
 struct ContentView : View {
     var body: some View {
         let graph = GraphView()
-        let map = GraphView()
+        let map = MapView()
         let loadButton = Button(action: {
             graph.loadDataFromCSV(getFileURL())
         }) {
@@ -21,8 +20,8 @@ struct ContentView : View {
 
         return VStack {
             TabbedView {
-                graph.tabItemLabel(Text("Graph"));
-                map.tabItemLabel(Text("Map"));
+                graph.tabItemLabel(Text("Graph")).tag(0);
+                map.tabItemLabel(Text("Map")).tag(1);
             };
             loadButton;
         }
