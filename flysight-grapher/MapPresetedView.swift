@@ -98,8 +98,8 @@ class RedLineDelegate: NSObject, MKMapViewDelegate {
         if overlay is MKPolyline {
             print("Giving back a renderer!")
             let renderer = MKPolylineRenderer(overlay: overlay)
-            renderer.strokeColor = UIColor.orange
-            renderer.lineWidth = 3
+            renderer.strokeColor = UIColor.red
+            renderer.lineWidth = 2
             return renderer
             
         }

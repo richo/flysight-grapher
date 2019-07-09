@@ -21,6 +21,28 @@ func getCSV(_ url: URL) -> CSV? {
 
 extension CSV {
 
+    // Urgh..
+    func minTime() -> Double? {
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ"
+        
+        var min = Double.greatestFiniteMagnitude
+        do {
+            try validRows { dict in
+                let ts = dateFormatter.date(from: dict["time"]!)!
+                let secs = ts.timeIntervalSince1970
+                
+                if secs < min {
+                    min = secs
+                }
+            }
+        } catch {
+            return nil
+        }
+        return min
+    }
+
     func validRows(block: @escaping ([String : String]) -> ()) throws {
         var header = false
         var locked = false
