@@ -12,14 +12,15 @@ struct ContentView : View {
     var body: some View {
         let graph = GraphView()
         let map = MapView()
-        let loadButton = Button(action: {
-            let url = getFileURL();
+        
+        func fileUrlCallback(_ url: URL) {
+            print("Callback invoked: \(url)")
+            
             let csv = getCSV(url)!
+            
             
             graph.loadDataFromCSV(csv)
             map.loadDataFromCSV(csv)
-        }) {
-            Text("Load data")
         }
 
         return VStack {
@@ -27,17 +28,10 @@ struct ContentView : View {
                 graph.tabItemLabel(Text("Graph")).tag(0);
                 map.tabItemLabel(Text("Map")).tag(1);
             };
-            PresentationButton(destination: PickerView(), label: { Text("Load Data") });
+           
+            PresentationLink("Load Data", destination: PickerView(callback: fileUrlCallback));
         }
     }
-}
-
-func getFileURL() -> URL {
-    let picker = UIDocumentPickerViewController(documentTypes: ["csv"], in: .open)
-    let delegate = PickerDelegate()
-    picker.delegate = delegate
-    
-    return URL(fileURLWithPath: Bundle.main.path(forResource: "dummy-data", ofType: "csv")!)
 }
 
 #if DEBUG

@@ -700,7 +700,7 @@
 				CODE_SIGN_ENTITLEMENTS = "flysight-grapher/flysight-grapher.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "flysight-grapher/Preview\\ Content";
-				DEVELOPMENT_TEAM = 6FXNUQW48F;
+				DEVELOPMENT_TEAM = S93SSHN8SD;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "flysight-grapher/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -721,7 +721,7 @@
 				CODE_SIGN_ENTITLEMENTS = "flysight-grapher/flysight-grapher.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "flysight-grapher/Preview\\ Content";
-				DEVELOPMENT_TEAM = 6FXNUQW48F;
+				DEVELOPMENT_TEAM = S93SSHN8SD;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "flysight-grapher/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
