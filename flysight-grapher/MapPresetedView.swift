@@ -69,26 +69,15 @@ struct MapView: View {
         self.map
     }
     
-    func loadDataFromCSV(_ csv: CSV) {
+    func loadData(_ data: DataSet) {
         // TODO(richo) Deal with this error better
-        self.map.presentData(points: parseMapDataFromCSV(csv)!)
+        self.map.presentData(points: mapData(data)!)
     }
 }
 
-func parseMapDataFromCSV(_ csv: CSV) -> Array<CLLocationCoordinate2D>? {
-    do {
-        var points: Array<CLLocationCoordinate2D> = []
-
-        try csv.validRows { dict in
-            let lat = Double(dict["lat"]!)!
-            let lon = Double(dict["lon"]!)!
-  
-            points.append(CLLocationCoordinate2D(latitude: lat, longitude: lon))
-       }
-        return points
-    } catch {
-        // log("Done a whoopsie")
-        return nil
+private func mapData(_ data: DataSet) -> Array<CLLocationCoordinate2D>? {
+    data.data.map { point in
+        point.position
     }
 }
 

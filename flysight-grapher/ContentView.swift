@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import class SwiftCSV.CSV
 
 struct ContentView : View {
     var body: some View {
@@ -14,11 +15,16 @@ struct ContentView : View {
         let map = MapView()
         
         func fileUrlCallback(_ url: URL) {
-            let csv = getCSV(url)!
-            
-            
-            graph.loadDataFromCSV(csv)
-            map.loadDataFromCSV(csv)
+            do {
+                let csv = try CSV(url: url)
+                let data = csv.asDataSet()!
+                
+                graph.loadData(data)
+                map.loadData(data)
+            } catch {
+                print("Couldn't open or parse CSV")
+                return
+            }
         }
 
         return VStack {
