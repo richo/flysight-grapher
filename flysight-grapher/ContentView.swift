@@ -27,12 +27,16 @@ struct ContentView : View {
                 graph.tabItemLabel(Text("Graph")).tag(0);
                 map.tabItemLabel(Text("Map")).tag(1);
             };
-            loadButton;
+            PresentationButton(destination: PickerView(), label: { Text("Load Data") });
         }
     }
 }
 
 func getFileURL() -> URL {
+    let picker = UIDocumentPickerViewController(documentTypes: ["csv"], in: .open)
+    let delegate = PickerDelegate()
+    picker.delegate = delegate
+    
     return URL(fileURLWithPath: Bundle.main.path(forResource: "dummy-data", ofType: "csv")!)
 }
 
@@ -43,3 +47,5 @@ struct ContentView_Previews : PreviewProvider {
     }
 }
 #endif
+
+
