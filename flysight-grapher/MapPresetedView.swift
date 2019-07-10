@@ -42,11 +42,8 @@ struct MapRepresentedView: UIViewRepresentable {
         let polyline = MKPolyline(coordinates: &locations, count: locations.count)
         self.view.addOverlay(polyline)
         
-        // Then center the map on the end of the track
-        view.setCenter(points.last!, animated: true)
         print("Created overlay with \(points.count) points")
         print("Finish: \(points.last!)")
-        // view.setCameraZoomRange(MKMapView.CameraZoomRange(maxCenterCoordinateDistance: 500000), animated: false)
         
         // Put a pin at start and end for debugging
         let start = MKPointAnnotation()
@@ -59,6 +56,9 @@ struct MapRepresentedView: UIViewRepresentable {
         end.coordinate = points.last!
         end.title = "End!"
         view.addAnnotation(end)
+        
+        // Then center the map on the end of the track
+        view.setCenter(end.coordinate, animated: true)
     }
 }
 
@@ -96,12 +96,10 @@ func parseMapDataFromCSV(_ csv: CSV) -> Array<CLLocationCoordinate2D>? {
 class RedLineDelegate: NSObject, MKMapViewDelegate {
      func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         if overlay is MKPolyline {
-            print("Giving back a renderer!")
             let renderer = MKPolylineRenderer(overlay: overlay)
             renderer.strokeColor = UIColor.red
             renderer.lineWidth = 2
             return renderer
-            
         }
         
         return MKOverlayRenderer()

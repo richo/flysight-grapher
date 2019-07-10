@@ -14,8 +14,6 @@ struct ContentView : View {
         let map = MapView()
         
         func fileUrlCallback(_ url: URL) {
-            print("Callback invoked: \(url)")
-            
             let csv = getCSV(url)!
             
             
