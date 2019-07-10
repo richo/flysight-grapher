@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftUI
+
 import MobileCoreServices
 
 struct FilePickerController: UIViewControllerRepresentable {
@@ -18,15 +19,12 @@ struct FilePickerController: UIViewControllerRepresentable {
     }
     
     func updateUIViewController(_ uiViewController: UIDocumentPickerViewController, context: UIViewControllerRepresentableContext<FilePickerController>) {
-        // Update the controller
     }
     
     func makeUIViewController(context: Context) -> UIDocumentPickerViewController {
-        print("Making the picker")
-        let controller = UIDocumentPickerViewController(documentTypes: [String(kUTTypeText)], in: .open)
+        let controller = UIDocumentPickerViewController(documentTypes: [String(kUTTypeText)], in: .import)
         
         controller.delegate = context.coordinator
-        print("Setup the delegate \(context.coordinator)")
         
         return controller
     }
@@ -36,17 +34,18 @@ struct FilePickerController: UIViewControllerRepresentable {
         
         init(_ pickerController: FilePickerController) {
             self.parent = pickerController
-            print("Setup a parent")
-            print("Callback: \(parent.callback)")
         }
        
-        func documentPicker(didPickDocumentsAt: [URL]) {
-            print("Selected a document: \(didPickDocumentsAt[0])")
-            parent.callback(didPickDocumentsAt[0])
+        func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+            guard let document = urls.first else {
+                return
+            }
+            print("Selected a document: \(document)")
+            parent.callback(document)
         }
         
-        func documentPickerWasCancelled() {
-            print("Document picker was thrown away :(")
+        func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
+            print("view was cancelled")
         }
         
         deinit {
