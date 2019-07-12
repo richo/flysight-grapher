@@ -27,7 +27,7 @@ struct DataSet {
 struct DataPoint {
     let time: Double
     let position: CLLocationCoordinate2D
-    let altitude: Double
+    var altitude: Double
     let velN: Double
     let velE: Double
     let velD: Double
@@ -152,6 +152,12 @@ extension CSV {
                 )
                 
                 data.append(point)
+            }
+            
+            // Adjust all the altitudes, setting the last altitude seen as ground level.
+            let zeroAGL = data.last!.altitude
+            for (i, _) in data.enumerated() {
+                data[i].altitude -= zeroAGL
             }
             
             return DataSet(data: data)
