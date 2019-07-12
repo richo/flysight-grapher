@@ -36,6 +36,10 @@ struct MapRepresentedView: UIViewRepresentable {
         // Update the view.
     }
     
+    func removeOverlays() {
+        self.view.removeOverlays(self.view.overlays)
+    }
+    
     func presentData(points: Array<CLLocationCoordinate2D>) {
         var locations = points.map { $0 }
 
@@ -70,6 +74,8 @@ struct MapView: View {
     }
     
     func loadData(_ data: DataSet) {
+        // Remove the old points
+        self.map.removeOverlays()
         // TODO(richo) Deal with this error better
         self.map.presentData(points: mapData(data)!)
     }

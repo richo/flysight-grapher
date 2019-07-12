@@ -13,6 +13,7 @@ struct ContentView : View {
     var body: some View {
         let graph = GraphView()
         let map = MapView()
+        let settings = SettingsView()
         
         func fileUrlCallback(_ url: URL) {
             do {
@@ -31,6 +32,7 @@ struct ContentView : View {
             TabbedView {
                 graph.tabItemLabel(Text("Graph")).tag(0);
                 map.tabItemLabel(Text("Map")).tag(1);
+                settings.tabItemLabel(Text("Settings")).tag(4);
             };
            
             PresentationLink("Load Data", destination: PickerView(callback: fileUrlCallback));
