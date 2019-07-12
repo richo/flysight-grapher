@@ -18,6 +18,9 @@ func regionCenteredOn(center: CLLocationCoordinate2D) -> MKCoordinateRegion {
     return MKCoordinateRegion(center: center, latitudinalMeters: 5000, longitudinalMeters: 5000)
 }
 
+let START_TITLE = "Start!"
+let END_TITLE = "End!"
+
 struct MapRepresentedView: UIViewRepresentable {
     var view = MKMapView()
     var _delegate = RedLineDelegate()
@@ -29,6 +32,7 @@ struct MapRepresentedView: UIViewRepresentable {
             view.region = region
             view.delegate = self._delegate
         }
+
         return view
     }
     
@@ -52,13 +56,13 @@ struct MapRepresentedView: UIViewRepresentable {
         // Put a pin at start and end for debugging
         let start = MKPointAnnotation()
         start.coordinate = points.first!
-        start.title = "Start!"
+        start.title = START_TITLE
         view.addAnnotation(start)
         
         // Put a pin at start and end for debugging
         let end = MKPointAnnotation()
         end.coordinate = points.last!
-        end.title = "End!"
+        end.title = END_TITLE
         view.addAnnotation(end)
         
         // Then center the map on the end of the track
