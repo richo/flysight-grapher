@@ -7,15 +7,18 @@
 //
 
 import SwiftUI
+import Combine
 
 struct SwoopDataView : View {
-    fileprivate var maxVert = DataView(label: "Max vertical speed")
-    fileprivate var rolloutHorizontal = DataView(label: "Rollout horizontal")
-
+    @ObjectBinding var scores: SwoopScoreData = SwoopScoreData()
+    
     var body: some View {
         List {
-            Section(header: Text("Swoop")) {
-                maxVert
+            Section(header: Text("Max Vertical")) {
+                ScoreView(score: scores.maxVerticalSpeed, unit: "mph")
+            }
+            Section(header: Text("Rollout Horizontal Speed")) {
+                ScoreView(score: scores.rolloutHorizontalSpeed, unit: "mph")
             }
         }.listStyle(.grouped)
     }
@@ -24,24 +27,12 @@ struct SwoopDataView : View {
     mutating func loadData(_ data: DataSet) {
         let swoop = data.data.filter { $0.altitude < TWO_THOUSAND_FEET }
         let maxVerticalSpeed = swoop.max { a, b in  a.vY() < b.vY() }
-        maxVert.score = maxVerticalSpeed!.vY()
+        scores.maxVerticalSpeed = maxVerticalSpeed!.vY() * MetersPerSecondToMilesPerHour
         
         let rolloutSpeed = swoop
-            .filter { $0.altitude < 5 / MetersToFeet}
+            .filter { $0.altitude < 3 / MetersToFeet}
             .max { a, b in  a.vX() < b.vX() }
-        rolloutHorizontal.score = rolloutSpeed!.vX()
-    }
-}
-
-fileprivate struct DataView: View {
-    var score: Double?
-    var label: String
-    
-    var body: some View {
-        guard let score = score else {
-            return Text("No data")
-        }
-        return Text("\(label): \(score)")
+        scores.rolloutHorizontalSpeed = rolloutSpeed!.vX() * MetersPerSecondToMilesPerHour
     }
 }
 
@@ -52,3 +43,24 @@ struct SwoopDataView_Previews : PreviewProvider {
     }
 }
 #endif
+
+final class SwoopScoreData: BindableObject  {
+    let didChange = PassthroughSubject<SwoopScoreData, Never>()
+    
+    var valid = false {
+        didSet {
+            didChange.send(self)
+        }
+    }
+    
+    var maxVerticalSpeed: Double? = nil {
+        didSet {
+            didChange.send(self)
+        }
+    }
+    var rolloutHorizontalSpeed: Double? = nil {
+        didSet {
+            didChange.send(self)
+        }
+    }
+}

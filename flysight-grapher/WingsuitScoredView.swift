@@ -84,7 +84,7 @@ struct ScoreView: View {
         guard let score = score else {
             return Text("No data")
         }
-        return Text("\(score)\(unit)")
+        return Text(String(format: "%.1f%@", score, unit))
     }
 }
 
