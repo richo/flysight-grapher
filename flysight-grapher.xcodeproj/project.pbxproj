@@ -26,6 +26,7 @@
 		7B6DD23F22D3BF04009C6A7E /* flysight_grapherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6DD23E22D3BF04009C6A7E /* flysight_grapherUITests.swift */; };
 		7B724F0422D81A0200420373 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B724F0322D81A0200420373 /* SettingsView.swift */; };
 		7B724F2222D8205000420373 /* WingsuitScoredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B724F2122D8205000420373 /* WingsuitScoredView.swift */; };
+		7B724F2522D82A1400420373 /* SwoopDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B724F2422D82A1400420373 /* SwoopDataView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -164,6 +165,7 @@
 		7B6DD24022D3BF04009C6A7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B724F0322D81A0200420373 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		7B724F2122D8205000420373 /* WingsuitScoredView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WingsuitScoredView.swift; sourceTree = "<group>"; };
+		7B724F2422D82A1400420373 /* SwoopDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwoopDataView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -268,6 +270,7 @@
 				7B68430322D3F65300B421E1 /* GraphRepresentedView.swift */,
 				7B1B936922D41D5C000B5C13 /* MapPresentedView.swift */,
 				7B724F2122D8205000420373 /* WingsuitScoredView.swift */,
+				7B724F2422D82A1400420373 /* SwoopDataView.swift */,
 				7B724F0322D81A0200420373 /* SettingsView.swift */,
 				7B1B937622D451E4000B5C13 /* FilePickerPresentedView.swift */,
 				7B2EAA2022D40567009BCC39 /* DataLoader.swift */,
@@ -533,6 +536,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B724F2222D8205000420373 /* WingsuitScoredView.swift in Sources */,
+				7B724F2522D82A1400420373 /* SwoopDataView.swift in Sources */,
 				7B2EAA2122D40567009BCC39 /* DataLoader.swift in Sources */,
 				7B724F0422D81A0200420373 /* SettingsView.swift in Sources */,
 				7B6DD21D22D3BF04009C6A7E /* AppDelegate.swift in Sources */,

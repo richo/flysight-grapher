@@ -14,7 +14,8 @@ struct ContentView : View {
         let graph = GraphView()
         let map = MapView()
         let settings = SettingsView()
-        let wingsuit = WingsuitScoredView()
+        var swoop = SwoopDataView()
+        var wingsuit = WingsuitScoredView()
         
         func fileUrlCallback(_ url: URL) {
             do {
@@ -23,6 +24,8 @@ struct ContentView : View {
                 
                 graph.loadData(data)
                 map.loadData(data)
+                wingsuit.loadData(data)
+                swoop.loadData(data)
             } catch {
                 print("Couldn't open or parse CSV")
                 return
@@ -33,6 +36,7 @@ struct ContentView : View {
             TabbedView {
                 graph.tabItem({ Text("Graph") }).tag(0);
                 map.tabItem({ Text("Map") }).tag(1);
+                swoop.tabItem({ Text("Swoop Data") }).tag(2);
                 wingsuit.tabItem({ Text("Wingsuit Data") }).tag(3);
                 settings.tabItem({ Text("Settings") }).tag(4);
             };

@@ -14,7 +14,7 @@ struct WingsuitScoredView : View {
     var time = ScoreView()
     var distance = ScoreView()
     
-    @State var showInvalidRun = false
+    var showInvalidRun = false
     
     var body: some View {
         List {
@@ -35,7 +35,7 @@ struct WingsuitScoredView : View {
         }.listStyle(.grouped)
     }
     
-    mutating func loadData(data: DataSet) {
+    mutating func loadData(_ data: DataSet) {
         var state: WindowState = .BeforeEntry
         var entry: GateCrossing? = nil
         var exit: GateCrossing? = nil
