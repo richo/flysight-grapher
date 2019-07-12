@@ -31,6 +31,22 @@ struct ContentView : View {
                 return
             }
         }
+        let dummyWingsuit = Button(action: {
+            let url = URL(fileURLWithPath: Bundle.main.path(forResource: "dummy-wingsuit", ofType: "csv")!)
+
+            fileUrlCallback(url)
+        }) {
+            Text("Dummy Wingsuit Flight")
+        }
+        let dummySwoop = Button(action: {
+            let url = URL(fileURLWithPath: Bundle.main.path(forResource: "dummy-swoop", ofType: "csv")!)
+
+            fileUrlCallback(url)
+            
+        }) {
+            Text("Dummy Swoop")
+        }
+
 
         return VStack {
             TabbedView {
@@ -40,8 +56,11 @@ struct ContentView : View {
                 wingsuit.tabItem({ Text("Wingsuit Data") }).tag(3);
                 settings.tabItem({ Text("Settings") }).tag(4);
             };
-           
-            PresentationLink("Load Data", destination: PickerView(callback: fileUrlCallback));
+            HStack {
+                PresentationLink("Load Data", destination: PickerView(callback: fileUrlCallback));
+                dummyWingsuit;
+                dummySwoop;
+            }
         }
     }
 }

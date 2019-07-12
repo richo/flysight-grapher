@@ -11,7 +11,6 @@
 		7B1B937722D451E4000B5C13 /* FilePickerPresentedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1B937622D451E4000B5C13 /* FilePickerPresentedView.swift */; };
 		7B2EA9D122D3FCA7009BCC39 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B4BE64922D3CE0F00F91850 /* Charts.framework */; };
 		7B2EA9D222D3FCA7009BCC39 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7B4BE64922D3CE0F00F91850 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7B2EA9D722D4037A009BCC39 /* dummy-data.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7B2EA9D622D4037A009BCC39 /* dummy-data.csv */; };
 		7B2EAA2122D40567009BCC39 /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2EAA2022D40567009BCC39 /* DataLoader.swift */; };
 		7B2EAA2222D405A7009BCC39 /* SwiftCSV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B2EAA1322D4053F009BCC39 /* SwiftCSV.framework */; };
 		7B2EAA2322D405A7009BCC39 /* SwiftCSV.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7B2EAA1322D4053F009BCC39 /* SwiftCSV.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -27,6 +26,7 @@
 		7B724F0422D81A0200420373 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B724F0322D81A0200420373 /* SettingsView.swift */; };
 		7B724F2222D8205000420373 /* WingsuitScoredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B724F2122D8205000420373 /* WingsuitScoredView.swift */; };
 		7B724F2522D82A1400420373 /* SwoopDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B724F2422D82A1400420373 /* SwoopDataView.swift */; };
+		7B724F2722D8369A00420373 /* dummy-wingsuit.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7B724F2622D8369A00420373 /* dummy-wingsuit.csv */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -142,7 +142,6 @@
 		7B1B936922D41D5C000B5C13 /* MapPresentedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPresentedView.swift; sourceTree = "<group>"; };
 		7B1B937622D451E4000B5C13 /* FilePickerPresentedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilePickerPresentedView.swift; sourceTree = "<group>"; };
 		7B1B937822D45B87000B5C13 /* flysight-grapher.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "flysight-grapher.entitlements"; sourceTree = "<group>"; };
-		7B2EA9D622D4037A009BCC39 /* dummy-data.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dummy-data.csv"; sourceTree = "<group>"; };
 		7B2EAA0822D4053F009BCC39 /* SwiftCSV.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftCSV.xcodeproj; path = ../SwiftCSV/SwiftCSV.xcodeproj; sourceTree = "<group>"; };
 		7B2EAA2022D40567009BCC39 /* DataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
 		7B4BE63522D3C7B700F91850 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -166,6 +165,7 @@
 		7B724F0322D81A0200420373 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		7B724F2122D8205000420373 /* WingsuitScoredView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WingsuitScoredView.swift; sourceTree = "<group>"; };
 		7B724F2422D82A1400420373 /* SwoopDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwoopDataView.swift; sourceTree = "<group>"; };
+		7B724F2622D8369A00420373 /* dummy-wingsuit.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dummy-wingsuit.csv"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,7 +239,7 @@
 		7B6DD21022D3BF04009C6A7E = {
 			isa = PBXGroup;
 			children = (
-				7B2EA9D622D4037A009BCC39 /* dummy-data.csv */,
+				7B724F2622D8369A00420373 /* dummy-wingsuit.csv */,
 				7B6DD21B22D3BF04009C6A7E /* flysight-grapher */,
 				7B6DD23222D3BF04009C6A7E /* flysight-grapherTests */,
 				7B6DD23D22D3BF04009C6A7E /* flysight-grapherUITests */,
@@ -507,8 +507,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B2EA9D722D4037A009BCC39 /* dummy-data.csv in Resources */,
 				7B6DD22922D3BF04009C6A7E /* LaunchScreen.storyboard in Resources */,
+				7B724F2722D8369A00420373 /* dummy-wingsuit.csv in Resources */,
 				7B6DD22622D3BF04009C6A7E /* Preview Assets.xcassets in Resources */,
 				7B6DD22322D3BF04009C6A7E /* Assets.xcassets in Resources */,
 			);
