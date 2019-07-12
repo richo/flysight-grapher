@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7B1B936A22D41D5C000B5C13 /* MapPresetedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1B936922D41D5C000B5C13 /* MapPresetedView.swift */; };
+		7B1B936A22D41D5C000B5C13 /* MapPresentedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1B936922D41D5C000B5C13 /* MapPresentedView.swift */; };
 		7B1B937722D451E4000B5C13 /* FilePickerPresentedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1B937622D451E4000B5C13 /* FilePickerPresentedView.swift */; };
 		7B2EA9D122D3FCA7009BCC39 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B4BE64922D3CE0F00F91850 /* Charts.framework */; };
 		7B2EA9D222D3FCA7009BCC39 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7B4BE64922D3CE0F00F91850 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -137,7 +137,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		7B1B936922D41D5C000B5C13 /* MapPresetedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPresetedView.swift; sourceTree = "<group>"; };
+		7B1B936922D41D5C000B5C13 /* MapPresentedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPresentedView.swift; sourceTree = "<group>"; };
 		7B1B937622D451E4000B5C13 /* FilePickerPresentedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilePickerPresentedView.swift; sourceTree = "<group>"; };
 		7B1B937822D45B87000B5C13 /* flysight-grapher.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "flysight-grapher.entitlements"; sourceTree = "<group>"; };
 		7B2EA9D622D4037A009BCC39 /* dummy-data.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dummy-data.csv"; sourceTree = "<group>"; };
@@ -264,7 +264,7 @@
 				7B6DD21E22D3BF04009C6A7E /* SceneDelegate.swift */,
 				7B6DD22022D3BF04009C6A7E /* ContentView.swift */,
 				7B68430322D3F65300B421E1 /* GraphRepresentedView.swift */,
-				7B1B936922D41D5C000B5C13 /* MapPresetedView.swift */,
+				7B1B936922D41D5C000B5C13 /* MapPresentedView.swift */,
 				7B724F0322D81A0200420373 /* SettingsView.swift */,
 				7B1B937622D451E4000B5C13 /* FilePickerPresentedView.swift */,
 				7B2EAA2022D40567009BCC39 /* DataLoader.swift */,
@@ -533,7 +533,7 @@
 				7B724F0422D81A0200420373 /* SettingsView.swift in Sources */,
 				7B6DD21D22D3BF04009C6A7E /* AppDelegate.swift in Sources */,
 				7B6DD21F22D3BF04009C6A7E /* SceneDelegate.swift in Sources */,
-				7B1B936A22D41D5C000B5C13 /* MapPresetedView.swift in Sources */,
+				7B1B936A22D41D5C000B5C13 /* MapPresentedView.swift in Sources */,
 				7B6DD22122D3BF04009C6A7E /* ContentView.swift in Sources */,
 				7B68430422D3F65300B421E1 /* GraphRepresentedView.swift in Sources */,
 				7B1B937722D451E4000B5C13 /* FilePickerPresentedView.swift in Sources */,
