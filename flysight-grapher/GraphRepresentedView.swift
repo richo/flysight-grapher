@@ -53,10 +53,10 @@ fileprivate func transformData(_ data: DataSet) -> LineChartData {
     
     for point in data.data {
         hMSL.append(ChartDataEntry(x: point.time, y: point.altitude * MetersToFeet))
-        velY.append(ChartDataEntry(x: point.time, y: point.vX() * MetersPerSecondToMilesPerHour))
+        velY.append(ChartDataEntry(x: point.time, y: point.vY() * MetersPerSecondToMilesPerHour))
         
         
-        velX.append(ChartDataEntry(x: point.time, y: point.vY() *
+        velX.append(ChartDataEntry(x: point.time, y: point.vX() *
             MetersPerSecondToMilesPerHour))
     }
     
