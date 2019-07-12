@@ -14,6 +14,7 @@ struct ContentView : View {
         let graph = GraphView()
         let map = MapView()
         let settings = SettingsView()
+        let wingsuit = WingsuitScoredView()
         
         func fileUrlCallback(_ url: URL) {
             do {
@@ -32,7 +33,7 @@ struct ContentView : View {
             TabbedView {
                 graph.tabItem({ Text("Graph") }).tag(0);
                 map.tabItem({ Text("Map") }).tag(1);
-                settings.tabItem({ Text("Wingsuit Data") }).tag(3);
+                wingsuit.tabItem({ Text("Wingsuit Data") }).tag(3);
                 settings.tabItem({ Text("Settings") }).tag(4);
             };
            
