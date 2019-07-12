@@ -30,9 +30,10 @@ struct ContentView : View {
 
         return VStack {
             TabbedView {
-                graph.tabItemLabel(Text("Graph")).tag(0);
-                map.tabItemLabel(Text("Map")).tag(1);
-                settings.tabItemLabel(Text("Settings")).tag(4);
+                graph.tabItem({ Text("Graph") }).tag(0);
+                map.tabItem({ Text("Map") }).tag(1);
+                settings.tabItem({ Text("Wingsuit Data") }).tag(3);
+                settings.tabItem({ Text("Settings") }).tag(4);
             };
            
             PresentationLink("Load Data", destination: PickerView(callback: fileUrlCallback));
