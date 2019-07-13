@@ -11,14 +11,41 @@ import SwiftUI
 
 struct SettingsView : View {
     @State var showPerfWindow = true
+    @State var developerMode = false
+    
+    let loadFile: (URL) -> ()
 
     var body: some View {
-
-        return VStack {
-            Text("Settings go in here (none of them work yet)")
-            Toggle(isOn: $showPerfWindow) {
-                Text("Show wingsuit performance window")
-            }.padding()
+        let dummyWingsuit = Button(action: {
+            let url = URL(fileURLWithPath: Bundle.main.path(forResource: "dummy-wingsuit", ofType: "csv")!)
+            
+            self.loadFile(url)
+        }) {
+            Text("Dummy Wingsuit Flight")
         }
+        let dummySwoop = Button(action: {
+            let url = URL(fileURLWithPath: Bundle.main.path(forResource: "dummy-swoop", ofType: "csv")!)
+            
+            self.loadFile(url)
+            
+        }) {
+            Text("Dummy Swoop")
+        }
+        
+        return List {
+            Section(header: Text("Wingsuit")) {
+                Toggle(isOn: $showPerfWindow) {
+                    Text("Show performance window in Graph view")
+                }.padding()            }
+            Section(header: Text("Developer")) {
+                Toggle(isOn: $developerMode) {
+                    Text("Debug stuff for development")
+                }.padding()
+                if developerMode {
+                    dummyWingsuit;
+                    dummySwoop;
+                }
+            }
+        }.listStyle(.grouped)
     }
 }

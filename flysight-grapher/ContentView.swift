@@ -13,7 +13,6 @@ struct ContentView : View {
     var body: some View {
         let graph = GraphView()
         let map = MapView()
-        let settings = SettingsView()
         var swoop = SwoopDataView()
         var wingsuit = WingsuitScoredView()
         
@@ -31,22 +30,8 @@ struct ContentView : View {
                 return
             }
         }
-        let dummyWingsuit = Button(action: {
-            let url = URL(fileURLWithPath: Bundle.main.path(forResource: "dummy-wingsuit", ofType: "csv")!)
-
-            fileUrlCallback(url)
-        }) {
-            Text("Dummy Wingsuit Flight")
-        }
-        let dummySwoop = Button(action: {
-            let url = URL(fileURLWithPath: Bundle.main.path(forResource: "dummy-swoop", ofType: "csv")!)
-
-            fileUrlCallback(url)
-            
-        }) {
-            Text("Dummy Swoop")
-        }
-
+        
+        let settings = SettingsView(loadFile: fileUrlCallback)
 
         return VStack {
             TabbedView {
@@ -56,11 +41,7 @@ struct ContentView : View {
                 wingsuit.tabItem({ Text("Wingsuit Data") }).tag(3);
                 settings.tabItem({ Text("Settings") }).tag(4);
             };
-            HStack {
-                PresentationLink("Load Data", destination: PickerView(callback: fileUrlCallback));
-                dummyWingsuit;
-                dummySwoop;
-            }
+            PresentationLink("Load Data", destination: PickerView(callback: fileUrlCallback));
         }
     }
 }
