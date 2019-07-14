@@ -21,11 +21,14 @@ struct GraphRepresentedView: UIViewRepresentable {
         // Configure the lineChart
         view.noDataText = "No data loaded."
         let textColor = UIColor(named: "graphText")!
+
         view.noDataTextColor = textColor
-        
         view.xAxis.labelTextColor = textColor
-        view.leftAxis.labelTextColor = textColor
-        view.rightAxis.labelTextColor = textColor
+        
+        view.leftAxis.labelTextColor = UIColor(named: "graphLeftAxis")!
+        
+        view.rightAxis.labelTextColor = UIColor(named: "graphRightAxis")!
+        view.rightAxis.gridLineWidth = 1.5
         view.legend.textColor = textColor
 
         return view
