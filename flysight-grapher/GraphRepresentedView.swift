@@ -20,7 +20,14 @@ struct GraphRepresentedView: UIViewRepresentable {
     func makeUIView(context: UIViewRepresentableContext<GraphRepresentedView>) -> GraphRepresentedView.UIViewType {
         // Configure the lineChart
         view.noDataText = "No data loaded."
+        let textColor = UIColor(named: "graphText")!
+        view.noDataTextColor = textColor
         
+        view.xAxis.labelTextColor = textColor
+        view.leftAxis.labelTextColor = textColor
+        view.rightAxis.labelTextColor = textColor
+        view.legend.textColor = textColor
+
         return view
     }
     
@@ -62,25 +69,29 @@ fileprivate func transformData(_ data: DataSet) -> LineChartData {
     
     let alt = LineChartDataSet(entries: hMSL, label: "altitude")
     alt.axisDependency = .left
-    alt.setColor(.black)
+    let altitudeColor = UIColor(named: "graphAltitude")!
+    alt.setColor(altitudeColor)
     alt.drawCirclesEnabled = false
     alt.lineWidth = 2
     
     let vSpeed = LineChartDataSet(entries: velY, label: "v speed")
     vSpeed.axisDependency = .right
-    vSpeed.setColor(.green)
+    let vSpeedColor = UIColor(named: "graphVerticalSpeed")!
+    vSpeed.setColor(vSpeedColor)
     vSpeed.drawCirclesEnabled = false
     vSpeed.lineWidth = 2
     
     let hSpeed = LineChartDataSet(entries: velX, label: "h speed")
     hSpeed.axisDependency = .right
-    hSpeed.setColor(.red)
+    let hSpeedColor = UIColor(named: "graphHorizontalSpeed")!
+    hSpeed.setColor(hSpeedColor)
     hSpeed.drawCirclesEnabled = false
     hSpeed.lineWidth = 2
     
     
     let data = LineChartData(dataSets: [alt, vSpeed, hSpeed])
-    data.setValueTextColor(.black)
+    let valueTextColor = UIColor(named: "graphText")!
+    data.setValueTextColor(valueTextColor)
     data.setValueFont(.systemFont(ofSize: 9))
     
     return data
