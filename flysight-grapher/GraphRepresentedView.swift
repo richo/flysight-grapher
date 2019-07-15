@@ -26,9 +26,12 @@ struct GraphRepresentedView: UIViewRepresentable {
         view.xAxis.labelTextColor = textColor
         
         view.leftAxis.labelTextColor = UIColor(named: "graphLeftAxis")!
+        view.leftAxis.axisMinimum = -100
         
         view.rightAxis.labelTextColor = UIColor(named: "graphRightAxis")!
         view.rightAxis.gridLineWidth = 1.5
+        view.rightAxis.axisMinimum = -5
+        
         view.legend.textColor = textColor
 
         return view
@@ -96,6 +99,9 @@ fileprivate func transformData(_ data: DataSet) -> LineChartData {
     let valueTextColor = UIColor(named: "graphText")!
     data.setValueTextColor(valueTextColor)
     data.setValueFont(.systemFont(ofSize: 9))
+    
+    // TODO(richo)
+    // If there's a huge minimum in the dataset, reset the minimum value
     
     return data
 }
