@@ -109,3 +109,11 @@ struct GraphView: View {
         self.graph.presentData(data: data)
     }
 }
+
+#if DEBUG
+struct GraphRepresentedView_Previews : PreviewProvider {
+    static var previews: some View {
+        GraphRepresentedView()
+    }
+}
+#endif

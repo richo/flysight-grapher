@@ -104,3 +104,11 @@ class RedLineDelegate: NSObject, MKMapViewDelegate {
         return MKOverlayRenderer()
     }
 }
+
+#if DEBUG
+struct MapRepresentedView_Previews : PreviewProvider {
+    static var previews: some View {
+        MapRepresentedView()
+    }
+}
+#endif
