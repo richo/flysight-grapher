@@ -111,8 +111,7 @@ struct FlareView: View {
     var flare: Flare
     
     var body: some View {
-        print("Made a flare view")
-        return Text(String(format: "%.1fm", flare.height()))
+        Text(String(format: "%.1fm", flare.height()))
     }
 }
 
