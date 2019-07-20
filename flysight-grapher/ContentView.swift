@@ -13,6 +13,11 @@ struct ContentView : View {
     var body: some View {
         let graph = GraphView()
         let map = MapView()
+        let split = SplitGraphMapView(
+            graph: graph,
+            map: map
+        )
+
         var swoop = SwoopDataView()
         var wingsuit = WingsuitScoredView()
         
@@ -23,6 +28,7 @@ struct ContentView : View {
                 
                 graph.loadData(data)
                 map.loadData(data)
+                
                 wingsuit.loadData(data)
                 swoop.loadData(data)
             } catch {
@@ -37,9 +43,10 @@ struct ContentView : View {
             TabbedView {
                 graph.tabItem({ Text("Graph") }).tag(0);
                 map.tabItem({ Text("Map") }).tag(1);
-                swoop.tabItem({ Text("Swoop Data") }).tag(2);
-                wingsuit.tabItem({ Text("Wingsuit Data") }).tag(3);
-                settings.tabItem({ Text("Settings") }).tag(4);
+                split.tabItem({ Text("Split") }).tag(2);
+                swoop.tabItem({ Text("Swoop Data") }).tag(3);
+                wingsuit.tabItem({ Text("Wingsuit Data") }).tag(4);
+                settings.tabItem({ Text("Settings") }).tag(5);
             };
             PresentationLink("Load Data", destination: PickerView(callback: fileUrlCallback));
         }
