@@ -36,14 +36,14 @@ struct WingsuitScoredView : View {
                             Text("Speed")
                             ScoreView(score: scores.speed, unit: "m/s")
                         }
-                    }
+                    }.listStyle(.grouped)
                 }
 
             }
             Section(header: Text("Flares")) {
                 List((flares.getFlares()).identified(by: \.entry.altitude)) { flare in
                     FlareView(flare:  flare)
-                }
+                }.listStyle(.grouped)
             }
         }
     }
