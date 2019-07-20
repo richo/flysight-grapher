@@ -16,6 +16,13 @@ struct SettingsView : View {
     let loadFile: (URL) -> ()
 
     var body: some View {
+        let dummyAngle = Button(action: {
+            let url = URL(fileURLWithPath: Bundle.main.path(forResource: "dummy-angle", ofType: "csv")!)
+            
+            self.loadFile(url)
+        }) {
+            Text("Dummy Angle Jump")
+        }
         let dummyWingsuit = Button(action: {
             let url = URL(fileURLWithPath: Bundle.main.path(forResource: "dummy-wingsuit", ofType: "csv")!)
             
@@ -42,6 +49,7 @@ struct SettingsView : View {
                     Text("Debug stuff for development")
                 }.padding()
                 if developerMode {
+                    dummyAngle;
                     dummyWingsuit;
                     dummySwoop;
                 }
