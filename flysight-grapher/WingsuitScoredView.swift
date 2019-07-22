@@ -111,7 +111,14 @@ struct FlareView: View {
     var flare: Flare
     
     var body: some View {
-        Text(String(format: "%.1fm", flare.height()))
+        Section(header: Text("flare")) {
+            Text(String(format: "%.1fm", flare.height()))
+            Text(String(format: "Time to peak %.1fs ", flare.timeToPeak()))
+            Text(String(format: "Distance to peak %.1fm", flare.distanceToPeak()))
+            Button("Highlight") { // TODO(richo) highlight this in the map
+                
+            }
+        }
     }
 }
 
@@ -196,6 +203,18 @@ struct Flare {
     
     func height() -> Double {
         self.peak.altitude - self.entry.altitude
+    }
+    
+    func timeToPeak() -> Double {
+        self.peak.time - self.entry.time
+    }
+    
+    func distanceToPeak() -> Double {
+        let entryPoint = MKMapPoint(entry.position)
+        let peakPoint = MKMapPoint(peak.position)
+        let distance = entryPoint.distance(to: peakPoint)
+        
+        return distance
     }
 }
 
