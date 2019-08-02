@@ -10,6 +10,8 @@ import SwiftUI
 import class SwiftCSV.CSV
 
 struct ContentView : View {
+    var isiPhone = UIDevice.current.userInterfaceIdiom == .phone
+    
     var body: some View {
         let graph = GraphView()
         let map = MapView()
@@ -43,7 +45,9 @@ struct ContentView : View {
             TabbedView {
                 graph.tabItem({ Text("Graph") }).tag(0);
                 map.tabItem({ Text("Map") }).tag(1);
-                split.tabItem({ Text("Split") }).tag(2);
+                if !isiPhone {
+                    split.tabItem({ Text("Split") }).tag(2);
+                }
                 swoop.tabItem({ Text("Swoop Data") }).tag(3);
                 wingsuit.tabItem({ Text("Wingsuit Data") }).tag(4);
                 settings.tabItem({ Text("Settings") }).tag(5);
