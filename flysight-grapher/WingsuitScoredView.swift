@@ -12,8 +12,8 @@ import Combine
 
 struct WingsuitScoredView : View {
     
-    @ObjectBinding var scores: WingsuitScoreData = WingsuitScoreData()
-    @ObjectBinding var flares: WingsuitFlareData = WingsuitFlareData()
+    @ObservedObject var scores: WingsuitScoreData = WingsuitScoreData()
+    @ObservedObject var flares: WingsuitFlareData = WingsuitFlareData()
     
     var body: some View {
         VStack {
@@ -41,7 +41,7 @@ struct WingsuitScoredView : View {
 
             }
             Section(header: Text("Flares")) {
-                List((flares.getFlares()).identified(by: \.entry.altitude)) { flare in
+                List(flares.getFlares()) { flare in
                     FlareView(flare:  flare)
                 }.listStyle(.grouped)
             }
@@ -196,7 +196,13 @@ struct WingsuitFlareMeasurer {
     }
 }
 
-struct Flare {
+struct Flare: Identifiable {
+    var id: Double {
+        get {
+            self.entry.altitude
+        }
+    }
+    
     let entry: GateCrossing
     let peak: GateCrossing
     let exit: GateCrossing // Do we actually need the exit?
@@ -257,7 +263,7 @@ struct WingsuitScoredView_Previews : PreviewProvider {
 }
 #endif
 
-final class WingsuitFlareData: BindableObject {
+final class WingsuitFlareData: ObservableObject {
     let didChange = PassthroughSubject<WingsuitFlareData, Never>()
     var measurer = WingsuitFlareMeasurer()
     
@@ -286,7 +292,7 @@ final class WingsuitFlareData: BindableObject {
 }
 
 // TODO(unify this with the swoop stuff
-final class WingsuitScoreData: BindableObject  {
+final class WingsuitScoreData: ObservableObject  {
     let didChange = PassthroughSubject<WingsuitScoreData, Never>()
     var scorer = WingsuitScorer()
 

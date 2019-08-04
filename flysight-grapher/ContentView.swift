@@ -11,6 +11,8 @@ import class SwiftCSV.CSV
 
 struct ContentView : View {
     var isiPhone = UIDevice.current.userInterfaceIdiom == .phone
+    @State var showFilePicker = false
+
     
     var body: some View {
         let graph = GraphView()
@@ -42,18 +44,21 @@ struct ContentView : View {
         let settings = SettingsView(loadFile: fileUrlCallback)
 
         return VStack {
-            TabbedView {
+            TabView {
                 graph.tabItem({ Text("Graph") }).tag(0);
                 map.tabItem({ Text("Map") }).tag(1);
-                if !isiPhone {
+//                if !isiPhone {
                     split.tabItem({ Text("Split") }).tag(2);
-                }
+//                }
                 swoop.tabItem({ Text("Swoop Data") }).tag(3);
                 wingsuit.tabItem({ Text("Wingsuit Data") }).tag(4);
                 settings.tabItem({ Text("Settings") }).tag(5);
             };
-            PresentationLink("Load Data", destination: PickerView(callback: fileUrlCallback));
+            Button("Load Data") {
+                self.showFilePicker = true
+            }
         }
+        .sheet(isPresented: $showFilePicker, content: { PickerView(callback: fileUrlCallback) })
     }
 }
 

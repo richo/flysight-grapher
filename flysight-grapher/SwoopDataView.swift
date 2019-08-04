@@ -10,7 +10,7 @@ import SwiftUI
 import Combine
 
 struct SwoopDataView : View {
-    @ObjectBinding var scores: SwoopScoreData = SwoopScoreData()
+    @ObservedObject var scores: SwoopScoreData = SwoopScoreData()
     
     var body: some View {
         List {
@@ -44,7 +44,7 @@ struct SwoopDataView_Previews : PreviewProvider {
 }
 #endif
 
-final class SwoopScoreData: BindableObject  {
+final class SwoopScoreData: ObservableObject  {
     let didChange = PassthroughSubject<SwoopScoreData, Never>()
     
     var valid = false {
