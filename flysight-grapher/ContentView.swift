@@ -12,19 +12,22 @@ import class SwiftCSV.CSV
 struct ContentView : View {
     var isiPhone = UIDevice.current.userInterfaceIdiom == .phone
     @State var showFilePicker = false
-
+    
+    @State var graph = GraphView()
+    @State var map = MapView()
+    @State var swoop = SwoopDataView()
+    @State var wingsuit = WingsuitScoredView()
+    var split: SplitGraphMapView {
+        get {
+            SplitGraphMapView(
+                graph: graph,
+                map: map
+            )
+            
+        }
+    }
     
     var body: some View {
-        let graph = GraphView()
-        let map = MapView()
-        let split = SplitGraphMapView(
-            graph: graph,
-            map: map
-        )
-
-        var swoop = SwoopDataView()
-        var wingsuit = WingsuitScoredView()
-        
         func fileUrlCallback(_ url: URL) {
             do {
                 let csv = try CSV(url: url)
@@ -32,14 +35,14 @@ struct ContentView : View {
                 
                 DispatchQueue.main.async {
                     print("Loading data into graph")
-                    graph.loadData(data)
+                    self.graph.loadData(data)
                     print("Loading data into map")
-                    map.loadData(data)
+                    self.map.loadData(data)
                     
                     print("Loading data into wingsuit view")
-                    wingsuit.loadData(data)
+                    self.wingsuit.loadData(data)
                     print("Loading data into swoop view")
-                    swoop.loadData(data)
+                    self.swoop.loadData(data)
                 }
             } catch {
                 print("Couldn't open or parse CSV")

@@ -47,10 +47,6 @@ struct FilePickerController: UIViewControllerRepresentable {
         func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
             print("view was cancelled")
         }
-        
-        deinit {
-            print("Coordinator going away")
-        }
     }
 }
 

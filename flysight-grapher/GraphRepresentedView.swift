@@ -39,7 +39,6 @@ struct GraphRepresentedView: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<GraphRepresentedView>) {
-        // Update the view.
     }
     
     func presentData(data: LineChartData) {
