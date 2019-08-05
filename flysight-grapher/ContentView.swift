@@ -30,11 +30,17 @@ struct ContentView : View {
                 let csv = try CSV(url: url)
                 let data = csv.asDataSet()!
                 
-                graph.loadData(data)
-                map.loadData(data)
-                
-                wingsuit.loadData(data)
-                swoop.loadData(data)
+                DispatchQueue.main.async {
+                    print("Loading data into graph")
+                    graph.loadData(data)
+                    print("Loading data into map")
+                    map.loadData(data)
+                    
+                    print("Loading data into wingsuit view")
+                    wingsuit.loadData(data)
+                    print("Loading data into swoop view")
+                    swoop.loadData(data)
+                }
             } catch {
                 print("Couldn't open or parse CSV")
                 return
