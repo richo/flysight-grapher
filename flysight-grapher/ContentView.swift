@@ -50,7 +50,7 @@ struct ContentView : View {
             }
         }
         
-        let settings = SettingsView(loadFile: fileUrlCallback)
+        let settings = AboutView(loadFile: fileUrlCallback)
 
         return VStack {
             TabView {
@@ -61,7 +61,7 @@ struct ContentView : View {
                 }
                 swoop.tabItem({ Text("Swoop Data") }).tag(3);
                 wingsuit.tabItem({ Text("Wingsuit Data") }).tag(4);
-                settings.tabItem({ Text("Settings") }).tag(5);
+                settings.tabItem({ Text("About") }).tag(5);
             };
             Button("Load Data") {
                 self.showFilePicker = true

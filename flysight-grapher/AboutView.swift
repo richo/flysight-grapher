@@ -9,7 +9,7 @@
 import Foundation
 import SwiftUI
 
-struct SettingsView : View {
+struct AboutView : View {
     @State var showPerfWindow = true
     @State var developerMode = false
     
@@ -64,7 +64,7 @@ struct SettingsView_Previews : PreviewProvider {
         func cb(_url: URL) {
             
         }
-        return SettingsView(loadFile: cb)
+        return AboutView(loadFile: cb)
     }
 }
 #endif
