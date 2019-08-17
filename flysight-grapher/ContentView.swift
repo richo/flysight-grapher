@@ -35,13 +35,19 @@ struct ContentView : View {
                 
                 DispatchQueue.main.async {
                     print("Loading data into graph")
+                    self.graph.clearData()
                     self.graph.loadData(data)
+                    
                     print("Loading data into map")
+                    self.graph.clearData()
                     self.map.loadData(data)
                     
                     print("Loading data into wingsuit view")
+                    self.wingsuit.clearData()
                     self.wingsuit.loadData(data)
+                    
                     print("Loading data into swoop view")
+                    self.swoop.clearData()
                     self.swoop.loadData(data)
                 }
             } catch {

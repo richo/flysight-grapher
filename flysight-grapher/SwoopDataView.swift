@@ -8,8 +8,9 @@
 
 import SwiftUI
 import Combine
-
-struct SwoopDataView : View {
+// TODO(richo) make this DataPresentable
+struct SwoopDataView : View, DataPresentable {
+    
     @ObservedObject var scores: SwoopScoreData = SwoopScoreData()
     
     var body: some View {
@@ -24,7 +25,7 @@ struct SwoopDataView : View {
     }
     
     let TWO_THOUSAND_FEET = 2000 / MetersToFeet
-    mutating func loadData(_ data: DataSet) {
+    func loadData(_ data: DataSet) {
         let swoop = data.data.filter { $0.altitude < TWO_THOUSAND_FEET }
         let maxVerticalSpeed = swoop.max { a, b in  a.vY() < b.vY() }
         scores.maxVerticalSpeed = maxVerticalSpeed!.vY() * MetersPerSecondToMilesPerHour
@@ -33,6 +34,10 @@ struct SwoopDataView : View {
             .filter { $0.altitude < 3 / MetersToFeet}
             .max { a, b in  a.vX() < b.vX() }
         scores.rolloutHorizontalSpeed = rolloutSpeed!.vX() * MetersPerSecondToMilesPerHour
+    }
+    
+    func clearData() {
+        // todo(richo)
     }
 }
 

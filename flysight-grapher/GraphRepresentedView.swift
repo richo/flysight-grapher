@@ -46,7 +46,11 @@ struct GraphRepresentedView: UIViewRepresentable {
     }
 }
 
-struct GraphView: View {
+struct GraphView: View, DataPresentable {
+    func clearData() {
+        self.graph.view.data = nil
+    }
+    
     var graph: GraphRepresentedView = GraphRepresentedView()
     
     var body: some View {

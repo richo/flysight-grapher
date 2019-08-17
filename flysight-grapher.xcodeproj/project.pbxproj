@@ -29,6 +29,7 @@
 		7B724F0422D81A0200420373 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B724F0322D81A0200420373 /* AboutView.swift */; };
 		7B724F2222D8205000420373 /* WingsuitScoredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B724F2122D8205000420373 /* WingsuitScoredView.swift */; };
 		7B724F2522D82A1400420373 /* SwoopDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B724F2422D82A1400420373 /* SwoopDataView.swift */; };
+		7B7E8A742307B48E0012F2E3 /* DataPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7E8A732307B48E0012F2E3 /* DataPresentation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -170,6 +171,7 @@
 		7B724F0322D81A0200420373 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		7B724F2122D8205000420373 /* WingsuitScoredView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WingsuitScoredView.swift; sourceTree = "<group>"; };
 		7B724F2422D82A1400420373 /* SwoopDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwoopDataView.swift; sourceTree = "<group>"; };
+		7B7E8A732307B48E0012F2E3 /* DataPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPresentation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -284,6 +286,7 @@
 				7B6DD22722D3BF04009C6A7E /* LaunchScreen.storyboard */,
 				7B6DD22A22D3BF04009C6A7E /* Info.plist */,
 				7B6DD22422D3BF04009C6A7E /* Preview Content */,
+				7B7E8A732307B48E0012F2E3 /* DataPresentation.swift */,
 			);
 			path = "flysight-grapher";
 			sourceTree = "<group>";
@@ -545,6 +548,7 @@
 				7B25BD5122E3D63400F83382 /* SplitGraphMapView.swift in Sources */,
 				7B724F2222D8205000420373 /* WingsuitScoredView.swift in Sources */,
 				7B724F2522D82A1400420373 /* SwoopDataView.swift in Sources */,
+				7B7E8A742307B48E0012F2E3 /* DataPresentation.swift in Sources */,
 				7B2EAA2122D40567009BCC39 /* DataLoader.swift in Sources */,
 				7B724F0422D81A0200420373 /* AboutView.swift in Sources */,
 				7B6DD21D22D3BF04009C6A7E /* AppDelegate.swift in Sources */,

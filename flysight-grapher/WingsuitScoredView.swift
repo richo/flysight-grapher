@@ -10,7 +10,7 @@ import SwiftUI
 import MapKit
 import Combine
 
-struct WingsuitScoredView : View {
+struct WingsuitScoredView : View, DataPresentable {
     
     @ObservedObject var scores: WingsuitScoreData = WingsuitScoreData()
     @ObservedObject var flares: WingsuitFlareData = WingsuitFlareData()
@@ -85,6 +85,10 @@ struct WingsuitScoredView : View {
 
         scores.validRun(entry: entryGate, exit: exitGate)
         flares.measureRun(data: data)
+    }
+    
+    func clearData() {
+        // TODO(richo)
     }
     
     enum WindowState {
