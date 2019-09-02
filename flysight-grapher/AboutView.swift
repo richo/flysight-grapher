@@ -8,53 +8,80 @@
 
 import Foundation
 import SwiftUI
+import MessageUI
+
 
 struct AboutView : View {
     @State var showPerfWindow = true
     @State var developerMode = false
     
-    let loadFile: (URL) -> ()
+    private let mailComposeDelegate = MailDelegate()
+    
+//    let loadFile: (URL) -> ()
 
     var body: some View {
-        let dummyAngle = Button(action: {
-            let url = URL(fileURLWithPath: Bundle.main.path(forResource: "dummy-angle", ofType: "csv")!)
-            
-            self.loadFile(url)
-        }) {
-            Text("Dummy Angle Jump")
-        }
-        let dummyWingsuit = Button(action: {
-            let url = URL(fileURLWithPath: Bundle.main.path(forResource: "dummy-wingsuit", ofType: "csv")!)
-            
-            self.loadFile(url)
-        }) {
-            Text("Dummy Wingsuit Flight")
-        }
-        let dummySwoop = Button(action: {
-            let url = URL(fileURLWithPath: Bundle.main.path(forResource: "dummy-swoop", ofType: "csv")!)
-            
-            self.loadFile(url)
-            
-        }) {
-            Text("Dummy Swoop")
-        }
+//        let dummyAngle = Button(action: {
+//            let url = URL(fileURLWithPath: Bundle.main.path(forResource: "dummy-angle", ofType: "csv")!)
+//
+//            self.loadFile(url)
+//        }) {
+//            Text("Dummy Angle Jump")
+//        }
+//        let dummyWingsuit = Button(action: {
+//            let url = URL(fileURLWithPath: Bundle.main.path(forResource: "dummy-wingsuit", ofType: "csv")!)
+//
+//            self.loadFile(url)
+//        }) {
+//            Text("Dummy Wingsuit Flight")
+//        }
+//        let dummySwoop = Button(action: {
+//            let url = URL(fileURLWithPath: Bundle.main.path(forResource: "dummy-swoop", ofType: "csv")!)
+//
+//            self.loadFile(url)
+//
+//        }) {
+//            Text("Dummy Swoop")
+//        }
+        
         
         return List {
             Section(header: Text("Wingsuit")) {
                 Toggle(isOn: $showPerfWindow) {
                     Text("Show performance window in Graph view")
-                }.padding()            }
-            Section(header: Text("Developer")) {
-                Toggle(isOn: $developerMode) {
-                    Text("Debug stuff for development")
                 }.padding()
-                if developerMode {
-                    dummyAngle;
-                    dummyWingsuit;
-                    dummySwoop;
+            }
+            Section(header: Text("About")) {
+                Button(action: {
+                    self.presentMailCompose()
+                }) {
+                    Text("Email support")
                 }
+                
             }
         }.listStyle(.grouped)
+    }
+    
+    private class MailDelegate: NSObject, MFMailComposeViewControllerDelegate {
+
+        func mailComposeController(_ controller: MFMailComposeViewController,
+                                   didFinishWith result: MFMailComposeResult,
+                                   error: Error?) {
+            controller.dismiss(animated: true)
+        }
+
+    }
+    
+    private func presentMailCompose() {
+        guard MFMailComposeViewController.canSendMail() else {
+            print("Can't send email, I guess?")
+            return
+        }
+        let vc = UIApplication.shared.keyWindow?.rootViewController
+
+        let composeVC = MFMailComposeViewController()
+        composeVC.mailComposeDelegate = mailComposeDelegate
+
+        vc?.present(composeVC, animated: true)
     }
 }
 
@@ -64,7 +91,7 @@ struct SettingsView_Previews : PreviewProvider {
         func cb(_url: URL) {
             
         }
-        return AboutView(loadFile: cb)
+        return AboutView()
     }
 }
 #endif

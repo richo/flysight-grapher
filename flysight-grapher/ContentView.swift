@@ -56,7 +56,7 @@ struct ContentView : View {
             }
         }
         
-        let settings = AboutView(loadFile: fileUrlCallback)
+        let settings = AboutView()
 
         return VStack {
             TabView {
