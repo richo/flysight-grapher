@@ -112,9 +112,6 @@ struct GraphView: View, DataPresentable {
         self.graph.view.rightAxis.axisMinimum = min(DEFAULT_RIGHT_AXIS_MINIMUM, min_axis_value)
         print("Presenting data")
         self.graph.presentData(data: data)
-        print("Updating the no data text as a signal")
-        self.graph.view.noDataText = "wtf why"
-
     }
 }
 

@@ -39,7 +39,7 @@ struct ContentView : View {
                     self.graph.loadData(data)
                     
                     print("Loading data into map")
-                    self.graph.clearData()
+                    self.map.clearData()
                     self.map.loadData(data)
                     
                     print("Loading data into wingsuit view")

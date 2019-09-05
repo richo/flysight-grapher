@@ -87,6 +87,7 @@ struct MapView: View, DataPresentable {
     }
     
     func clearData() {
+        print("Clearing data from the map")
         // Remove the old lines
         self.map.removeOverlays()
         // Remove the old points

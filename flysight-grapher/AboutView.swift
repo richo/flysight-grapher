@@ -72,10 +72,10 @@ struct AboutView : View {
     }
     
     private func presentMailCompose() {
-        guard MFMailComposeViewController.canSendMail() else {
-            print("Can't send email, I guess?")
-            return
-        }
+//        guard MFMailComposeViewController.canSendMail() else {
+//            print("Can't send email, I guess?")
+//            return
+//        }
         let vc = UIApplication.shared.keyWindow?.rootViewController
 
         let composeVC = MFMailComposeViewController()
