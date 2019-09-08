@@ -17,6 +17,7 @@ let DEFAULT_RIGHT_AXIS_MINIMUM = -5.0
 
 struct GraphRepresentedView: UIViewRepresentable {
     var view: LineChartView = LineChartView()
+    var pointMap = [Double: Int]()
     
     func makeUIView(context: UIViewRepresentableContext<GraphRepresentedView>) -> GraphRepresentedView.UIViewType {
         // Configure the lineChart
@@ -34,6 +35,10 @@ struct GraphRepresentedView: UIViewRepresentable {
         view.rightAxis.axisMinimum = DEFAULT_RIGHT_AXIS_MINIMUM
         
         view.legend.textColor = textColor
+        
+
+        self.view.highlightPerTapEnabled = false
+        self.view.doubleTapToZoomEnabled = false
 
         return view
     }
@@ -44,9 +49,17 @@ struct GraphRepresentedView: UIViewRepresentable {
     func presentData(data: LineChartData) {
         view.data = data
     }
+    
+    mutating func loadPointMap(map: [Double: Int]) {
+        self.pointMap = map
+    }
 }
 
 struct GraphView: View, DataPresentable {
+    func setDelegate(_ delegate: SplitViewDelegate) {
+        self.graph.view.delegate = delegate
+    }
+    
     func clearData() {
         self.graph.view.data = nil
     }
@@ -57,7 +70,7 @@ struct GraphView: View, DataPresentable {
         self.graph
     }
     
-    func loadData(_ data: DataSet) {
+    mutating func loadData(_ data: DataSet) {
         var hMSL: Array<ChartDataEntry> = []
         var velX: Array<ChartDataEntry> = []
         var velY: Array<ChartDataEntry> = []
@@ -65,7 +78,9 @@ struct GraphView: View, DataPresentable {
         var minVelX = 0.0
         var minVelY = 0.0
         
-        for point in data.data {
+        var pointMap = [Double: Int]()
+        
+        for (i, point) in data.data.enumerated() {
             hMSL.append(ChartDataEntry(x: point.time, y: point.altitude * MetersToFeet))
             velY.append(ChartDataEntry(x: point.time, y: point.vY() * MetersPerSecondToMilesPerHour))
             velX.append(ChartDataEntry(x: point.time, y: point.vX() *
@@ -77,6 +92,8 @@ struct GraphView: View, DataPresentable {
             if point.vX() < minVelX {
                 minVelX = point.vX()
             }
+            
+            pointMap[point.time] = i
         }
         
         let alt = LineChartDataSet(entries: hMSL, label: "altitude")
@@ -112,6 +129,7 @@ struct GraphView: View, DataPresentable {
         self.graph.view.rightAxis.axisMinimum = min(DEFAULT_RIGHT_AXIS_MINIMUM, min_axis_value)
         print("Presenting data")
         self.graph.presentData(data: data)
+        self.graph.loadPointMap(map: pointMap)
     }
 }
 

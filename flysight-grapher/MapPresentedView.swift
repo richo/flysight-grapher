@@ -24,6 +24,8 @@ let END_TITLE = "End!"
 struct MapRepresentedView: UIViewRepresentable {
     var view = MKMapView()
     var _delegate = RedLineDelegate()
+    var points: Array<CLLocationCoordinate2D>?
+    var highlight: MKPointAnnotation?
     
     func makeUIView(context: UIViewRepresentableContext<MapRepresentedView>) -> MapRepresentedView.UIViewType {
         view.mapType = .satellite
@@ -48,8 +50,9 @@ struct MapRepresentedView: UIViewRepresentable {
         self.view.removeAnnotations(self.view.annotations)
     }
     
-    func presentData(points: Array<CLLocationCoordinate2D>) {
+    mutating func presentData(points: Array<CLLocationCoordinate2D>) {
         var locations = points.map { $0 }
+        self.points = locations
 
         let polyline = MKPolyline(coordinates: &locations, count: locations.count)
         self.view.addOverlay(polyline)
@@ -72,6 +75,19 @@ struct MapRepresentedView: UIViewRepresentable {
         // Then center the map on the end of the track
         view.setCenter(end.coordinate, animated: true)
     }
+    
+    mutating func highlightValue(index: Int) {
+        if let annotation = self.highlight {
+            self.view.removeAnnotation(annotation)
+        }
+        
+        let point = self.points![index]
+        let highlight = MKPointAnnotation()
+        highlight.coordinate = point
+        view.addAnnotation(highlight)
+        
+        self.highlight = highlight
+    }
 }
 
 struct MapView: View, DataPresentable {
@@ -81,7 +97,7 @@ struct MapView: View, DataPresentable {
         self.map
     }
     
-    func loadData(_ data: DataSet) {
+    mutating func loadData(_ data: DataSet) {
         // TODO(richo) Deal with this error better
         self.map.presentData(points: mapData(data)!)
     }
@@ -93,6 +109,11 @@ struct MapView: View, DataPresentable {
         // Remove the old points
         self.map.removeAnnotations()
     }
+    
+    mutating func highlightValue(index: Int) {
+        self.map.highlightValue(index: index)
+    }
+
 }
 
 private func mapData(_ data: DataSet) -> Array<CLLocationCoordinate2D>? {

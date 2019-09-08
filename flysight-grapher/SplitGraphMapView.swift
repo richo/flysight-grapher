@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import Charts
 
 struct SplitGraphMapView : View {
     var graph: GraphView
@@ -17,14 +18,27 @@ struct SplitGraphMapView : View {
             map;
             graph;
         }
-
     }
 }
 
-//#if DEBUG
-//struct SplitGraphMapView_Previews : PreviewProvider {
-//    static var previews: some View {
-//        SplitGraphMapView()
-//    }
-//}
-//#endif
+class SplitViewDelegate: ChartViewDelegate {
+    var map: MapView?
+    var graph: GraphView?
+    
+    func setGraph(_ graph: GraphView) {
+        self.graph = graph
+    }
+    
+    func setMap(_ map: MapView) {
+        self.map = map
+    }
+    
+    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
+        let index = self.graph!.graph.pointMap[entry.x]!
+        self.map!.highlightValue(index: index)
+    }
+    
+    deinit {
+        print("Going away now :(")
+    }
+}

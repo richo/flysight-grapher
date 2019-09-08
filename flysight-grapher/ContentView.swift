@@ -17,13 +17,16 @@ struct ContentView : View {
     @State var map = MapView()
     @State var swoop = SwoopDataView()
     @State var wingsuit = WingsuitScoredView()
+    @State var settings = AboutView()
+    
+    @State var splitDelegate = SplitViewDelegate()
+
     var split: SplitGraphMapView {
         get {
             SplitGraphMapView(
                 graph: graph,
                 map: map
             )
-            
         }
     }
     
@@ -49,6 +52,10 @@ struct ContentView : View {
                     print("Loading data into swoop view")
                     self.swoop.clearData()
                     self.swoop.loadData(data)
+                    
+                    print("Setting up the split view delegate")
+                    self.splitDelegate.setGraph(self.graph)
+                    self.splitDelegate.setMap(self.map)
                 }
             } catch {
                 print("Couldn't open or parse CSV")
@@ -56,7 +63,7 @@ struct ContentView : View {
             }
         }
         
-        let settings = AboutView()
+        graph.setDelegate(self.splitDelegate)
 
         return VStack {
             TabView {

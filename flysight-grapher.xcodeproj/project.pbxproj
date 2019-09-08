@@ -30,6 +30,7 @@
 		7B724F2222D8205000420373 /* WingsuitScoredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B724F2122D8205000420373 /* WingsuitScoredView.swift */; };
 		7B724F2522D82A1400420373 /* SwoopDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B724F2422D82A1400420373 /* SwoopDataView.swift */; };
 		7B7E8A742307B48E0012F2E3 /* DataPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7E8A732307B48E0012F2E3 /* DataPresentation.swift */; };
+		7B7E8A762321CF800012F2E3 /* FlysightGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7E8A752321CF800012F2E3 /* FlysightGraph.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -172,6 +173,7 @@
 		7B724F2122D8205000420373 /* WingsuitScoredView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WingsuitScoredView.swift; sourceTree = "<group>"; };
 		7B724F2422D82A1400420373 /* SwoopDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwoopDataView.swift; sourceTree = "<group>"; };
 		7B7E8A732307B48E0012F2E3 /* DataPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPresentation.swift; sourceTree = "<group>"; };
+		7B7E8A752321CF800012F2E3 /* FlysightGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlysightGraph.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -275,6 +277,7 @@
 				7B6DD21E22D3BF04009C6A7E /* SceneDelegate.swift */,
 				7B6DD22022D3BF04009C6A7E /* ContentView.swift */,
 				7B68430322D3F65300B421E1 /* GraphRepresentedView.swift */,
+				7B7E8A752321CF800012F2E3 /* FlysightGraph.swift */,
 				7B1B936922D41D5C000B5C13 /* MapPresentedView.swift */,
 				7B724F2122D8205000420373 /* WingsuitScoredView.swift */,
 				7B724F2422D82A1400420373 /* SwoopDataView.swift */,
@@ -549,6 +552,7 @@
 				7B724F2222D8205000420373 /* WingsuitScoredView.swift in Sources */,
 				7B724F2522D82A1400420373 /* SwoopDataView.swift in Sources */,
 				7B7E8A742307B48E0012F2E3 /* DataPresentation.swift in Sources */,
+				7B7E8A762321CF800012F2E3 /* FlysightGraph.swift in Sources */,
 				7B2EAA2122D40567009BCC39 /* DataLoader.swift in Sources */,
 				7B724F0422D81A0200420373 /* AboutView.swift in Sources */,
 				7B6DD21D22D3BF04009C6A7E /* AppDelegate.swift in Sources */,

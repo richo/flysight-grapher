@@ -7,6 +7,6 @@
 //
 
 protocol DataPresentable {
-    func loadData(_ data: DataSet)
-    func clearData()
+    mutating func loadData(_ data: DataSet)
+    mutating func clearData()
 }
