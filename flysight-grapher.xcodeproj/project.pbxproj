@@ -27,8 +27,7 @@
 		7B6DD23422D3BF04009C6A7E /* flysight_grapherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6DD23322D3BF04009C6A7E /* flysight_grapherTests.swift */; };
 		7B6DD23F22D3BF04009C6A7E /* flysight_grapherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6DD23E22D3BF04009C6A7E /* flysight_grapherUITests.swift */; };
 		7B724F0422D81A0200420373 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B724F0322D81A0200420373 /* AboutView.swift */; };
-		7B724F2222D8205000420373 /* WingsuitScoredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B724F2122D8205000420373 /* WingsuitScoredView.swift */; };
-		7B724F2522D82A1400420373 /* SwoopDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B724F2422D82A1400420373 /* SwoopDataView.swift */; };
+		7B724F2222D8205000420373 /* PerformanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B724F2122D8205000420373 /* PerformanceView.swift */; };
 		7B7E8A742307B48E0012F2E3 /* DataPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7E8A732307B48E0012F2E3 /* DataPresentation.swift */; };
 		7B7E8A762321CF800012F2E3 /* FlysightGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7E8A752321CF800012F2E3 /* FlysightGraph.swift */; };
 /* End PBXBuildFile section */
@@ -170,8 +169,7 @@
 		7B6DD23E22D3BF04009C6A7E /* flysight_grapherUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = flysight_grapherUITests.swift; sourceTree = "<group>"; };
 		7B6DD24022D3BF04009C6A7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B724F0322D81A0200420373 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
-		7B724F2122D8205000420373 /* WingsuitScoredView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WingsuitScoredView.swift; sourceTree = "<group>"; };
-		7B724F2422D82A1400420373 /* SwoopDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwoopDataView.swift; sourceTree = "<group>"; };
+		7B724F2122D8205000420373 /* PerformanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceView.swift; sourceTree = "<group>"; };
 		7B7E8A732307B48E0012F2E3 /* DataPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPresentation.swift; sourceTree = "<group>"; };
 		7B7E8A752321CF800012F2E3 /* FlysightGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlysightGraph.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -279,8 +277,7 @@
 				7B68430322D3F65300B421E1 /* GraphRepresentedView.swift */,
 				7B7E8A752321CF800012F2E3 /* FlysightGraph.swift */,
 				7B1B936922D41D5C000B5C13 /* MapPresentedView.swift */,
-				7B724F2122D8205000420373 /* WingsuitScoredView.swift */,
-				7B724F2422D82A1400420373 /* SwoopDataView.swift */,
+				7B724F2122D8205000420373 /* PerformanceView.swift */,
 				7B25BD5022E3D63400F83382 /* SplitGraphMapView.swift */,
 				7B724F0322D81A0200420373 /* AboutView.swift */,
 				7B1B937622D451E4000B5C13 /* FilePickerPresentedView.swift */,
@@ -549,8 +546,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B25BD5122E3D63400F83382 /* SplitGraphMapView.swift in Sources */,
-				7B724F2222D8205000420373 /* WingsuitScoredView.swift in Sources */,
-				7B724F2522D82A1400420373 /* SwoopDataView.swift in Sources */,
+				7B724F2222D8205000420373 /* PerformanceView.swift in Sources */,
 				7B7E8A742307B48E0012F2E3 /* DataPresentation.swift in Sources */,
 				7B7E8A762321CF800012F2E3 /* FlysightGraph.swift in Sources */,
 				7B2EAA2122D40567009BCC39 /* DataLoader.swift in Sources */,

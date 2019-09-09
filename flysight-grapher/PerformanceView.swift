@@ -10,44 +10,58 @@ import SwiftUI
 import MapKit
 import Combine
 
-struct WingsuitScoredView : View, DataPresentable {
+struct PerformanceView : View, DataPresentable {
     
-    @ObservedObject var scores: WingsuitScoreData = WingsuitScoreData()
+    @ObservedObject var wingsuitScores: WingsuitScoreData = WingsuitScoreData()
+    @ObservedObject var swoopScores: SwoopScoreData = SwoopScoreData()
     @ObservedObject var flares: WingsuitFlareData = WingsuitFlareData()
     
     var body: some View {
         VStack {
-            if !scores.valid {
-                Section(header: Text("Warning")) {
-                    Text("Loaded run does not contain a valid performance run")
-                }
-            } else {
-                Section(header: Text("Performance")) {
+            Section(header: Text("Wingsuit performance")) {
+                if !wingsuitScores.valid {
+                    Text("Loaded run does not contain a valid wingsuit performance run")
+                } else {
                     List {
                         HStack {
                             Text("Distance")
-                            ScoreView(score: scores.distance, unit: "m")
+                            ScoreView(score: wingsuitScores.distance, unit: "m")
                         }
                         HStack {
                             Text("Time")
-                            ScoreView(score: scores.time, unit: "s")
+                            ScoreView(score: wingsuitScores.time, unit: "s")
                         }
                         HStack {
                             Text("Speed")
-                            ScoreView(score: scores.speed, unit: "m/s")
+                            ScoreView(score: wingsuitScores.speed, unit: "m/s")
                         }
                     }.listStyle(.grouped)
                 }
-
             }
+
             Section(header: Text("Flares")) {
                 List(flares.getFlares()) { flare in
                     FlareView(flare:  flare)
                 }.listStyle(.grouped)
             }
+            
+            Section(header: Text("Swoops")) {
+                List {
+                    HStack {
+                        Text("Max Vertical")
+                        ScoreView(score: swoopScores.maxVerticalSpeed, unit: "mph")
+                    }
+                    HStack {
+                        Text("Rollout Horizontal Speed")
+                        ScoreView(score: swoopScores.rolloutHorizontalSpeed, unit: "mph")
+                    }
+                }
+            }.listStyle(.grouped)
         }
     }
     
+    let TWO_THOUSAND_FEET = 2000 / MetersToFeet
+
     func loadData(_ data: DataSet) {
         var state: WindowState = .InThePlane
         var entry: GateCrossing? = nil
@@ -79,12 +93,23 @@ struct WingsuitScoredView : View, DataPresentable {
         
         // TODO(richo) Expose something in the UI
         guard let entryGate = entry, let exitGate = exit else {
-            scores.invalidRun()
+            wingsuitScores.invalidRun()
             return
         }
 
-        scores.validRun(entry: entryGate, exit: exitGate)
+        wingsuitScores.validRun(entry: entryGate, exit: exitGate)
         flares.measureRun(data: data)
+        
+        // MARK: Swoop scoring
+        
+        let swoop = data.data.filter { $0.altitude < TWO_THOUSAND_FEET }
+        let maxVerticalSpeed = swoop.max { a, b in  a.vY() < b.vY() }
+        swoopScores.maxVerticalSpeed = maxVerticalSpeed!.vY() * MetersPerSecondToMilesPerHour
+        
+        let rolloutSpeed = swoop
+            .filter { $0.altitude < 3 / MetersToFeet}
+            .max { a, b in  a.vX() < b.vX() }
+        swoopScores.rolloutHorizontalSpeed = rolloutSpeed!.vX() * MetersPerSecondToMilesPerHour
     }
     
     func clearData() {
@@ -260,9 +285,9 @@ struct GateCrossing {
 }
 
 #if DEBUG
-struct WingsuitScoredView_Previews : PreviewProvider {
+struct PerformanceView_Previews : PreviewProvider {
     static var previews: some View {
-        WingsuitScoredView()
+        PerformanceView()
     }
 }
 #endif
@@ -334,5 +359,26 @@ final class WingsuitScoreData: ObservableObject  {
         self.time = nil
         self.speed = nil
         self.distance = nil
+    }
+}
+
+final class SwoopScoreData: ObservableObject  {
+    let didChange = PassthroughSubject<SwoopScoreData, Never>()
+    
+    var valid = false {
+        didSet {
+            didChange.send(self)
+        }
+    }
+    
+    var maxVerticalSpeed: Double? = nil {
+        didSet {
+            didChange.send(self)
+        }
+    }
+    var rolloutHorizontalSpeed: Double? = nil {
+        didSet {
+            didChange.send(self)
+        }
     }
 }

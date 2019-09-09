@@ -15,8 +15,7 @@ struct ContentView : View {
     
     @State var graph = GraphView()
     @State var map = MapView()
-    @State var swoop = SwoopDataView()
-    @State var wingsuit = WingsuitScoredView()
+    @State var performance = PerformanceView()
     @State var settings = AboutView()
     
     @State var splitDelegate = SplitViewDelegate()
@@ -45,13 +44,9 @@ struct ContentView : View {
                     self.map.clearData()
                     self.map.loadData(data)
                     
-                    print("Loading data into wingsuit view")
-                    self.wingsuit.clearData()
-                    self.wingsuit.loadData(data)
-                    
-                    print("Loading data into swoop view")
-                    self.swoop.clearData()
-                    self.swoop.loadData(data)
+                    print("Loading data into performance view")
+                    self.performance.clearData()
+                    self.performance.loadData(data)
                     
                     print("Setting up the split view delegate")
                     self.splitDelegate.setGraph(self.graph)
@@ -72,9 +67,8 @@ struct ContentView : View {
                 if !isiPhone {
                     split.tabItem({ Text("Split") }).tag(2);
                 }
-                swoop.tabItem({ Text("Swoop Data") }).tag(3);
-                wingsuit.tabItem({ Text("Wingsuit Data") }).tag(4);
-                settings.tabItem({ Text("About") }).tag(5);
+                performance.tabItem({ Text("Performancne") }).tag(3);
+                settings.tabItem({ Text("About") }).tag(4);
             };
             Button("Load Data") {
                 self.showFilePicker = true
