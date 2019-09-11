@@ -67,7 +67,7 @@ struct ContentView : View {
                 if !isiPhone {
                     split.tabItem({ Text("Split") }).tag(2);
                 }
-                performance.tabItem({ Text("Performancne") }).tag(3);
+                performance.tabItem({ Text("Performance") }).tag(3);
                 settings.tabItem({ Text("About") }).tag(4);
             };
             Button("Load Data") {
