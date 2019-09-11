@@ -25,7 +25,7 @@ struct MapRepresentedView: UIViewRepresentable {
     var view = MKMapView()
     var _delegate = RedLineDelegate()
     var points: Array<CLLocationCoordinate2D>?
-    var highlight: MKPointAnnotation?
+    var highlight: DataAnnotation?
     
     func makeUIView(context: UIViewRepresentableContext<MapRepresentedView>) -> MapRepresentedView.UIViewType {
         view.mapType = .satellite
@@ -82,7 +82,7 @@ struct MapRepresentedView: UIViewRepresentable {
         }
         
         let point = self.points![index]
-        let highlight = MKPointAnnotation()
+        let highlight = DataAnnotation()
         highlight.coordinate = point
         view.addAnnotation(highlight)
         
@@ -134,6 +134,23 @@ class RedLineDelegate: NSObject, MKMapViewDelegate {
         
         return MKOverlayRenderer()
     }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation.isKind(of: DataAnnotation.self) {
+            //Handle ImageAnnotations..
+            var view: DataAnnotationView? = mapView.dequeueReusableAnnotationView(withIdentifier: "dataAnnotation") as? DataAnnotationView
+            if view == nil {
+                view = DataAnnotationView(annotation: annotation, reuseIdentifier: "dataAnnotation")
+            }
+
+            let annotation = annotation as! DataAnnotation
+            view?.annotation = annotation
+
+            return view
+        }
+
+        return nil
+    }
 }
 
 #if DEBUG
@@ -143,3 +160,25 @@ struct MapRepresentedView_Previews : PreviewProvider {
     }
 }
 #endif
+
+class DataAnnotation : NSObject, MKAnnotation {
+    var coordinate = CLLocationCoordinate2D()
+}
+
+class DataAnnotationView: MKAnnotationView {
+    private var imageView: UIImageView!
+    private let circle = UIImage(named: "circle")
+
+    override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
+        super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
+
+        self.frame = CGRect(x: 0, y: 0, width: 6, height: 6)
+        self.imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 6, height: 6))
+        self.imageView.image = self.circle
+        self.addSubview(self.imageView)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
