@@ -30,6 +30,7 @@
 		7B724F2222D8205000420373 /* PerformanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B724F2122D8205000420373 /* PerformanceView.swift */; };
 		7B7E8A742307B48E0012F2E3 /* DataPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7E8A732307B48E0012F2E3 /* DataPresentation.swift */; };
 		7B7E8A762321CF800012F2E3 /* FlysightGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7E8A752321CF800012F2E3 /* FlysightGraph.swift */; };
+		7B7E8A7A232888050012F2E3 /* PersistedStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7E8A79232888050012F2E3 /* PersistedStorage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -172,6 +173,7 @@
 		7B724F2122D8205000420373 /* PerformanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceView.swift; sourceTree = "<group>"; };
 		7B7E8A732307B48E0012F2E3 /* DataPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPresentation.swift; sourceTree = "<group>"; };
 		7B7E8A752321CF800012F2E3 /* FlysightGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlysightGraph.swift; sourceTree = "<group>"; };
+		7B7E8A79232888050012F2E3 /* PersistedStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistedStorage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -287,6 +289,7 @@
 				7B6DD22A22D3BF04009C6A7E /* Info.plist */,
 				7B6DD22422D3BF04009C6A7E /* Preview Content */,
 				7B7E8A732307B48E0012F2E3 /* DataPresentation.swift */,
+				7B7E8A79232888050012F2E3 /* PersistedStorage.swift */,
 			);
 			path = "flysight-grapher";
 			sourceTree = "<group>";
@@ -557,6 +560,7 @@
 				7B6DD22122D3BF04009C6A7E /* ContentView.swift in Sources */,
 				7B68430422D3F65300B421E1 /* GraphRepresentedView.swift in Sources */,
 				7B1B937722D451E4000B5C13 /* FilePickerPresentedView.swift in Sources */,
+				7B7E8A7A232888050012F2E3 /* PersistedStorage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -16,7 +16,7 @@ let MetersToFeet = 3.28084
 let DEFAULT_RIGHT_AXIS_MINIMUM = -5.0
 
 struct GraphRepresentedView: UIViewRepresentable {
-    var view: LineChartView = LineChartView()
+    var view = FlysightGraph()
     var pointMap = [Double: Int]()
     
     func makeUIView(context: UIViewRepresentableContext<GraphRepresentedView>) -> GraphRepresentedView.UIViewType {
