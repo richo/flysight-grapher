@@ -254,14 +254,14 @@ struct Flare: Identifiable {
 }
 
 struct WingsuitScorer {
-    func speed(_ entry: GateCrossing, _ exit: GateCrossing) -> Double {
+    static func speed(_ entry: GateCrossing, _ exit: GateCrossing) -> Double {
         let distance = self.distance(entry, exit)
         let time = self.time(entry, exit)
         
         return distance / time
     }
 
-    func distance(_ entry: GateCrossing, _ exit: GateCrossing) -> Double {
+    static func distance(_ entry: GateCrossing, _ exit: GateCrossing) -> Double {
         let entryPoint = MKMapPoint(entry.position)
         let exitPoint = MKMapPoint(exit.position)
         let distance = entryPoint.distance(to: exitPoint)
@@ -269,7 +269,7 @@ struct WingsuitScorer {
         return distance
     }
     
-    func time(_ entry: GateCrossing, _ exit: GateCrossing) -> Double {
+    static func time(_ entry: GateCrossing, _ exit: GateCrossing) -> Double {
         let exitTime = exit.time
         let entryTime = entry.time
         
@@ -323,8 +323,6 @@ final class WingsuitFlareData: ObservableObject {
 // TODO(unify this with the swoop stuff
 final class WingsuitScoreData: ObservableObject  {
     let didChange = PassthroughSubject<WingsuitScoreData, Never>()
-    var scorer = WingsuitScorer()
-
     
     var valid = false {
         didSet {
@@ -348,9 +346,9 @@ final class WingsuitScoreData: ObservableObject  {
     }
     
     func validRun(entry: GateCrossing, exit: GateCrossing) {
-        self.distance = scorer.distance(entry, exit)
-        self.time = scorer.time(entry, exit)
-        self.speed = scorer.speed(entry, exit)
+        self.distance = WingsuitScorer.distance(entry, exit)
+        self.time = WingsuitScorer.time(entry, exit)
+        self.speed = WingsuitScorer.speed(entry, exit)
         self.valid = true
     }
     
