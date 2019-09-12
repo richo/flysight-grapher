@@ -35,14 +35,14 @@ struct PerformanceView : View, DataPresentable {
                             Text("Speed")
                             ScoreView(score: wingsuitScores.speed, unit: "m/s")
                         }
-                    }.listStyle(.grouped)
+                    }.listStyle(GroupedListStyle())
                 }
             }
 
             Section(header: Text("Flares")) {
                 List(flares.getFlares()) { flare in
                     FlareView(flare:  flare)
-                }.listStyle(.grouped)
+                }.listStyle(GroupedListStyle())
             }
             
             Section(header: Text("Swoops")) {
@@ -56,7 +56,7 @@ struct PerformanceView : View, DataPresentable {
                         ScoreView(score: swoopScores.rolloutHorizontalSpeed, unit: "mph")
                     }
                 }
-            }.listStyle(.grouped)
+            }.listStyle(GroupedListStyle())
         }
     }
     

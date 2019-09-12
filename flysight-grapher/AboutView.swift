@@ -100,7 +100,7 @@ struct AboutView : View {
             }
             Section(header: Text("Developer")) {
                 Toggle(isOn: $localDevMode) {
-                    Text("\($localDevMode.value.description)")
+                    Text("Show developer tools")
                 }.padding()
                 // This doesn't actually update
                 
@@ -111,7 +111,7 @@ struct AboutView : View {
                     Text("dummyWingsuit;");
                 }
             }
-        }.listStyle(.grouped)
+        }.listStyle(GroupedListStyle())
     }
     
     private class MailDelegate: NSObject, MFMailComposeViewControllerDelegate {
