@@ -72,7 +72,7 @@ struct ContentView : View {
             };
             Button("Load Data") {
                 self.showFilePicker = true
-            }
+            }.padding()
         }
         .sheet(isPresented: $showFilePicker, content: { PickerView(callback: fileUrlCallback) })
     }
