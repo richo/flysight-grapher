@@ -12,33 +12,33 @@ import MessageUI
 import Combine
 
 final class SettingsStore: ObservableObject {
-    let didChange = PassthroughSubject<Void, Never>()
+    let didChange = PassthroughSubject<SettingsStore, Never>()
 
     @UserDefault(key: "showWingsuitPerf", defaultValue: false)
     var showWingsuitPerf: Bool {
         didSet {
-            didChange.send()
+            didChange.send(self)
         }
     }
     
     @UserDefault(key: "showSwoopPerf", defaultValue: false)
     var showSwoopPerf: Bool {
         didSet {
-            didChange.send()
+            didChange.send(self)
         }
     }
     
     @UserDefault(key: "displayWingsuitWindowOnGraph", defaultValue: false)
     var displayWingsuitWindowOnGraph: Bool {
         didSet {
-            didChange.send()
+            didChange.send(self)
         }
     }
     
     @UserDefault(key: "developerMode", defaultValue: false)
     var developerMode: Bool {
         didSet {
-            didChange.send()
+            didChange.send(self)
         }
     }
 }
@@ -99,13 +99,13 @@ struct AboutView : View {
                 }
             }
             Section(header: Text("Developer")) {
-                Toggle(isOn: $localDevMode) {
+                Toggle(isOn: $settings.developerMode) {
                     Text("Show developer tools")
                 }.padding()
                 // This doesn't actually update
                 
 
-                if localDevMode {
+                if settings.developerMode {
                     Text("dummySwoop;");
                     Text("dummyAngle;");
                     Text("dummyWingsuit;");
