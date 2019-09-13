@@ -77,14 +77,14 @@ struct MapRepresentedView: UIViewRepresentable {
     }
     
     mutating func highlightValue(index: Int) {
-        if let annotation = self.highlight {
-            self.view.removeAnnotation(annotation)
-        }
-        
         let point = self.points![index]
         let highlight = DataAnnotation()
         highlight.coordinate = point
         view.addAnnotation(highlight)
+        
+        if let annotation = self.highlight {
+            self.view.removeAnnotation(annotation)
+        }
         
         self.highlight = highlight
     }
