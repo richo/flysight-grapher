@@ -12,11 +12,13 @@ import class SwiftCSV.CSV
 struct ContentView : View {
     var isiPhone = UIDevice.current.userInterfaceIdiom == .phone
     @State var showFilePicker = false
+
     
     @State var graph = GraphView()
     @State var map = MapView()
     @State var performance = PerformanceView()
-    @State var settings = AboutView()
+    @State var about = AboutView()
+
     
     @State var splitDelegate = SplitViewDelegate()
 
@@ -30,6 +32,7 @@ struct ContentView : View {
     }
     
     var body: some View {
+
         func fileUrlCallback(_ url: URL) {
             do {
                 let csv = try CSV(url: url)
@@ -68,7 +71,7 @@ struct ContentView : View {
                     split.tabItem({ Text("Split") }).tag(2);
                 }
                 performance.tabItem({ Text("Performance") }).tag(3);
-                settings.tabItem({ Text("About") }).tag(4);
+                about.tabItem({ Text("About") }).tag(4);
             };
             Button("Load Data") {
                 self.showFilePicker = true

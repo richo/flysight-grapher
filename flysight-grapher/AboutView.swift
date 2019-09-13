@@ -45,7 +45,7 @@ final class SettingsStore: ObservableObject {
 
 
 struct AboutView : View {
-    @ObservedObject var settings = SettingsStore()
+    @EnvironmentObject var settings: SettingsStore
     private let mailComposeDelegate = MailDelegate()
     
     @State var localDevMode = false;

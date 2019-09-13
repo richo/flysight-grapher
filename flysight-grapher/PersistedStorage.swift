@@ -13,7 +13,6 @@ struct UserDefault<Value: Codable> {
     let key: String
     let defaultValue: Value
 
-    
     var wrappedValue: Value {
         get {
             return UserDefaults.standard.object(forKey: key) as? Value ?? defaultValue
