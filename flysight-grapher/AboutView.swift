@@ -47,6 +47,7 @@ final class SettingsStore: ObservableObject {
 struct AboutView : View {
     @EnvironmentObject var settings: SettingsStore
     private let mailComposeDelegate = MailDelegate()
+    let canSendMail = MFMailComposeViewController.canSendMail()
     
     @State var localDevMode = false;
     
@@ -78,39 +79,43 @@ struct AboutView : View {
 //
         
         return List {
-            Section(header: Text("Wingsuit")) {
-                Toggle(isOn: $settings.showWingsuitPerf) {
-                    Text("Show wingsuit data in performance view")
-                }.padding()
-                Toggle(isOn: $settings.displayWingsuitWindowOnGraph) {
-                    Text("Show wingsuit performance window on graph")
-                }.padding()
-            }
-            Section(header: Text("Swoop")) {
-                Toggle(isOn: $settings.showSwoopPerf) {
-                    Text("Show swoop data in performance view")
-                }.padding()
-            }
-            Section(header: Text("About")) {
-                Button(action: {
-                    self.presentMailCompose()
-                }) {
-                    Text("Email support")
+//            Section(header: Text("Wingsuit")) {
+//                Toggle(isOn: $settings.showWingsuitPerf) {
+//                    Text("Show wingsuit data in performance view")
+//                }.padding()
+//                Toggle(isOn: $settings.displayWingsuitWindowOnGraph) {
+//                    Text("Show wingsuit performance window on graph")
+//                }.padding()
+//            }
+//            Section(header: Text("Swoop")) {
+//                Toggle(isOn: $settings.showSwoopPerf) {
+//                    Text("Show swoop data in performance view")
+//                }.padding()
+//            }
+            Section(header: Text("Support")) {
+                if canSendMail {
+                    Button(action: {
+                        self.presentMailCompose()
+                    }) {
+                        Text("Email the developer")
+                    }
+                } else {
+                    Text("For support, contact richo@psych0tik.net")
                 }
             }
-            Section(header: Text("Developer")) {
-                Toggle(isOn: $settings.developerMode) {
-                    Text("Show developer tools")
-                }.padding()
-                // This doesn't actually update
-                
-
-                if settings.developerMode {
-                    Text("dummySwoop;");
-                    Text("dummyAngle;");
-                    Text("dummyWingsuit;");
-                }
-            }
+//            Section(header: Text("Developer")) {
+//                Toggle(isOn: $settings.developerMode) {
+//                    Text("Show developer tools")
+//                }.padding()
+//                // This doesn't actually update
+//
+//
+//                if settings.developerMode {
+//                    Text("dummySwoop;");
+//                    Text("dummyAngle;");
+//                    Text("dummyWingsuit;");
+//                }
+//            }
         }.listStyle(GroupedListStyle())
     }
     
@@ -125,10 +130,6 @@ struct AboutView : View {
     }
     
     private func presentMailCompose() {
-        guard MFMailComposeViewController.canSendMail() else {
-            print("Can't send email, I guess?")
-            return
-        }
         let vc = UIApplication.shared.keyWindow?.rootViewController
 
         let composeVC = MFMailComposeViewController()

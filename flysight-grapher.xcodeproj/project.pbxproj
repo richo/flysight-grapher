@@ -155,7 +155,7 @@
 		7B4BE64322D3CE0F00F91850 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = ../Charts/Charts.xcodeproj; sourceTree = "<group>"; };
 		7B6842FA22D3D58B00B421E1 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = ../Charts/Charts.xcodeproj; sourceTree = "<group>"; };
 		7B68430322D3F65300B421E1 /* GraphRepresentedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphRepresentedView.swift; sourceTree = "<group>"; };
-		7B6DD21922D3BF04009C6A7E /* flysight-grapher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "flysight-grapher.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B6DD21922D3BF04009C6A7E /* Stoke Level.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Stoke Level.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B6DD21C22D3BF04009C6A7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7B6DD21E22D3BF04009C6A7E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		7B6DD22022D3BF04009C6A7E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -262,7 +262,7 @@
 		7B6DD21A22D3BF04009C6A7E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7B6DD21922D3BF04009C6A7E /* flysight-grapher.app */,
+				7B6DD21922D3BF04009C6A7E /* Stoke Level.app */,
 				7B6DD22F22D3BF04009C6A7E /* flysight-grapherTests.xctest */,
 				7B6DD23A22D3BF04009C6A7E /* flysight-grapherUITests.xctest */,
 			);
@@ -338,7 +338,7 @@
 			);
 			name = "flysight-grapher";
 			productName = "flysight-grapher";
-			productReference = 7B6DD21922D3BF04009C6A7E /* flysight-grapher.app */;
+			productReference = 7B6DD21922D3BF04009C6A7E /* Stoke Level.app */;
 			productType = "com.apple.product-type.application";
 		};
 		7B6DD22E22D3BF04009C6A7E /* flysight-grapherTests */ = {
@@ -735,8 +735,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "psych0tik.net.flysight-grapher";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = net.psych0tik.stokelevel;
+				PRODUCT_NAME = "Stoke Level";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -756,8 +757,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "psych0tik.net.flysight-grapher";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = net.psych0tik.stokelevel;
+				PRODUCT_NAME = "Stoke Level";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
