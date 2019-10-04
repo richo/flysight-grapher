@@ -48,6 +48,10 @@ struct DataPoint {
         let e = velE
         return sqrt(n*n + e*e)
     }
+    
+    func angle() -> Double {
+        atan(vY() / vX()) / Double.pi * 180
+    }
 }
 
 extension CSV {

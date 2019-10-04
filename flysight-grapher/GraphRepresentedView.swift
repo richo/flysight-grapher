@@ -75,7 +75,8 @@ struct GraphView: View, DataPresentable {
         var hMSL: Array<ChartDataEntry> = []
         var velX: Array<ChartDataEntry> = []
         var velY: Array<ChartDataEntry> = []
-        
+        var dAngle: Array<ChartDataEntry> = []
+
         var minVelX = 0.0
         var minVelY = 0.0
         
@@ -86,6 +87,8 @@ struct GraphView: View, DataPresentable {
             velY.append(ChartDataEntry(x: point.time, y: point.vY() * MetersPerSecondToMilesPerHour))
             velX.append(ChartDataEntry(x: point.time, y: point.vX() *
                 MetersPerSecondToMilesPerHour))
+            dAngle.append(ChartDataEntry(x: point.time, y: point.angle()))
+            
             
             if point.vY() < minVelY {
                 minVelY = point.vY()
@@ -118,8 +121,14 @@ struct GraphView: View, DataPresentable {
         hSpeed.drawCirclesEnabled = false
         hSpeed.lineWidth = 2
         
+        let angle = LineChartDataSet(entries: dAngle, label: "angle")
+        angle.axisDependency = .right
+        let angleColor = UIColor(named: "graphAngle")!
+        angle.setColor(angleColor)
+        angle.drawCirclesEnabled = false
+        angle.lineWidth = 2
         
-        let data = LineChartData(dataSets: [alt, vSpeed, hSpeed])
+        let data = LineChartData(dataSets: [alt, vSpeed, hSpeed, angle])
         let valueTextColor = UIColor(named: "graphText")!
         data.setValueTextColor(valueTextColor)
         data.setValueFont(.systemFont(ofSize: 9))
