@@ -39,7 +39,7 @@ struct GraphRepresentedView: UIViewRepresentable {
 
         self.view.highlightPerTapEnabled = false
         self.view.doubleTapToZoomEnabled = false
-        self.view.autoScaleMinMaxEnabled = true
+//        self.view.autoScaleMinMaxEnabled = true
 
         return view
     }
