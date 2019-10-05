@@ -35,11 +35,15 @@ final class SettingsStore: ObservableObject {
         }
     }
     
-    @UserDefault(key: "developerMode", defaultValue: false)
+    @Published
+    private var _devmode = UserDefault(key: "developerMode", defaultValue: false)
     var developerMode: Bool {
-        didSet {
+        get { return _devmode.wrappedValue }
+        set {
+            _devmode.wrappedValue = newValue
             didChange.send(self)
         }
+        
     }
 }
 
@@ -103,19 +107,19 @@ struct AboutView : View {
                     Text("For support, contact richo@psych0tik.net")
                 }
             }
-//            Section(header: Text("Developer")) {
-//                Toggle(isOn: $settings.developerMode) {
-//                    Text("Show developer tools")
-//                }.padding()
-//                // This doesn't actually update
-//
-//
-//                if settings.developerMode {
-//                    Text("dummySwoop;");
-//                    Text("dummyAngle;");
-//                    Text("dummyWingsuit;");
-//                }
-//            }
+            Section(header: Text("Developer")) {
+                Toggle(isOn: $settings.developerMode) {
+                    Text("Show developer tools")
+                }.padding()
+                // This doesn't actually update
+
+
+                if settings.developerMode {
+                    Text("dummySwoop;");
+                    Text("dummyAngle;");
+                    Text("dummyWingsuit;");
+                }
+            }
         }.listStyle(GroupedListStyle())
     }
     
