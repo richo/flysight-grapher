@@ -16,6 +16,8 @@ struct PerformanceView : View, DataPresentable {
     @ObservedObject var swoopScores: SwoopScoreData = SwoopScoreData()
     @ObservedObject var flares: WingsuitFlareData = WingsuitFlareData()
     
+    @EnvironmentObject var settings: SettingsStore
+    
     var body: some View {
         VStack {
             Section(header: Text("Wingsuit performance")) {

@@ -14,9 +14,12 @@ import Combine
 final class SettingsStore: ObservableObject {
     let didChange = PassthroughSubject<SettingsStore, Never>()
 
-    @UserDefault(key: "showWingsuitPerf", defaultValue: false)
+    private var _wingyperf = UserDefault(key: "showWingsuitPerf", defaultValue: false)
+
     var showWingsuitPerf: Bool {
-        didSet {
+        get { return _wingyperf.wrappedValue }
+        set {
+            _wingyperf.wrappedValue = newValue
             didChange.send(self)
         }
     }
@@ -43,7 +46,6 @@ final class SettingsStore: ObservableObject {
             _devmode.wrappedValue = newValue
             didChange.send(self)
         }
-        
     }
 }
 
@@ -83,14 +85,14 @@ struct AboutView : View {
 //
         
         return List {
-//            Section(header: Text("Wingsuit")) {
-//                Toggle(isOn: $settings.showWingsuitPerf) {
-//                    Text("Show wingsuit data in performance view")
-//                }.padding()
+            Section(header: Text("Wingsuit")) {
+                Toggle(isOn: $settings.showWingsuitPerf) {
+                    Text("Show wingsuit data in performance view")
+                }.padding()
 //                Toggle(isOn: $settings.displayWingsuitWindowOnGraph) {
 //                    Text("Show wingsuit performance window on graph")
 //                }.padding()
-//            }
+            }
 //            Section(header: Text("Swoop")) {
 //                Toggle(isOn: $settings.showSwoopPerf) {
 //                    Text("Show swoop data in performance view")

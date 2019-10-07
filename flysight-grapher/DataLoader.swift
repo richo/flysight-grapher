@@ -159,6 +159,7 @@ extension CSV {
             }
             
             // Adjust all the altitudes, setting the last altitude seen as ground level.
+            // TODO(richo) Should this be the min instead? I guess people might climb some stairs before they turn off the flysight
             let zeroAGL = data.last!.altitude
             for (i, _) in data.enumerated() {
                 data[i].altitude -= zeroAGL

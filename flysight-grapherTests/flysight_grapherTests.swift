@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import flysight_grapher
+// @testable import net.psych0tik.stokelevel
 
 class flysight_grapherTests: XCTestCase {
 
