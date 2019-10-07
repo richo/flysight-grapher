@@ -131,10 +131,14 @@ struct ScoreView: View {
     var unit: String
     
     var body: some View {
-        guard let score = score else {
-            return Text("No data")
+        let value: String
+        if let score = score {
+            value = String(format: "%.1f%@", score, unit)
+        } else {
+            value = "No data"
         }
-        return Text(String(format: "%.1f%@", score, unit))
+        
+        return Text(value)
     }
 }
 
