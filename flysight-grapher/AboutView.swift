@@ -140,6 +140,9 @@ struct AboutView : View {
 
         let composeVC = MFMailComposeViewController()
         composeVC.mailComposeDelegate = mailComposeDelegate
+        
+        composeVC.setToRecipients(["richo@psych0tik.net"])
+        composeVC.setSubject("Stoke Level feedback")
 
         vc?.present(composeVC, animated: true)
     }
