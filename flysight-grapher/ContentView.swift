@@ -30,32 +30,36 @@ struct ContentView : View {
             )
         }
     }
-
-    func fileUrlCallback(_ url: URL) {
+    
+    func loadData(_ url: URL) -> DataSet? {
         do {
             let csv = try CSV(url: url)
-            let data = csv.asDataSet()!
-            
-            DispatchQueue.main.async {
-                print("Loading data into graph")
-                self.graph.clearData()
-                self.graph.loadData(data)
-                
-                print("Loading data into map")
-                self.map.clearData()
-                self.map.loadData(data)
-                
-                print("Loading data into performance view")
-                self.performance.clearData()
-                self.performance.loadData(data)
-                
-                print("Setting up the split view delegate")
-                self.splitDelegate.setGraph(self.graph)
-                self.splitDelegate.setMap(self.map)
-            }
+            return csv.asDataSet()!
         } catch {
-            print("Couldn't open or parse CSV")
-            return
+             print("Couldn't open or parse CSV")
+             return nil
+         }
+    }
+
+    func fileUrlCallback(_ url: URL) {
+        let data = loadData(url)!
+        
+        DispatchQueue.main.async {
+            print("Loading data into graph")
+            self.graph.clearData()
+            self.graph.loadData(data)
+            
+            print("Loading data into map")
+            self.map.clearData()
+            self.map.loadData(data)
+            
+            print("Loading data into performance view")
+            self.performance.clearData()
+            self.performance.loadData(data)
+            
+            print("Setting up the split view delegate")
+            self.splitDelegate.setGraph(self.graph)
+            self.splitDelegate.setMap(self.map)
         }
     }
     
