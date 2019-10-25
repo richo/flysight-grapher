@@ -30,36 +30,37 @@ struct ContentView : View {
             )
         }
     }
+
+    func fileUrlCallback(_ url: URL) {
+        do {
+            let csv = try CSV(url: url)
+            let data = csv.asDataSet()!
+            
+            DispatchQueue.main.async {
+                print("Loading data into graph")
+                self.graph.clearData()
+                self.graph.loadData(data)
+                
+                print("Loading data into map")
+                self.map.clearData()
+                self.map.loadData(data)
+                
+                print("Loading data into performance view")
+                self.performance.clearData()
+                self.performance.loadData(data)
+                
+                print("Setting up the split view delegate")
+                self.splitDelegate.setGraph(self.graph)
+                self.splitDelegate.setMap(self.map)
+            }
+        } catch {
+            print("Couldn't open or parse CSV")
+            return
+        }
+    }
     
     var body: some View {
 
-        func fileUrlCallback(_ url: URL) {
-            do {
-                let csv = try CSV(url: url)
-                let data = csv.asDataSet()!
-                
-                DispatchQueue.main.async {
-                    print("Loading data into graph")
-                    self.graph.clearData()
-                    self.graph.loadData(data)
-                    
-                    print("Loading data into map")
-                    self.map.clearData()
-                    self.map.loadData(data)
-                    
-                    print("Loading data into performance view")
-                    self.performance.clearData()
-                    self.performance.loadData(data)
-                    
-                    print("Setting up the split view delegate")
-                    self.splitDelegate.setGraph(self.graph)
-                    self.splitDelegate.setMap(self.map)
-                }
-            } catch {
-                print("Couldn't open or parse CSV")
-                return
-            }
-        }
         
         graph.setDelegate(self.splitDelegate)
 
@@ -77,7 +78,7 @@ struct ContentView : View {
                 self.showFilePicker = true
             }.padding()
         }
-        .sheet(isPresented: $showFilePicker, content: { PickerView(callback: fileUrlCallback) })
+        .sheet(isPresented: $showFilePicker, content: { PickerView(callback: self.fileUrlCallback) })
     }
 }
 
