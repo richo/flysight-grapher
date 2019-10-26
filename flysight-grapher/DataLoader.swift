@@ -7,11 +7,11 @@
 //
 
 import Foundation
-import SwiftCSV
+import CSV
 import Charts
 import MapKit
 
-let NUM_SATS_FOR_LOCK = 7
+let NUM_SATS_FOR_LOCK: Int16 = 7
 
 // Contains an array of data points holding:
 // - Data before GPS lock removed
@@ -54,120 +54,154 @@ struct DataPoint {
     }
 }
 
-extension CSV {
-    func asDataSet() -> DataSet? {
-        var data: Array<DataPoint> = []
-        let enumeratedHeader = header.enumerated()
-        var minTime: Double?
+class DataLoader: ParserDelegate {
+    var time: Double?
+    var lat: Double?
+    var lon: Double?
+    var altitude: Double?
+    var velN: Double?
+    var velE: Double?
+    var velD: Double?
+    var hAcc: Double?
+    var vAcc: Double?
+    var sAcc: Double?
+    var heading: Double?
+    var cAcc: Double?
+    var gpsFix: Int16?
+    var numSV: Int16?
+    
+    var dateFormatter = DateFormatter()
+    
+    var locked = false
+    var startTime: Double?
+    
+    var dataSet: Array<DataPoint> = []
+    var currentLine: UInt = 0
+    
+    func clearData() {
+        self.time = nil
+        self.lat = nil
+        self.lon = nil
+        self.altitude = nil
+        self.velN = nil
+        self.velE = nil
+        self.velD = nil
+        self.hAcc = nil
+        self.vAcc = nil
+        self.sAcc = nil
+        self.heading = nil
+        self.cAcc = nil
+        self.gpsFix = nil
+        self.numSV = nil
+    }
+    
+    /// Called when the parser begins parsing.
+    func parserDidBeginDocument(_ parser: CSV.Parser) {
+        self.dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ"
+        self.locked = false
+    }
+    
+    /// Called when the parser finished parsing without errors.
+    func parserDidEndDocument(_ parser: CSV.Parser) {
+        let zeroAGL = dataSet.last!.altitude
+        for (i, _) in dataSet.enumerated() {
+            dataSet[i].altitude -= zeroAGL
+        }
+    }
+    
+    /// Called when the parser begins parsing a line.
+    func parser(_ parser: CSV.Parser, didBeginLineAt index: UInt) {
+        self.clearData()
+        self.currentLine = index
+    }
+    
+    /// Called when the parser finished parsing a line.
+    func parser(_ parser: CSV.Parser, didEndLineAt index: UInt) {
+        if !self.locked {
+            return
+        }
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ"
-
-        var time: Int?
-        var lat: Int?
-        var lon: Int?
-        var hMSL: Int?
-        var velN: Int?
-        var velE: Int?
-        var velD: Int?
-        var hAcc: Int?
-        var vAcc: Int?
-        var sAcc: Int?
-        var heading: Int?
-        var cAcc: Int?
-        var gpsFix: Int?
-        var numSV: Int?
-
-        for (index, head) in enumeratedHeader {
-            switch head {
-            case "time":
-                time = index
-            case "lat":
-                lat = index
-            case "lon":
-                lon = index
-            case "hMSL":
-                hMSL = index
-            case "velN":
-                velN = index
-            case "velE":
-                velE = index
-            case "velD":
-                velD = index
-            case "hAcc":
-                hAcc = index
-            case "vAcc":
-                vAcc = index
-            case "sAcc":
-                sAcc = index
-            case "heading":
-                heading = index
-            case "cAcc":
-                cAcc = index
-            case "gpsFix":
-                gpsFix = index
-            case "numSV":
-                numSV = index
-            default:
-                print("Unknown key: \(head)")
-            }
+        let position = CLLocationCoordinate2D(latitude: self.lat!,
+                                              longitude: self.lon!)
+        
+        let point = DataPoint(
+            time: self.time!,
+            position: position,
+            altitude: self.altitude!,
+            velN: self.velN!,
+            velE: self.velE!,
+            velD: self.velD!,
+            hAcc: self.hAcc!,
+            vAcc: self.vAcc!,
+            sAcc: self.sAcc!,
+            heading: self.heading!,
+            cAcc: self.cAcc!,
+            gpsFix: self.gpsFix!,
+            numSV: self.numSV!
+        )
+        
+        self.dataSet.append(point)
+    }
+    
+    /// Called for every field in a line.
+    func parser(_ parser: CSV.Parser, didReadFieldAt index: UInt, value: String) {
+        if self.currentLine < 2 {
+            print("These should be the title rows")
+            print("index: \(index) value: \(value)")
+            return
         }
-
-        var locked = false
-
-        do {
-            try enumerateAsArray(startAt: 2) { fields in
-                let sats = Int16(fields[numSV!])!
-                if !locked {
-                    if sats < NUM_SATS_FOR_LOCK {
-                        return
-                    }
-                    locked = true
-                }
-                
-                let position = CLLocationCoordinate2D(latitude: Double(fields[lat!])!,
-                                                      longitude: Double(fields[lon!])!)
-                let pointTime: Double
-                
-                let ts = dateFormatter.date(from: fields[time!])!
-                let secs = ts.timeIntervalSince1970
-                
-                if let minTime = minTime {
-                    pointTime = secs - minTime
-                } else {
-                    pointTime = 0
-                    minTime = secs
-                }
-                
-                let point = DataPoint(
-                    time: pointTime,
-                    position: position,
-                    altitude: Double(fields[hMSL!])!,
-                    velN: Double(fields[velN!])!,
-                    velE: Double(fields[velE!])!,
-                    velD: Double(fields[velD!])!,
-                    hAcc: Double(fields[hAcc!])!,
-                    vAcc: Double(fields[vAcc!])!,
-                    sAcc: Double(fields[sAcc!])!,
-                    heading: Double(fields[heading!])!,
-                    cAcc: Double(fields[cAcc!])!,
-                    gpsFix: Int16(fields[gpsFix!])!,
-                    numSV: sats
-                )
-                
-                data.append(point)
-            }
+        
+        switch index {
+        case 0: // time
+            let ts = dateFormatter.date(from: value)!
+            let secs = ts.timeIntervalSince1970
             
-            // Adjust all the altitudes, setting the last altitude seen as ground level.
-            // TODO(richo) Should this be the min instead? I guess people might climb some stairs before they turn off the flysight
-            let zeroAGL = data.last!.altitude
-            for (i, _) in data.enumerated() {
-                data[i].altitude -= zeroAGL
+            if self.currentLine == 2 {
+                print("Set the startTime to \(secs)")
+                self.startTime = secs
             }
-            
-            return DataSet(data: data)
-        } catch {
-            return nil
+            print("currentLine \(currentLine)")
+            self.time = secs - self.startTime!
+        case 1: // lat
+            self.lat = Double(value)
+        case 2: // lon
+            self.lon = Double(value)
+        case 3: // hMSL
+            self.altitude = Double(value)
+        case 4: // velN
+            self.velN = Double(value)
+        case 5: // velE
+            self.velE = Double(value)
+        case 6: // VelD
+            self.velD = Double(value)
+        case 7: // hAcc
+            self.hAcc = Double(value)
+        case 8: // vAcc
+            self.vAcc = Double(value)
+        case 9: // sAcc
+            self.sAcc = Double(value)
+        case 10: // heading
+            self.heading = Double(value)
+        case 11: // cAcc
+            self.cAcc = Double(value)
+        case 12: // gpsFix
+            self.gpsFix = Int16(value)
+        case 13: // numSV
+            self.numSV = Int16(value)
+            if self.numSV! >= NUM_SATS_FOR_LOCK {
+                self.locked = true
+            }
+        default:
+            print("Uhh.. \(index) \(value)")
         }
+    }
+    
+    func loadFromURL(_ url: URL) -> DataSet? {
+        let configuration = CSV.Configuration(delimiter: ",", encoding: .utf8)
+        
+        let parser = CSV.Parser(url: url, configuration: configuration)!
+        parser.delegate = self
+        try! parser.parse()
+        return DataSet(data: self.dataSet)
     }
 }

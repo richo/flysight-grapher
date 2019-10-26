@@ -32,13 +32,8 @@ struct ContentView : View {
     }
     
     func loadData(_ url: URL) -> DataSet? {
-        do {
-            let csv = try CSV(url: url)
-            return csv.asDataSet()!
-        } catch {
-             print("Couldn't open or parse CSV")
-             return nil
-         }
+        let loader = DataLoader()
+        return loader.loadFromURL(url)
     }
 
     func fileUrlCallback(_ url: URL) {
