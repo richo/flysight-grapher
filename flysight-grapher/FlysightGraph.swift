@@ -7,6 +7,8 @@
 //
 
 import Charts
+import UIKit
+import Foundation
 
 @objc protocol FlysightGraphDelegate {
     @objc optional func chartValueNoLongerSelected(_ chartView: FlysightGraph)
