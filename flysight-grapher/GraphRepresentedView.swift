@@ -9,7 +9,6 @@
 import Foundation
 import SwiftUI
 import Charts
-import class SwiftCSV.CSV
 
 let MetersPerSecondToMilesPerHour = 2.23694
 let MetersToFeet = 3.28084

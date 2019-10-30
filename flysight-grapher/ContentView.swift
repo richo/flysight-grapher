@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import class SwiftCSV.CSV
 
 struct ContentView : View {
     var isiPhone = UIDevice.current.userInterfaceIdiom == .phone

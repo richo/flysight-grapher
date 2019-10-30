@@ -145,8 +145,6 @@ class DataLoader: ParserDelegate {
     /// Called for every field in a line.
     func parser(_ parser: CSV.Parser, didReadFieldAt index: UInt, value: String) {
         if self.currentLine < 2 {
-            print("These should be the title rows")
-            print("index: \(index) value: \(value)")
             return
         }
         

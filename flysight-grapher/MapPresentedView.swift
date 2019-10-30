@@ -9,7 +9,6 @@
 import Foundation
 import SwiftUI
 import MapKit
-import class SwiftCSV.CSV
 
 let skydiveCalifornia = CLLocationCoordinate2D(latitude: 37.729787, longitude: -121.333130)
 let region = regionCenteredOn(center: skydiveCalifornia)
