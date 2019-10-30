@@ -52,37 +52,29 @@ final class SettingsStore: ObservableObject {
 
 struct AboutView : View {
     @EnvironmentObject var settings: SettingsStore
+    @EnvironmentObject var views: ViewContainer
+
     private let mailComposeDelegate = MailDelegate()
     let canSendMail = MFMailComposeViewController.canSendMail()
     
     @State var localDevMode = false;
     
-//    let loadFile: (URL) -> ()
 
     var body: some View {
-//        let dummyAngle = Button(action: {
-//            let url = URL(fileURLWithPath: Bundle.main.path(forResource: "dummy-angle", ofType: "csv")!)
-//
-//            self.loadFile(url)
-//        }) {
-//            Text("Dummy Angle Jump")
-//        }
-//        let dummyWingsuit = Button(action: {
-//            let url = URL(fileURLWithPath: Bundle.main.path(forResource: "dummy-wingsuit", ofType: "csv")!)
-//
-//            self.loadFile(url)
-//        }) {
-//            Text("Dummy Wingsuit Flight")
-//        }
-//        let dummySwoop = Button(action: {
-//            let url = URL(fileURLWithPath: Bundle.main.path(forResource: "dummy-swoop", ofType: "csv")!)
-//
-//            self.loadFile(url)
-//
-//        }) {
-//            Text("Dummy Swoop")
-//        }
-//
+        let dummyAngle = Button(action: {
+            let url = URL(fileURLWithPath: Bundle.main.path(forResource: "dummy-angle", ofType: "csv")!)
+
+            self.views.fileUrlCallback(url)
+        }) {
+            Text("Dummy Angle Jump")
+        }
+        let dummyWingsuit = Button(action: {
+            let url = URL(fileURLWithPath: Bundle.main.path(forResource: "dummy-wingsuit", ofType: "csv")!)
+
+            self.views.fileUrlCallback(url)
+        }) {
+            Text("Dummy Wingsuit Flight")
+        }
         
         return List {
             Section(header: Text("Wingsuit")) {
@@ -113,13 +105,9 @@ struct AboutView : View {
                 Toggle(isOn: $settings.developerMode) {
                     Text("Show developer tools")
                 }.padding()
-                // This doesn't actually update
-
 
                 if settings.developerMode {
-                    Text("dummySwoop;");
-                    Text("dummyAngle;");
-                    Text("dummyWingsuit;");
+                    dummyAngle;
                 }
             }
         }.listStyle(GroupedListStyle())

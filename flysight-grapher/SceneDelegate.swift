@@ -9,11 +9,60 @@
 import UIKit
 import SwiftUI
 
+class ViewContainer: ObservableObject {
+    @State var graph = GraphView()
+    @State var map = MapView()
+    @State var performance = PerformanceView()
+    @State var about = AboutView()
+    
+    @State var splitDelegate = SplitViewDelegate()
+    
+    var split: SplitGraphMapView {
+        get {
+            SplitGraphMapView(
+                graph: self.graph,
+                map: self.map
+            )
+        }
+    }
+    
+    init() {
+        self.graph.setDelegate(self.splitDelegate)
+    }
+    
+    func loadData(_ url: URL) -> DataSet? {
+        let loader = DataLoader()
+        return loader.loadFromURL(url)
+    }
+
+    func fileUrlCallback(_ url: URL) {
+        let data = loadData(url)!
+        
+        DispatchQueue.main.async {
+            print("Loading data into graph")
+            self.graph.clearData()
+            self.graph.loadData(data)
+            
+            print("Loading data into map")
+            self.map.clearData()
+            self.map.loadData(data)
+            
+            print("Loading data into performance view")
+            self.performance.clearData()
+            self.performance.loadData(data)
+            
+            print("Setting up the split view delegate")
+            self.splitDelegate.setGraph(self.graph)
+            self.splitDelegate.setMap(self.map)
+        }
+    }
+}
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     @ObservedObject var settings = SettingsStore()
-
+    @ObservedObject var views = ViewContainer()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -24,7 +73,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
             window.rootViewController = UIHostingController(rootView: ContentView()
-                .environmentObject(settings))
+                .environmentObject(settings)
+                .environmentObject(views)
+                )
             self.window = window
             window.makeKeyAndVisible()
         }
