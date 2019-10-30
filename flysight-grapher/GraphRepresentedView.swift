@@ -19,6 +19,11 @@ struct GraphRepresentedView: UIViewRepresentable {
     var pointMap = [Double: Int]()
     
     func makeUIView(context: UIViewRepresentableContext<GraphRepresentedView>) -> GraphRepresentedView.UIViewType {
+        // Make sure we nopped out drawCircles
+        let oldRenderer = view.renderer
+        
+        view.renderer = NoFrillsLineChartRenderer(dataProvider: view, animator: oldRenderer!.animator, viewPortHandler: oldRenderer!.viewPortHandler)
+        
         // Configure the lineChart
         view.noDataText = "No data loaded."
         let textColor = UIColor(named: "graphText")!
@@ -149,3 +154,9 @@ struct GraphRepresentedView_Previews : PreviewProvider {
     }
 }
 #endif
+
+class NoFrillsLineChartRenderer: LineChartRenderer {
+    override func drawExtras(context: CGContext) {
+        print("Not drawing extras")
+    }
+}
