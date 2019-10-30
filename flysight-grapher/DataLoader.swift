@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import CSV
 import Charts
 import MapKit
 
@@ -157,10 +156,8 @@ class DataLoader: ParserDelegate {
             let secs = ts.timeIntervalSince1970
             
             if self.currentLine == 2 {
-                print("Set the startTime to \(secs)")
                 self.startTime = secs
             }
-            print("currentLine \(currentLine)")
             self.time = secs - self.startTime!
         case 1: // lat
             self.lat = Double(value)
