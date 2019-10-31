@@ -34,8 +34,12 @@ class SplitViewDelegate: ChartViewDelegate {
     }
     
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
-        let index = self.graph!.graph.pointMap[entry.x]!
-        self.map!.highlightValue(index: index)
+        
+        if let index = self.graph!.graph.pointMap[entry.x] {
+            self.map!.highlightValue(index: index)
+        } else {
+            print("\(entry.x) was not found in the pointMap")
+        }
     }
     
     deinit {
