@@ -14,9 +14,7 @@ class ViewContainer: ObservableObject {
     @State var map = MapView()
     @State var performance = PerformanceView()
     @State var about = AboutView()
-    
-    @State var splitDelegate = SplitViewDelegate()
-    
+        
     var split: SplitGraphMapView {
         get {
             SplitGraphMapView(
@@ -24,6 +22,10 @@ class ViewContainer: ObservableObject {
                 map: self.map
             )
         }
+    }
+    
+    var splitDelegate: SplitViewDelegate {
+        self.split.delegate()
     }
     
     init() {
@@ -50,10 +52,6 @@ class ViewContainer: ObservableObject {
             print("Loading data into performance view")
             self.performance.clearData()
             self.performance.loadData(data)
-            
-            print("Setting up the split view delegate")
-            self.splitDelegate.setGraph(self.graph)
-            self.splitDelegate.setMap(self.map)
         }
     }
 }

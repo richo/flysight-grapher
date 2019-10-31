@@ -19,24 +19,27 @@ struct SplitGraphMapView : View {
             graph;
         }
     }
+    
+    func delegate() -> SplitViewDelegate {
+        SplitViewDelegate(
+            graph: self.graph,
+            map: self.map
+        )
+    }
 }
 
 class SplitViewDelegate: ChartViewDelegate {
-    var map: MapView?
-    var graph: GraphView?
+    var graph: GraphView
+    var map: MapView
     
-    func setGraph(_ graph: GraphView) {
+    init(graph: GraphView, map: MapView) {
         self.graph = graph
-    }
-    
-    func setMap(_ map: MapView) {
         self.map = map
     }
-    
+
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
-        
-        if let index = self.graph!.graph.pointMap[entry.x] {
-            self.map!.highlightValue(index: index)
+        if let index = self.graph.pointMap![entry.x] {
+            self.map.highlightValue(index: index)
         } else {
             print("\(entry.x) was not found in the pointMap")
         }

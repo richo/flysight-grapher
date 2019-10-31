@@ -16,7 +16,6 @@ let DEFAULT_RIGHT_AXIS_MINIMUM = -5.0
 
 struct GraphRepresentedView: UIViewRepresentable {
     var view = FlysightGraph()
-    var pointMap = [Double: Int]()
     
     func makeUIView(context: UIViewRepresentableContext<GraphRepresentedView>) -> GraphRepresentedView.UIViewType {
         // Make sure we nopped out drawCircles
@@ -54,13 +53,12 @@ struct GraphRepresentedView: UIViewRepresentable {
     func presentData(data: LineChartData) {
         view.data = data
     }
-    
-    mutating func loadPointMap(map: [Double: Int]) {
-        self.pointMap = map
-    }
 }
 
 struct GraphView: View, DataPresentable {
+    var pointMap: [Double: Int]?;
+
+    
     func setDelegate(_ delegate: SplitViewDelegate) {
         self.graph.view.delegate = delegate
     }
@@ -143,7 +141,9 @@ struct GraphView: View, DataPresentable {
         self.graph.view.rightAxis.axisMinimum = min(DEFAULT_RIGHT_AXIS_MINIMUM, min_axis_value)
         print("Presenting data")
         self.graph.presentData(data: data)
-        self.graph.loadPointMap(map: pointMap)
+        print("Loading pointMap, has \(pointMap.count) entries")
+        
+        self.pointMap = pointMap
     }
 }
 
