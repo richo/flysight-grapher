@@ -20,12 +20,12 @@ func regionCenteredOn(center: CLLocationCoordinate2D) -> MKCoordinateRegion {
 let START_TITLE = "Start!"
 let END_TITLE = "End!"
 
+var indexToPointMap: [CLLocationCoordinate2D]?;
+
 struct MapRepresentedView: UIViewRepresentable {
     var view = MKMapView()
     var _delegate = RedLineDelegate()
-    var points: Array<CLLocationCoordinate2D>?
-    var highlight: DataAnnotation?
-    
+        
     func makeUIView(context: UIViewRepresentableContext<MapRepresentedView>) -> MapRepresentedView.UIViewType {
         view.mapType = .satellite
         // Try to figure out if we already did the init thing.
@@ -51,7 +51,6 @@ struct MapRepresentedView: UIViewRepresentable {
     
     mutating func presentData(points: Array<CLLocationCoordinate2D>) {
         var locations = points.map { $0 }
-        self.points = locations
 
         let polyline = MKPolyline(coordinates: &locations, count: locations.count)
         self.view.addOverlay(polyline)
@@ -75,30 +74,29 @@ struct MapRepresentedView: UIViewRepresentable {
         view.setCenter(end.coordinate, animated: true)
     }
     
-    mutating func highlightValue(index: Int) {
-        let point = self.points![index]
-        let highlight = DataAnnotation()
-        highlight.coordinate = point
-        view.addAnnotation(highlight)
-        
-        if let annotation = self.highlight {
-            self.view.removeAnnotation(annotation)
-        }
-        
-        self.highlight = highlight
-    }
+
 }
 
 struct MapView: View, DataPresentable {
     var map: MapRepresentedView = MapRepresentedView()
-    
+    // TODO(richo) it does kinda feel like maybe the map view should still own this part
+    var highlight: DataAnnotation?
+
+
     var body: some View {
         self.map
     }
     
+    init() {
+        print("Making a new mapview?")
+    }
+    
     mutating func loadData(_ data: DataSet) {
         // TODO(richo) Deal with this error better
-        self.map.presentData(points: mapData(data)!)
+        let points = mapData(data)!
+        self.map.presentData(points: points)
+
+        indexToPointMap = points.map { $0 }
     }
     
     func clearData() {
@@ -109,10 +107,18 @@ struct MapView: View, DataPresentable {
         self.map.removeAnnotations()
     }
     
-    mutating func highlightValue(index: Int) {
-        self.map.highlightValue(index: index)
+    mutating func highlightPoint(index: Int) {
+        let point = indexToPointMap![index]
+        let highlight = DataAnnotation()
+        highlight.coordinate = point
+        map.view.addAnnotation(highlight)
+        
+        if let annotation = self.highlight {
+            self.map.view.removeAnnotation(annotation)
+        }
+        
+        self.highlight = highlight
     }
-
 }
 
 private func mapData(_ data: DataSet) -> Array<CLLocationCoordinate2D>? {

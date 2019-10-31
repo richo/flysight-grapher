@@ -56,9 +56,6 @@ struct GraphRepresentedView: UIViewRepresentable {
 }
 
 struct GraphView: View, DataPresentable {
-    var pointMap: [Double: Int]?;
-
-    
     func setDelegate(_ delegate: SplitViewDelegate) {
         self.graph.view.delegate = delegate
     }
@@ -82,7 +79,7 @@ struct GraphView: View, DataPresentable {
         var minVelX = 0.0
         var minVelY = 0.0
         
-        var pointMap = [Double: Int]()
+        var intermediateMap = [Double: Int]()
         
         for (i, point) in data.data.enumerated() {
             hMSL.append(ChartDataEntry(x: point.time, y: point.altitude * MetersToFeet))
@@ -99,7 +96,7 @@ struct GraphView: View, DataPresentable {
                 minVelX = point.vX()
             }
             
-            pointMap[point.time] = i
+            intermediateMap[point.time] = i
         }
         
         let alt = LineChartDataSet(entries: hMSL, label: "altitude")
@@ -141,9 +138,9 @@ struct GraphView: View, DataPresentable {
         self.graph.view.rightAxis.axisMinimum = min(DEFAULT_RIGHT_AXIS_MINIMUM, min_axis_value)
         print("Presenting data")
         self.graph.presentData(data: data)
-        print("Loading pointMap, has \(pointMap.count) entries")
+        print("Loading pointMap, has \(intermediateMap.count) entries")
         
-        self.pointMap = pointMap
+        (self.graph.view.delegate! as! SplitViewDelegate).timeToIndexMap = intermediateMap
     }
 }
 
@@ -151,7 +148,6 @@ struct GraphView: View, DataPresentable {
 struct GraphRepresentedView_Previews : PreviewProvider {
     static var previews: some View {
         GraphRepresentedView()
-        // Text("Butts")
     }
 }
 #endif

@@ -14,7 +14,7 @@ class ViewContainer: ObservableObject {
     @State var map = MapView()
     @State var performance = PerformanceView()
     @State var about = AboutView()
-        
+    
     var split: SplitGraphMapView {
         get {
             SplitGraphMapView(
@@ -24,12 +24,11 @@ class ViewContainer: ObservableObject {
         }
     }
     
-    var splitDelegate: SplitViewDelegate {
-        self.split.delegate()
-    }
+    var splitDelegate: SplitViewDelegate?
     
     init() {
-        self.graph.setDelegate(self.splitDelegate)
+        self.splitDelegate = split.delegate()
+        self.graph.setDelegate(self.splitDelegate!)
     }
     
     func loadData(_ url: URL) -> DataSet? {

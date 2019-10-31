@@ -9,6 +9,7 @@
 import SwiftUI
 import Charts
 
+
 struct SplitGraphMapView : View {
     var graph: GraphView
     var map: MapView
@@ -32,17 +33,17 @@ class SplitViewDelegate: ChartViewDelegate {
     var graph: GraphView
     var map: MapView
     
+    var timeToIndexMap: [Double: Int]?;
+
+    
     init(graph: GraphView, map: MapView) {
         self.graph = graph
         self.map = map
     }
 
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
-        if let index = self.graph.pointMap![entry.x] {
-            self.map.highlightValue(index: index)
-        } else {
-            print("\(entry.x) was not found in the pointMap")
-        }
+        let index = self.timeToIndexMap![entry.x]!
+        self.map.highlightPoint(index: index)
     }
     
     deinit {
