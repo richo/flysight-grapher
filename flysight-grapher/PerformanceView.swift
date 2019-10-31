@@ -127,8 +127,8 @@ struct PerformanceView : View, DataPresentable {
 }
 
 struct ScoreView: View {
-    var score: Double?
-    var unit: String
+    let score: Double?
+    let unit: String
     
     var body: some View {
         let value: String
@@ -299,20 +299,11 @@ struct PerformanceView_Previews : PreviewProvider {
 #endif
 
 final class WingsuitFlareData: ObservableObject {
-    let didChange = PassthroughSubject<WingsuitFlareData, Never>()
     var measurer = WingsuitFlareMeasurer()
     
-    var max: Double? = nil {
-        didSet {
-            didChange.send(self)
-        }
-    }
+    @Published var max: Double? = nil
     
-    var flares: Array<Flare>? = nil {
-        didSet {
-            didChange.send(self)
-        }
-    }
+    @Published var flares: Array<Flare>? = nil
     
     func getFlares() -> Array<Flare> {
         flares ?? []
@@ -328,28 +319,10 @@ final class WingsuitFlareData: ObservableObject {
 
 // TODO(unify this with the swoop stuff
 final class WingsuitScoreData: ObservableObject  {
-    let didChange = PassthroughSubject<WingsuitScoreData, Never>()
-    
-    var valid = false {
-        didSet {
-            didChange.send(self)
-        }
-    }
-    var distance: Double? = nil {
-        didSet {
-            didChange.send(self)
-        }
-    }
-    var time: Double? = nil {
-        didSet {
-            didChange.send(self)
-        }
-    }
-    var speed: Double? = nil {
-        didSet {
-            didChange.send(self)
-        }
-    }
+    @Published var valid = false
+    @Published var distance: Double? = nil
+    @Published var time: Double? = nil
+    @Published var speed: Double? = nil
     
     func validRun(entry: GateCrossing, exit: GateCrossing) {
         self.distance = WingsuitScorer.distance(entry, exit)
@@ -367,22 +340,8 @@ final class WingsuitScoreData: ObservableObject  {
 }
 
 final class SwoopScoreData: ObservableObject  {
-    let didChange = PassthroughSubject<SwoopScoreData, Never>()
-    
-    var valid = false {
-        didSet {
-            didChange.send(self)
-        }
-    }
-    
-    var maxVerticalSpeed: Double? = nil {
-        didSet {
-            didChange.send(self)
-        }
-    }
-    var rolloutHorizontalSpeed: Double? = nil {
-        didSet {
-            didChange.send(self)
-        }
-    }
+    @Published var valid = false
+
+    @Published var maxVerticalSpeed: Double? = nil
+    @Published var rolloutHorizontalSpeed: Double? = nil
 }
