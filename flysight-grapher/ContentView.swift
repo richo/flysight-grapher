@@ -9,16 +9,16 @@
 import SwiftUI
 
 struct ContentView : View {
-    var isiPhone = UIDevice.current.userInterfaceIdiom == .phone
     @State var showFilePicker = false
 
     @EnvironmentObject var views: ViewContainer
+    
+    @State var defaultTab = 1
+    var isiPhone = UIDevice.current.userInterfaceIdiom == .phone
 
     var body: some View {
-    
-
         return VStack {
-            TabView {
+            TabView (selection: $defaultTab) {
                 self.views.graph.tabItem({ Text("Graph") }).tag(0);
                 self.views.map.tabItem({ Text("Map") }).tag(1);
                 if !isiPhone {
@@ -29,10 +29,18 @@ struct ContentView : View {
             };
             Button("Load Data") {
                 self.showFilePicker = true
-            }.padding()
+            }.padding();
         }
         .sheet(isPresented: $showFilePicker, content: { PickerView(callback: self.views.fileUrlCallback) })
     }
+    
+    init() {
+        if !isiPhone {
+            self.defaultTab = 2
+        }
+    }
+    
+
 }
 
 #if DEBUG
