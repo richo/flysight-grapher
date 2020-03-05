@@ -102,9 +102,11 @@ class DataLoader: ParserDelegate {
     
     /// Called when the parser finished parsing without errors.
     func parserDidEndDocument(_ parser: CSV.Parser) {
-        let zeroAGL = dataSet.last!.altitude
-        for (i, _) in dataSet.enumerated() {
-            dataSet[i].altitude -= zeroAGL
+        if let lastPoint = dataSet.last {
+            let zeroAGL = lastPoint.altitude
+            for (i, _) in dataSet.enumerated() {
+                dataSet[i].altitude -= zeroAGL
+            }
         }
     }
     
@@ -197,6 +199,9 @@ class DataLoader: ParserDelegate {
         let parser = CSV.Parser(url: url, configuration: configuration)!
         parser.delegate = self
         try! parser.parse()
+        if self.dataSet.count == 0 {
+            return nil
+        }
         return DataSet(data: self.dataSet)
     }
 }

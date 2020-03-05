@@ -526,12 +526,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "flysight-grapher/flysight-grapher.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_ASSET_PATHS = "flysight-grapher/Preview\\ Content";
 				DEVELOPMENT_TEAM = S93SSHN8SD;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "flysight-grapher/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -552,12 +553,13 @@
 				CODE_SIGN_ENTITLEMENTS = "flysight-grapher/flysight-grapher.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_ASSET_PATHS = "flysight-grapher/Preview\\ Content";
 				DEVELOPMENT_TEAM = S93SSHN8SD;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "flysight-grapher/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -14,6 +14,7 @@ class ViewContainer: ObservableObject {
     @State var map = MapView()
     @State var performance = PerformanceView()
     @State var about = AboutView()
+
     
     var split: SplitGraphMapView {
         get {
@@ -36,8 +37,11 @@ class ViewContainer: ObservableObject {
         return loader.loadFromURL(url)
     }
 
-    func fileUrlCallback(_ url: URL) {
-        let data = loadData(url)!
+    func fileUrlCallback(_ url: URL) -> Bool {
+        guard let data = loadData(url) else {
+            print("No data loaded :(")
+            return false
+        }
         
         DispatchQueue.main.async {
             print("Loading data into graph")
@@ -52,6 +56,8 @@ class ViewContainer: ObservableObject {
             self.performance.clearData()
             self.performance.loadData(data)
         }
+        
+        return true
     }
 }
 

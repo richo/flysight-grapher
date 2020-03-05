@@ -10,6 +10,7 @@ import SwiftUI
 
 struct ContentView : View {
     @State var showFilePicker = false
+    @State var showFileError = false
 
     @EnvironmentObject var views: ViewContainer
     
@@ -31,7 +32,17 @@ struct ContentView : View {
                 self.showFilePicker = true
             }.padding();
         }
-        .sheet(isPresented: $showFilePicker, content: { PickerView(callback: self.views.fileUrlCallback) })
+        .alert(isPresented: $showFileError) {
+            Alert(title: Text("Failed to load"), message: Text("Loaded data contained zero rows"), dismissButton: .default(Text("Ok :(")))
+        }
+        .sheet(isPresented: $showFilePicker, content: { PickerView(callback: self.fileUrlCallbackWrapper) })
+
+    }
+    
+    func fileUrlCallbackWrapper(_ url: URL) {
+        if !self.views.fileUrlCallback(url) {
+            self.showFileError = true
+        }
     }
     
     init() {
