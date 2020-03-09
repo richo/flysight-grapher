@@ -13,6 +13,7 @@
 		7B25BD4F22E3AC9E00F83382 /* dummy-wingsuit.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7B25BD4E22E3AC9E00F83382 /* dummy-wingsuit.csv */; };
 		7B25BD5122E3D63400F83382 /* SplitGraphMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B25BD5022E3D63400F83382 /* SplitGraphMapView.swift */; };
 		7B2EAA2122D40567009BCC39 /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2EAA2022D40567009BCC39 /* DataLoader.swift */; };
+		7B5084FC2416DF640098BEA3 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5084FB2416DF640098BEA3 /* ActivityIndicator.swift */; };
 		7B68430422D3F65300B421E1 /* GraphRepresentedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68430322D3F65300B421E1 /* GraphRepresentedView.swift */; };
 		7B6DD21D22D3BF04009C6A7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6DD21C22D3BF04009C6A7E /* AppDelegate.swift */; };
 		7B6DD21F22D3BF04009C6A7E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6DD21E22D3BF04009C6A7E /* SceneDelegate.swift */; };
@@ -71,6 +72,7 @@
 		7B25BD5022E3D63400F83382 /* SplitGraphMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitGraphMapView.swift; sourceTree = "<group>"; };
 		7B2EAA2022D40567009BCC39 /* DataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
 		7B4BE63522D3C7B700F91850 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B5084FB2416DF640098BEA3 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		7B68430322D3F65300B421E1 /* GraphRepresentedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphRepresentedView.swift; sourceTree = "<group>"; };
 		7B6DD21922D3BF04009C6A7E /* Stoke Level.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Stoke Level.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B6DD21C22D3BF04009C6A7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				7B7E8A732307B48E0012F2E3 /* DataPresentation.swift */,
 				7B7E8A79232888050012F2E3 /* PersistedStorage.swift */,
 				7B91FB42236937BF00720C85 /* CSV.swift */,
+				7B5084FB2416DF640098BEA3 /* ActivityIndicator.swift */,
 			);
 			path = "flysight-grapher";
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B25BD5122E3D63400F83382 /* SplitGraphMapView.swift in Sources */,
+				7B5084FC2416DF640098BEA3 /* ActivityIndicator.swift in Sources */,
 				7B724F2222D8205000420373 /* PerformanceView.swift in Sources */,
 				7B7E8A742307B48E0012F2E3 /* DataPresentation.swift in Sources */,
 				7B7E8A762321CF800012F2E3 /* FlysightGraph.swift in Sources */,

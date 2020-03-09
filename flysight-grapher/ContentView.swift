@@ -11,6 +11,7 @@ import SwiftUI
 struct ContentView : View {
     @State var showFilePicker = false
     @State var showFileError = false
+    @State var isLoading = false
 
     @EnvironmentObject var views: ViewContainer
     
@@ -18,11 +19,12 @@ struct ContentView : View {
     var isiPhone = UIDevice.current.userInterfaceIdiom == .phone
 
     var body: some View {
-        return VStack {
-            TabView (selection: $defaultTab) {
+        return LoadingView(isLoading: $isLoading) {
+            VStack {
+                TabView (selection: self.$defaultTab) {
                 self.views.graph.tabItem({ Text("Graph") }).tag(0);
                 self.views.map.tabItem({ Text("Map") }).tag(1);
-                if !isiPhone {
+                    if !self.isiPhone {
                     self.views.split.tabItem({ Text("Split") }).tag(2);
                 }
                 self.views.performance.tabItem({ Text("Performance") }).tag(3);
@@ -32,6 +34,7 @@ struct ContentView : View {
                 self.showFilePicker = true
             }.padding();
         }
+        }
         .alert(isPresented: $showFileError) {
             Alert(title: Text("Failed to load"), message: Text("Loaded data contained zero rows"), dismissButton: .default(Text("Ok :(")))
         }
@@ -40,9 +43,11 @@ struct ContentView : View {
     }
     
     func fileUrlCallbackWrapper(_ url: URL) {
-        if !self.views.fileUrlCallback(url) {
-            self.showFileError = true
-        }
+        self.views.fileUrlCallback(url, { (ret: Bool) -> () in
+            self.isLoading = false
+            self.showFileError = !ret
+        })
+        self.isLoading = true
     }
     
     init() {

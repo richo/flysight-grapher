@@ -61,20 +61,6 @@ struct AboutView : View {
     
 
     var body: some View {
-        let dummyAngle = Button(action: {
-            let url = URL(fileURLWithPath: Bundle.main.path(forResource: "dummy-angle", ofType: "csv")!)
-
-            self.views.fileUrlCallback(url)
-        }) {
-            Text("Dummy Angle Jump")
-        }
-        let dummyWingsuit = Button(action: {
-            let url = URL(fileURLWithPath: Bundle.main.path(forResource: "dummy-wingsuit", ofType: "csv")!)
-
-            self.views.fileUrlCallback(url)
-        }) {
-            Text("Dummy Wingsuit Flight")
-        }
         
         return List {
             Section(header: Text("Wingsuit")) {
@@ -99,15 +85,6 @@ struct AboutView : View {
                     }
                 } else {
                     Text("For support, contact richo@psych0tik.net")
-                }
-            }
-            Section(header: Text("Developer")) {
-                Toggle(isOn: $settings.developerMode) {
-                    Text("Show developer tools")
-                }.padding()
-
-                if settings.developerMode {
-                    dummyAngle;
                 }
             }
         }.listStyle(GroupedListStyle())

@@ -37,13 +37,15 @@ class ViewContainer: ObservableObject {
         return loader.loadFromURL(url)
     }
 
-    func fileUrlCallback(_ url: URL) -> Bool {
-        guard let data = loadData(url) else {
-            print("No data loaded :(")
-            return false
-        }
-        
+    func fileUrlCallback(_ url: URL, _ cb: @escaping (Bool) -> ()) {
         DispatchQueue.main.async {
+
+            guard let data = self.loadData(url) else {
+                print("No data loaded :(")
+                cb(false)
+                return
+            }
+        
             print("Loading data into graph")
             self.graph.clearData()
             self.graph.loadData(data)
@@ -55,9 +57,9 @@ class ViewContainer: ObservableObject {
             print("Loading data into performance view")
             self.performance.clearData()
             self.performance.loadData(data)
+            
+            cb(true)
         }
-        
-        return true
     }
 }
 
