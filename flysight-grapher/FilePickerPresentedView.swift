@@ -31,6 +31,7 @@ struct FilePickerController: UIViewControllerRepresentable {
     
     class Coordinator: NSObject, UIDocumentPickerDelegate {
         var parent: FilePickerController
+        var selected = false
         
         init(_ pickerController: FilePickerController) {
             self.parent = pickerController
@@ -40,6 +41,11 @@ struct FilePickerController: UIViewControllerRepresentable {
             guard let document = urls.first else {
                 return
             }
+            if selected {
+                print("Tried to double select")
+                return
+            }
+            selected = true
             print("Selected a document: \(document)")
             parent.callback(document)
         }
