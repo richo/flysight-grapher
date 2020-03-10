@@ -63,17 +63,9 @@ struct AboutView : View {
     var body: some View {
         
         return List {
-            Section(header: Text("Wingsuit")) {
-                Toggle(isOn: $settings.showWingsuitPerf) {
-                    Text("Show wingsuit data in performance view")
-                }.padding()
-//                Toggle(isOn: $settings.displayWingsuitWindowOnGraph) {
-//                    Text("Show wingsuit performance window on graph")
-//                }.padding()
-            }
-//            Section(header: Text("Swoop")) {
-//                Toggle(isOn: $settings.showSwoopPerf) {
-//                    Text("Show swoop data in performance view")
+//            Section(header: Text("Wingsuit")) {
+//                Toggle(isOn: $settings.showWingsuitPerf) {
+//                    Text("Show wingsuit data in performance view")
 //                }.padding()
 //            }
             Section(header: Text("Support")) {

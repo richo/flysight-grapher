@@ -20,11 +20,11 @@ struct PerformanceView : View, DataPresentable {
     
     var body: some View {
         VStack {
-            Section(header: Text("Wingsuit performance")) {
-                if !wingsuitScores.valid {
-                    Text("Loaded run does not contain a valid wingsuit performance run")
-                } else {
-                    List {
+            List {
+                Section(header: Text("Wingsuit performance")) {
+                    if !wingsuitScores.valid {
+                        Text("Loaded run does not contain a valid wingsuit performance run")
+                    } else {
                         HStack {
                             Text("Distance")
                             ScoreView(score: wingsuitScores.distance, unit: "m")
@@ -37,18 +37,16 @@ struct PerformanceView : View, DataPresentable {
                             Text("Speed")
                             ScoreView(score: wingsuitScores.speed, unit: "m/s")
                         }
-                    }.listStyle(GroupedListStyle())
+                    }
                 }
-            }
-
-            Section(header: Text("Flares")) {
-                List(flares.getFlares()) { flare in
-                    FlareView(flare:  flare)
-                }.listStyle(GroupedListStyle())
-            }
-            
-            Section(header: Text("Swoops")) {
-                List {
+                
+                Section(header: Text("Flares")) {
+                    ForEach(flares.getFlares()) { flare in
+                        FlareView(flare:  flare)
+                    }
+                }
+                
+                Section(header: Text("Swoops")) {
                     HStack {
                         Text("Max Vertical")
                         ScoreView(score: swoopScores.maxVerticalSpeed, unit: "mph")
@@ -56,6 +54,7 @@ struct PerformanceView : View, DataPresentable {
                     HStack {
                         Text("Rollout Horizontal Speed")
                         ScoreView(score: swoopScores.rolloutHorizontalSpeed, unit: "mph")
+                        
                     }
                 }
             }.listStyle(GroupedListStyle())
@@ -146,14 +145,15 @@ struct FlareView: View {
     var flare: Flare
     
     var body: some View {
-        Section(header: Text("flare")) {
-            Text(String(format: "%.1fm", flare.height()))
-            Text(String(format: "Time to peak %.1fs ", flare.timeToPeak()))
-            Text(String(format: "Distance to peak %.1fm", flare.distanceToPeak()))
-            Button("Highlight") { // TODO(richo) highlight this in the map
-                
-            }
-        }
+//        Section(header: Text("flare")) {
+//            Text(String(format: "%.1fm", flare.height()))
+//            Text(String(format: "Time to peak %.1fs ", flare.timeToPeak()))
+//            Text(String(format: "Distance to peak %.1fm", flare.distanceToPeak()))
+//            Button("Highlight") { // TODO(richo) highlight this in the map
+//
+//            }
+//        }
+        Text(String(format: "%.1fm", flare.height()))
     }
 }
 
