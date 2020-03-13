@@ -21,6 +21,7 @@ let NUM_SATS_FOR_LOCK: Int16 = 7
 // - Unit conversions.
 struct DataSet {
     let data: Array<DataPoint>
+    let exitFrame: Int?
 }
 
 struct DataPoint {
@@ -195,6 +196,7 @@ class DataLoader: ParserDelegate {
     
     func loadFromURL(_ url: URL) -> DataSet? {
         let configuration = CSV.Configuration(delimiter: ",", encoding: .utf8)
+        var exitFrame: Int?
         
         let parser = CSV.Parser(url: url, configuration: configuration)!
         parser.delegate = self
@@ -202,6 +204,18 @@ class DataLoader: ParserDelegate {
         if self.dataSet.count == 0 {
             return nil
         }
-        return DataSet(data: self.dataSet)
+        
+        for (i, point) in dataSet.enumerated() {
+            if point.vAcc > 3 {
+                exitFrame = i
+                break
+            }
+        }
+        
+        
+        return DataSet(
+            data: self.dataSet,
+            exitFrame: exitFrame
+        )
     }
 }
