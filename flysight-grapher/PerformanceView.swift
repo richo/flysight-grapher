@@ -26,6 +26,13 @@ final class PerformanceSettings: ObservableObject {
             objectWillChange.send()
         }
     }
+    
+    @UserDefault(key: "showSpeedScores", defaultValue: false)
+    var showSpeedScores: Bool {
+        willSet {
+            objectWillChange.send()
+        }
+    }
 }
 
 struct PerformanceView : View, DataPresentable {
@@ -88,6 +95,17 @@ struct PerformanceView : View, DataPresentable {
                         }
                     }
                 }
+                
+                Section(header: Toggle(isOn: $settings.showSpeedScores) {
+                      Text("Speed performance")
+                  }) {
+                      if settings.showSpeedScores {
+                          HStack {
+                              Text("AverageSpeed")
+                              ScoreView(score: 6, unit: "kph")
+                          }
+                      }
+                  }
             }.listStyle(GroupedListStyle())
         }
     }
