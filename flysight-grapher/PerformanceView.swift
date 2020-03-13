@@ -88,7 +88,7 @@ struct PerformanceView : View, DataPresentable {
                         }
                     }
                 }
-            }
+            }.listStyle(GroupedListStyle())
         }
     }
     
