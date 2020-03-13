@@ -42,6 +42,8 @@ struct PerformanceView : View, DataPresentable {
     @ObservedObject var flares: WingsuitFlareData = WingsuitFlareData()
     
     @ObservedObject private var settings = PerformanceSettings()
+    @State private var flareSelection: Set<Flare> = []
+
     
     var body: some View {
         return VStack {
@@ -74,7 +76,9 @@ struct PerformanceView : View, DataPresentable {
                     
                     Section(header: Text("Flares")) {
                         ForEach(flares.getFlares()) { flare in
-                            FlareView(flare:  flare)
+                            FlareView(flare: flare, isExpanded: self.flareSelection.contains(flare))
+                                .onTapGesture { self.selectDeselectFlare(flare) }
+                                .animation(.linear(duration: 0.3))
                         }
                     }
                 }
@@ -107,6 +111,14 @@ struct PerformanceView : View, DataPresentable {
                       }
                   }
             }.listStyle(GroupedListStyle())
+        }
+    }
+    
+    func selectDeselectFlare(_ flare: Flare) {
+        if flareSelection.contains(flare) {
+            flareSelection.remove(flare)
+        } else {
+            flareSelection.insert(flare)
         }
     }
     
@@ -193,16 +205,22 @@ struct ScoreView: View {
 struct FlareView: View {
     var flare: Flare
     
+    let isExpanded: Bool
+    
     var body: some View {
-//        Section(header: Text("flare")) {
-//            Text(String(format: "%.1fm", flare.height()))
-//            Text(String(format: "Time to peak %.1fs ", flare.timeToPeak()))
-//            Text(String(format: "Distance to peak %.1fm", flare.distanceToPeak()))
-//            Button("Highlight") { // TODO(richo) highlight this in the map
-//
-//            }
-//        }
-        Text(String(format: "%.1fm", flare.height()))
+        HStack {
+            VStack(alignment: .leading) {
+                Text(String(format: "%.1fm", flare.height())).font(.headline)
+                if isExpanded {
+                    Text(String(format: "Altitude initiated: %.1f'", flare.entry.altitude * MetersToFeet))
+                    Text(String(format: "Time to peak %.1fs ", flare.timeToPeak()))
+                    Text(String(format: "Distance to peak %.1fm", flare.distanceToPeak()))
+                    Button("Highlight") { }
+                }
+            }
+            Spacer()
+        }
+        .contentShape(Rectangle())
     }
 }
 
@@ -280,7 +298,11 @@ struct WingsuitFlareMeasurer {
     }
 }
 
-struct Flare: Identifiable {
+struct Flare: Identifiable, Hashable, Equatable {
+    static func == (lhs: Flare, rhs: Flare) -> Bool {
+        lhs.entry.altitude == rhs.entry.altitude
+    }
+    
     var id: Double {
         get {
             self.entry.altitude
@@ -332,7 +354,15 @@ struct WingsuitScorer {
     }
 }
 
-struct GateCrossing {
+struct GateCrossing: Hashable {
+    static func == (lhs: GateCrossing, rhs: GateCrossing) -> Bool {
+        lhs.altitude == rhs.altitude
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(self.time)
+    }
+    
     // TODO(richo) intitializer from point
     let position: CLLocationCoordinate2D
     let time: Double
