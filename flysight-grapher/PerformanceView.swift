@@ -10,54 +10,85 @@ import SwiftUI
 import MapKit
 import Combine
 
+final class PerformanceSettings: ObservableObject {
+    let objectWillChange = PassthroughSubject<Void, Never>()
+
+    @UserDefault(key: "showWingsuitScores", defaultValue: true)
+    var showWingsuitScores: Bool {
+        willSet {
+            objectWillChange.send()
+        }
+    }
+    
+    @UserDefault(key: "showSwoopScores", defaultValue: true)
+    var showSwoopScores: Bool {
+        willSet {
+            objectWillChange.send()
+        }
+    }
+}
+
 struct PerformanceView : View, DataPresentable {
     
     @ObservedObject var wingsuitScores: WingsuitScoreData = WingsuitScoreData()
     @ObservedObject var swoopScores: SwoopScoreData = SwoopScoreData()
     @ObservedObject var flares: WingsuitFlareData = WingsuitFlareData()
     
-    @EnvironmentObject var settings: SettingsStore
+    @ObservedObject private var settings = PerformanceSettings()
     
     var body: some View {
-        VStack {
+        return VStack {
             List {
-                Section(header: Text("Wingsuit performance")) {
-                    if !wingsuitScores.valid {
-                        Text("Loaded run does not contain a valid wingsuit performance run")
-                    } else {
-                        HStack {
-                            Text("Distance")
-                            ScoreView(score: wingsuitScores.distance, unit: "m")
-                        }
-                        HStack {
-                            Text("Time")
-                            ScoreView(score: wingsuitScores.time, unit: "s")
-                        }
-                        HStack {
-                            Text("Speed")
-                            ScoreView(score: wingsuitScores.speed, unit: "m/s")
-                        }
-                    }
-                }
-                
-                Section(header: Text("Flares")) {
-                    ForEach(flares.getFlares()) { flare in
-                        FlareView(flare:  flare)
-                    }
-                }
-                
-                Section(header: Text("Swoops")) {
-                    HStack {
-                        Text("Max Vertical")
-                        ScoreView(score: swoopScores.maxVerticalSpeed, unit: "mph")
-                    }
-                    HStack {
-                        Text("Rollout Horizontal Speed")
-                        ScoreView(score: swoopScores.rolloutHorizontalSpeed, unit: "mph")
+                Section(header: Toggle(isOn: $settings.showWingsuitScores) {
+                    Text("Wingsuit performance")
+                }) {
+                    if settings.showWingsuitScores {
                         
+                        if !wingsuitScores.valid {
+                            Text("Loaded run does not contain a valid wingsuit performance run")
+                        } else {
+                            HStack {
+                                Text("Distance")
+                                ScoreView(score: wingsuitScores.distance, unit: "m")
+                            }
+                            HStack {
+                                Text("Time")
+                                ScoreView(score: wingsuitScores.time, unit: "s")
+                            }
+                            HStack {
+                                Text("Speed")
+                                ScoreView(score: wingsuitScores.speed, unit: "m/s")
+                            }
+                        }
                     }
                 }
-            }.listStyle(GroupedListStyle())
+                
+                if settings.showWingsuitScores {
+                    
+                    Section(header: Text("Flares")) {
+                        ForEach(flares.getFlares()) { flare in
+                            FlareView(flare:  flare)
+                        }
+                    }
+                }
+                
+                Section(header: Toggle(isOn: $settings.showSwoopScores) {
+                    Text("Swoop performance")
+                }) {
+                    if settings.showSwoopScores {
+                        
+                        HStack {
+                            Text("Max Vertical")
+                            ScoreView(score: swoopScores.maxVerticalSpeed, unit: "mph")
+                        }
+                        HStack {
+                            Text("Rollout Horizontal Speed")
+                            ScoreView(score: swoopScores.rolloutHorizontalSpeed, unit: "mph")
+                            
+                        }
+                    }
+                }
+            }
         }
     }
     

@@ -66,7 +66,6 @@ class ViewContainer: ObservableObject {
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    @ObservedObject var settings = SettingsStore()
     @ObservedObject var views = ViewContainer()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -78,7 +77,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
             window.rootViewController = UIHostingController(rootView: ContentView()
-                .environmentObject(settings)
                 .environmentObject(views)
                 )
             self.window = window
