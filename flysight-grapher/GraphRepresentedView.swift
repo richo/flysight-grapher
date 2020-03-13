@@ -75,12 +75,14 @@ struct GraphView: View, DataPresentable {
         var velX: Array<ChartDataEntry> = []
         var velY: Array<ChartDataEntry> = []
         var dAngle: Array<ChartDataEntry> = []
+        var exitLineData: Array<ChartDataEntry> = []
+        
 
         var minVelX = 0.0
         var minVelY = 0.0
         
         var intermediateMap = [Double: Int]()
-        
+                
         for (i, point) in data.data.enumerated() {
             hMSL.append(ChartDataEntry(x: point.time, y: point.altitude * MetersToFeet))
             velY.append(ChartDataEntry(x: point.time, y: point.vY() * MetersPerSecondToMilesPerHour))
@@ -88,6 +90,11 @@ struct GraphView: View, DataPresentable {
                 MetersPerSecondToMilesPerHour))
             dAngle.append(ChartDataEntry(x: point.time, y: point.angle()))
             
+//            if i + 5 < len {
+//                let soon = data.data[i + 5]
+//                let change = point.vY() - soon.vY()
+//                dY.append(ChartDataEntry(x: point.time, y: change * -1000))
+//            }
             
             if point.vY() < minVelY {
                 minVelY = point.vY()
@@ -97,6 +104,17 @@ struct GraphView: View, DataPresentable {
             }
             
             intermediateMap[point.time] = i
+        }
+        
+        if let exit = data.exitFrame {
+            exitLineData.append(ChartDataEntry(
+                x: data.data.first!.time,
+                y: data.data[exit].altitude * MetersToFeet
+            ))
+            exitLineData.append(ChartDataEntry(
+                x: data.data.last!.time,
+                y: data.data[exit].altitude * MetersToFeet
+            ))
         }
         
         let alt = LineChartDataSet(entries: hMSL, label: "altitude")
@@ -127,7 +145,14 @@ struct GraphView: View, DataPresentable {
         angle.drawCirclesEnabled = false
         angle.lineWidth = 2
         
-        let data = LineChartData(dataSets: [alt, vSpeed, hSpeed, angle])
+        let exitLine = LineChartDataSet(entries: exitLineData, label: "exit")
+        angle.axisDependency = .left
+        let exitLineColor = UIColor(named: "graphExitLine")!
+        exitLine.setColor(exitLineColor)
+        exitLine.drawCirclesEnabled = false
+        exitLine.lineWidth = 1
+        
+        let data = LineChartData(dataSets: [alt, vSpeed, hSpeed, angle, exitLine])
         let valueTextColor = UIColor(named: "graphText")!
         data.setValueTextColor(valueTextColor)
         data.setValueFont(.systemFont(ofSize: 9))

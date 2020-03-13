@@ -205,10 +205,39 @@ class DataLoader: ParserDelegate {
             return nil
         }
         
-        for (i, point) in dataSet.enumerated() {
-            if point.vAcc > 3 {
-                exitFrame = i
-                break
+        let count = dataSet.count
+        let window = 3
+        func acceleration(center: Int) -> Float64 {
+            let lower = max(0, center - window)
+            let upper = min(count, center + window)
+            
+            var x: Float64 = 0, y: Float64 = 0, dx: Float64 = 0, dy: Float64 = 0
+            for n in lower...upper {
+                let point = dataSet[n]
+                x += point.time
+                y += point.vY()
+                
+                dx += point.time * point.time
+                dy += point.time * point.vY()
+            }
+            
+            let n: Float64 = Float64(upper - lower + 1)
+            let first = dy - x * y / n
+            let second = dx - x * x / n
+            return first / second
+        }
+        
+        if let maxAltitude = dataSet.max(by: {(p1, p2) in p1.altitude < p2.altitude}) {
+            let lowestPlausibleExit = maxAltitude.altitude - 500
+            for (i, point) in dataSet.enumerated() {
+                if point.altitude < lowestPlausibleExit {
+                    continue
+                }
+                let acc = acceleration(center: i)
+                if acc > 6 {
+                    exitFrame = i
+                    break
+                }
             }
         }
         
@@ -219,3 +248,4 @@ class DataLoader: ParserDelegate {
         )
     }
 }
+
