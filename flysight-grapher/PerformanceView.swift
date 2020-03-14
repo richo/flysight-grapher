@@ -74,7 +74,6 @@ struct PerformanceView : View, DataPresentable {
                 }
                 
                 if settings.showWingsuitScores {
-                    
                     Section(header: Text("Flares")) {
                         ForEach(flares.getFlares()) { flare in
                             FlareView(flare: flare, isExpanded: self.flareSelection.contains(flare))
@@ -91,11 +90,11 @@ struct PerformanceView : View, DataPresentable {
                         
                         HStack {
                             Text("Max Vertical")
-                            ScoreView(score: swoopScores.maxVerticalSpeed, unit: "mph")
+                            SpeedScoreView(score: swoopScores.maxVerticalSpeed, unit: .MilesPerHour)
                         }
                         HStack {
                             Text("Rollout Horizontal Speed")
-                            ScoreView(score: swoopScores.rolloutHorizontalSpeed, unit: "mph")
+                            SpeedScoreView(score: swoopScores.rolloutHorizontalSpeed, unit: .MilesPerHour)
                             
                         }
                     }
@@ -142,13 +141,11 @@ struct PerformanceView : View, DataPresentable {
                 }
             case .BeforeEntry:
                 if point.altitude < 3000 {
-                    print("Found the entry gate")
                     entry = GateCrossing(position: point.position, time: point.time, altitude: point.altitude)
                     state = .InWindow
                 }
             case .InWindow:
                 if point.altitude < 2000 {
-                    print("Found the exit gate")
                     exit = GateCrossing(position: point.position, time: point.time, altitude: point.altitude)
                     state = .AfterExit
                     break outer
@@ -171,12 +168,12 @@ struct PerformanceView : View, DataPresentable {
         
         let swoop = data.data.filter { $0.altitude < TWO_THOUSAND_FEET }
         let maxVerticalSpeed = swoop.max { a, b in  a.vY() < b.vY() }
-        swoopScores.maxVerticalSpeed = maxVerticalSpeed!.vY() * MetersPerSecondToMilesPerHour
+        swoopScores.maxVerticalSpeed = maxVerticalSpeed!.vY()
         
         let rolloutSpeed = swoop
             .filter { $0.altitude < 3 / MetersToFeet}
             .max { a, b in  a.vX() < b.vX() }
-        swoopScores.rolloutHorizontalSpeed = rolloutSpeed!.vX() * MetersPerSecondToMilesPerHour
+        swoopScores.rolloutHorizontalSpeed = rolloutSpeed!.vX()
         
         speed.scoreRun(data: data)
     }
