@@ -69,7 +69,7 @@ struct PerformanceView : View, DataPresentable {
                             }
                             HStack {
                                 Text("Speed")
-                                ScoreView(score: wingsuitScores.speed, unit: "m/s")
+                                SpeedScoreView(score: wingsuitScores.speed, unit: .MetersPerSecond)
                             }
                         }
                     }
