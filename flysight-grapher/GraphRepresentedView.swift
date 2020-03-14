@@ -11,6 +11,7 @@ import SwiftUI
 import Charts
 
 let MetersPerSecondToMilesPerHour = 2.23694
+let MetersPerSecondToKilometersPerHour = 3.6
 let MetersToFeet = 3.28084
 let DEFAULT_RIGHT_AXIS_MINIMUM = -5.0
 

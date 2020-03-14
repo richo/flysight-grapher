@@ -40,6 +40,7 @@ struct PerformanceView : View, DataPresentable {
     @ObservedObject var wingsuitScores: WingsuitScoreData = WingsuitScoreData()
     @ObservedObject var swoopScores: SwoopScoreData = SwoopScoreData()
     @ObservedObject var flares: WingsuitFlareData = WingsuitFlareData()
+    @ObservedObject var speed: SpeedScoreData = SpeedScoreData()
     
     @ObservedObject private var settings = PerformanceSettings()
     @State private var flareSelection: Set<Flare> = []
@@ -105,9 +106,13 @@ struct PerformanceView : View, DataPresentable {
                   }) {
                       if settings.showSpeedScores {
                           HStack {
-                              Text("AverageSpeed")
-                              ScoreView(score: 6, unit: "kph")
+                              Text("Average speed")
+                            ScoreView(score: speed.speed, unit: "kph")
                           }
+                        HStack {
+                            Text("Exit altitude")
+                          ScoreView(score: speed.exit, unit: "m")
+                        }
                       }
                   }
             }.listStyle(GroupedListStyle())
@@ -172,6 +177,8 @@ struct PerformanceView : View, DataPresentable {
             .filter { $0.altitude < 3 / MetersToFeet}
             .max { a, b in  a.vX() < b.vX() }
         swoopScores.rolloutHorizontalSpeed = rolloutSpeed!.vX() * MetersPerSecondToMilesPerHour
+        
+        speed.scoreRun(data: data)
     }
     
     func clearData() {
@@ -330,6 +337,66 @@ struct Flare: Identifiable, Hashable, Equatable {
     }
 }
 
+struct SpeedScorer {
+    static func speed(data: DataSet) -> Double? {
+        // TODO(richo) Surface why there are not scores.
+        guard let exit = exitAltitude(data: data) else {
+            return nil
+        }
+        guard let exitFrame = data.exitFrame else {
+            return nil
+        }
+//        5.3.3 Maximum Exit Altitude: The maximum exit altitude for a valid jump is 14,000 ft. (4,267 metres) as measured by the approved competition SMD. A competitor should not exit the aircraft at a higher altitude than the maximum exit altitude. If the SMD registers a higher exit altitude than the maximum exit altitude, the jump will be considered as not valid and a re-jump will be granted.
+        if exit > 4267 {
+            return nil
+        }
+        
+//        5.3.4 Minimum Exit Altitude: The minimum exit altitude for a valid jump is 13,000 ft. (3,962 metres) a competitor should not exit the aircraft at a lower altitude than the minimum altitude. If the SMD registers a lower exit altitude than the minimum exit altitude the competitor may choose to accept the score for the jump. The competitor must make an immediate decision and inform the Chief judge of their decision; otherwise a re-jump will be granted automatically.
+        if exit < 3962 {
+            // We can still score this, but we won't for now until we've figured out how to surface issues
+            return nil
+        }
+        
+        //        2.2 BREAKOFF ALTITUDE
+        //        Breakoff altitude is set at 5,600 ft. (1,707 metres). Below the breakoff altitude no speed measurements are taken into account.
+        //        2.3 PERFORMANCE WINDOW
+        //        The performance window is the scoring part of the speed jump, which starts at exit. The end of the performance window is either 7,400 ft. (2,256 metres) below exit or at Breakoff altitude whichever is reached first.
+
+        var maxSpeed = 0.0
+        let bottomOfWindow = max(exit - 2256, 1707)
+        for i in exitFrame...data.data.count {
+            // Grab enough data to satisfy the window
+            let start = data.data[i]
+            // 5hz *should* mean exactly 15 frames, right?
+            let end = data.data[i + 15]
+            
+
+            if end.altitude < bottomOfWindow {
+                break
+            }
+            
+            // assert(end.time - start.time == 3, "Ooops, windowing incorrect")
+            
+            //        5.5.1 The score for a Speed Skydiving jump is the average vertical speed in kilometres per hour, to the nearest hundredth of a km/h, of the fastest 3 seconds, which the competitor achieves within the performance window.
+            let distance = end.altitude - start.altitude
+            let time = end.time - start.time
+            let speed = abs(distance / time)
+            
+            if speed > maxSpeed {
+                maxSpeed = speed
+            }
+        }
+        return maxSpeed
+    }
+    
+    static func exitAltitude(data: DataSet) -> Double? {
+        guard let exit = data.exitFrame else {
+            return nil
+        }
+        return data.data[exit].altitude
+    }
+}
+
 struct WingsuitScorer {
     static func speed(_ entry: GateCrossing, _ exit: GateCrossing) -> Double {
         let distance = self.distance(entry, exit)
@@ -423,4 +490,19 @@ final class SwoopScoreData: ObservableObject  {
 
     @Published var maxVerticalSpeed: Double? = nil
     @Published var rolloutHorizontalSpeed: Double? = nil
+}
+
+final class SpeedScoreData: ObservableObject {
+    @Published var speed: Double? = nil
+    @Published var exit: Double? = nil
+    
+    func scoreRun(data: DataSet) {
+        speed = SpeedScorer.speed(data: data).map({(speed) in speed * MetersPerSecondToKilometersPerHour})
+        exit = exitAltitude(data: data)
+    }
+    
+    private func exitAltitude(data: DataSet) -> Double? {
+//        return SpeedScorer.exitAltitude(data: data).map({(alt) in alt * MetersToFeet})
+        return SpeedScorer.exitAltitude(data: data)
+    }
 }
