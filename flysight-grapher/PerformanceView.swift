@@ -102,19 +102,19 @@ struct PerformanceView : View, DataPresentable {
                 }
                 
                 Section(header: Toggle(isOn: $settings.showSpeedScores) {
-                      Text("Speed performance")
-                  }) {
-                      if settings.showSpeedScores {
-                          HStack {
-                              Text("Average speed")
-                            ScoreView(score: speed.speed, unit: "kph")
-                          }
+                    Text("Speed performance")
+                }) {
+                    if settings.showSpeedScores {
+                        HStack {
+                            Text("Average speed")
+                            SpeedScoreView(score: speed.speed, unit: .KilometersPerHour)
+                        }
                         HStack {
                             Text("Exit altitude")
-                          ScoreView(score: speed.exit, unit: "m")
+                            ScoreView(score: speed.exit, unit: "m")
                         }
-                      }
-                  }
+                    }
+                }
             }.listStyle(GroupedListStyle())
         }
     }
@@ -190,6 +190,37 @@ struct PerformanceView : View, DataPresentable {
         case BeforeEntry
         case InWindow
         case AfterExit
+    }
+}
+
+enum SpeedUnit {
+    case MilesPerHour
+    case KilometersPerHour
+    case MetersPerSecond
+}
+
+struct SpeedScoreView: View {
+    /// score is always in m/s
+    let score: Double?
+    let unit: SpeedUnit
+    
+    var body: some View {
+        let value: String
+        if let score = score {
+            switch unit {
+            case .MilesPerHour:
+                value = String(format: "%.1fmph", score * MetersPerSecondToMilesPerHour)
+            case .KilometersPerHour:
+                // TODO(richo) We want to figure out how to make the precision figure itself out
+                value = String(format: "%.2fkph", score * MetersPerSecondToKilometersPerHour)
+            case .MetersPerSecond:
+                value = String(format: "%.2fm/s", score)
+            }
+        } else {
+            value = "No data"
+        }
+        
+        return Text(value)
     }
 }
 
@@ -497,7 +528,7 @@ final class SpeedScoreData: ObservableObject {
     @Published var exit: Double? = nil
     
     func scoreRun(data: DataSet) {
-        speed = SpeedScorer.speed(data: data).map({(speed) in speed * MetersPerSecondToKilometersPerHour})
+        speed = SpeedScorer.speed(data: data)
         exit = exitAltitude(data: data)
     }
     
