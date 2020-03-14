@@ -17,6 +17,8 @@ struct AboutView : View {
     private let mailComposeDelegate = MailDelegate()
     let canSendMail = MFMailComposeViewController.canSendMail()
     
+    @State private var showLicences = false
+    
     var body: some View {
         
         return List {
@@ -29,6 +31,18 @@ struct AboutView : View {
                     }
                 } else {
                     Text("For support, contact richo@psych0tik.net")
+                }
+            }
+            Section(header: Text("Open Source")) {
+                Button(action: {
+                    self.showLicences = true
+                }) {
+                    Text("View open source licenses")
+                }
+                .sheet(isPresented: $showLicences, onDismiss: {
+                    
+                }) {
+                    LicenseView(isPresented: self.$showLicences)
                 }
             }
         }.listStyle(GroupedListStyle())
@@ -54,6 +68,37 @@ struct AboutView : View {
         composeVC.setSubject("Stoke Level feedback")
 
         vc?.present(composeVC, animated: true)
+    }
+}
+
+struct LicenseView: View {
+    @Binding var isPresented: Bool
+
+    var body: some View {
+        let license = licenseBody()!
+        return VStack {
+            ScrollView {
+                Text(license)
+            }
+            Spacer()
+            Button("Dismiss") {
+                self.isPresented = false
+            }
+        }
+    }
+    
+    func licenseBody() -> String? {
+        if let filepath = Bundle.main.path(forResource: "LICENSE", ofType: "txt") {
+            do {
+                let contents = try String(contentsOfFile: filepath)
+                return contents
+            } catch {
+                print("Couldn't open license")
+            }
+        } else {
+            print ("Couldn't find license")
+        }
+        return nil
     }
 }
 

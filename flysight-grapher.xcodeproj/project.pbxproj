@@ -7,10 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B1A8AD5241C80CA004CE65A /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7B1A8AD4241C80CA004CE65A /* LICENSE.txt */; };
 		7B1B936A22D41D5C000B5C13 /* MapPresentedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1B936922D41D5C000B5C13 /* MapPresentedView.swift */; };
 		7B1B937722D451E4000B5C13 /* FilePickerPresentedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1B937622D451E4000B5C13 /* FilePickerPresentedView.swift */; };
-		7B25BD4D22E3A3D900F83382 /* dummy-angle.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7B25BD4C22E3A3D900F83382 /* dummy-angle.csv */; };
-		7B25BD4F22E3AC9E00F83382 /* dummy-wingsuit.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7B25BD4E22E3AC9E00F83382 /* dummy-wingsuit.csv */; };
 		7B25BD5122E3D63400F83382 /* SplitGraphMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B25BD5022E3D63400F83382 /* SplitGraphMapView.swift */; };
 		7B2EAA2122D40567009BCC39 /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2EAA2022D40567009BCC39 /* DataLoader.swift */; };
 		7B5084FC2416DF640098BEA3 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5084FB2416DF640098BEA3 /* ActivityIndicator.swift */; };
@@ -30,7 +29,6 @@
 		7B7E8A7A232888050012F2E3 /* PersistedStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7E8A79232888050012F2E3 /* PersistedStorage.swift */; };
 		7B7F38E2236A24CE00A12889 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 7B7F38E1236A24CE00A12889 /* Charts */; };
 		7B91FB43236937BF00720C85 /* CSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B91FB42236937BF00720C85 /* CSV.swift */; };
-		7BF4532323638E7B0079120C /* dummy-larry.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7BF4531723638E7B0079120C /* dummy-larry.csv */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,11 +62,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7B1A8AD4241C80CA004CE65A /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		7B1B936922D41D5C000B5C13 /* MapPresentedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPresentedView.swift; sourceTree = "<group>"; };
 		7B1B937622D451E4000B5C13 /* FilePickerPresentedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilePickerPresentedView.swift; sourceTree = "<group>"; };
 		7B1B937822D45B87000B5C13 /* flysight-grapher.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "flysight-grapher.entitlements"; sourceTree = "<group>"; };
-		7B25BD4C22E3A3D900F83382 /* dummy-angle.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "dummy-angle.csv"; sourceTree = "<group>"; };
-		7B25BD4E22E3AC9E00F83382 /* dummy-wingsuit.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "dummy-wingsuit.csv"; sourceTree = "<group>"; };
 		7B25BD5022E3D63400F83382 /* SplitGraphMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitGraphMapView.swift; sourceTree = "<group>"; };
 		7B2EAA2022D40567009BCC39 /* DataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
 		7B4BE63522D3C7B700F91850 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,7 +91,6 @@
 		7B7E8A752321CF800012F2E3 /* FlysightGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlysightGraph.swift; sourceTree = "<group>"; };
 		7B7E8A79232888050012F2E3 /* PersistedStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistedStorage.swift; sourceTree = "<group>"; };
 		7B91FB42236937BF00720C85 /* CSV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSV.swift; sourceTree = "<group>"; };
-		7BF4531723638E7B0079120C /* dummy-larry.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "dummy-larry.csv"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,9 +130,7 @@
 		7B6DD21022D3BF04009C6A7E = {
 			isa = PBXGroup;
 			children = (
-				7B25BD4C22E3A3D900F83382 /* dummy-angle.csv */,
-				7B25BD4E22E3AC9E00F83382 /* dummy-wingsuit.csv */,
-				7BF4531723638E7B0079120C /* dummy-larry.csv */,
+				7B1A8AD4241C80CA004CE65A /* LICENSE.txt */,
 				7B6DD21B22D3BF04009C6A7E /* flysight-grapher */,
 				7B6DD23222D3BF04009C6A7E /* flysight-grapherTests */,
 				7B6DD23D22D3BF04009C6A7E /* flysight-grapherUITests */,
@@ -319,12 +313,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7BF4532323638E7B0079120C /* dummy-larry.csv in Resources */,
 				7B6DD22922D3BF04009C6A7E /* LaunchScreen.storyboard in Resources */,
-				7B25BD4D22E3A3D900F83382 /* dummy-angle.csv in Resources */,
+				7B1A8AD5241C80CA004CE65A /* LICENSE.txt in Resources */,
 				7B6DD22622D3BF04009C6A7E /* Preview Assets.xcassets in Resources */,
 				7B6DD22322D3BF04009C6A7E /* Assets.xcassets in Resources */,
-				7B25BD4F22E3AC9E00F83382 /* dummy-wingsuit.csv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
