@@ -42,6 +42,8 @@ struct PerformanceView : View, DataPresentable {
     @ObservedObject var flares: WingsuitFlareData = WingsuitFlareData()
     @ObservedObject var speed: SpeedScoreData = SpeedScoreData()
     
+    @EnvironmentObject var views: ViewContainer
+    
     @ObservedObject private var settings = PerformanceSettings()
     @State private var flareSelection: Set<Flare> = []
 
@@ -76,8 +78,12 @@ struct PerformanceView : View, DataPresentable {
                 if settings.showWingsuitScores {
                     Section(header: Text("Flares")) {
                         ForEach(flares.getFlares()) { flare in
-                            FlareView(flare: flare, isExpanded: self.flareSelection.contains(flare))
+                            FlareView(flare: flare,
+                                      isExpanded: self.flareSelection.contains(flare))
                                 .onTapGesture { self.selectDeselectFlare(flare) }
+                                .onLongPressGesture {
+                                    // self.views.graph.highlightFrames(flare.entry.time, flare.exit.time)
+                                }
                                 .animation(.linear(duration: 0.3))
                         }
                     }
@@ -239,7 +245,6 @@ struct ScoreView: View {
 
 struct FlareView: View {
     var flare: Flare
-    
     let isExpanded: Bool
     
     var body: some View {
@@ -250,7 +255,6 @@ struct FlareView: View {
                     Text(String(format: "Altitude initiated: %.1f'", flare.entry.altitude * MetersToFeet))
                     Text(String(format: "Time to peak %.1fs ", flare.timeToPeak()))
                     Text(String(format: "Distance to peak %.1fm", flare.distanceToPeak()))
-                    Button("Highlight") { }
                 }
             }
             Spacer()
@@ -275,6 +279,7 @@ struct WingsuitFlareMeasurer {
             
             switch state {
                 // Naively just wait till we see >20 mph
+                // We now have the exit! So we can rework this later
             case .InThePlane:
                 if point.vY() > 9 {
                     state = .BeforeEntry

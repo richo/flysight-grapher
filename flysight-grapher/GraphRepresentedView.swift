@@ -62,6 +62,7 @@ struct GraphView: View, DataPresentable {
     }
     
     func clearData() {
+        self.graph.view.highlightValues(nil)
         self.graph.view.data = nil
     }
     
@@ -69,6 +70,14 @@ struct GraphView: View, DataPresentable {
     
     var body: some View {
         self.graph
+    }
+    
+    func highlightFrames(_ start: Double, _ end: Double) {
+        self.graph.view.highlightValues(nil)
+        let sH = Highlight(x: start, y: Double.nan, dataSetIndex: 0)
+        let eH = Highlight(x: end, y: Double.nan, dataSetIndex: 0)
+
+        self.graph.view.highlightValues([sH, eH])
     }
     
     mutating func loadData(_ data: DataSet) {
