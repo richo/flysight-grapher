@@ -23,6 +23,11 @@ struct AboutView : View {
         
         return List {
             Section(header: Text("Support")) {
+                Button(action: {
+                    self.openPowerSupportPage()
+                }) {
+                    Text("Help, I get an error about using too much power!")
+                }
                 if canSendMail {
                     Button(action: {
                         self.presentMailCompose()
@@ -68,6 +73,11 @@ struct AboutView : View {
         composeVC.setSubject("Stoke Level feedback")
 
         vc?.present(composeVC, animated: true)
+    }
+    
+    let PowerSupportUrl = "https://app.stokepile.co/stokelevel/support/power"
+    private func openPowerSupportPage() {
+        UIApplication.shared.open(URL(string: PowerSupportUrl)!)
     }
 }
 
