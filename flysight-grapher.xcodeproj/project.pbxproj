@@ -522,7 +522,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "flysight-grapher/flysight-grapher.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_ASSET_PATHS = "flysight-grapher/Preview\\ Content";
 				DEVELOPMENT_TEAM = S93SSHN8SD;
@@ -549,7 +549,7 @@
 				CODE_SIGN_ENTITLEMENTS = "flysight-grapher/flysight-grapher.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_ASSET_PATHS = "flysight-grapher/Preview\\ Content";
 				DEVELOPMENT_TEAM = S93SSHN8SD;
