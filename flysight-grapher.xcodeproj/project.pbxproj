@@ -12,6 +12,7 @@
 		7B1B937722D451E4000B5C13 /* FilePickerPresentedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1B937622D451E4000B5C13 /* FilePickerPresentedView.swift */; };
 		7B25BD5122E3D63400F83382 /* SplitGraphMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B25BD5022E3D63400F83382 /* SplitGraphMapView.swift */; };
 		7B2EAA2122D40567009BCC39 /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2EAA2022D40567009BCC39 /* DataLoader.swift */; };
+		7B479DB42463D596000E89AB /* AerobaticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B479DB32463D596000E89AB /* AerobaticView.swift */; };
 		7B5084FC2416DF640098BEA3 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5084FB2416DF640098BEA3 /* ActivityIndicator.swift */; };
 		7B68430422D3F65300B421E1 /* GraphRepresentedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68430322D3F65300B421E1 /* GraphRepresentedView.swift */; };
 		7B6DD21D22D3BF04009C6A7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6DD21C22D3BF04009C6A7E /* AppDelegate.swift */; };
@@ -68,6 +69,7 @@
 		7B1B937822D45B87000B5C13 /* flysight-grapher.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "flysight-grapher.entitlements"; sourceTree = "<group>"; };
 		7B25BD5022E3D63400F83382 /* SplitGraphMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitGraphMapView.swift; sourceTree = "<group>"; };
 		7B2EAA2022D40567009BCC39 /* DataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
+		7B479DB32463D596000E89AB /* AerobaticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AerobaticView.swift; sourceTree = "<group>"; };
 		7B4BE63522D3C7B700F91850 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B5084FB2416DF640098BEA3 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		7B68430322D3F65300B421E1 /* GraphRepresentedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphRepresentedView.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 			children = (
 				7B1B937822D45B87000B5C13 /* flysight-grapher.entitlements */,
 				7B6DD21C22D3BF04009C6A7E /* AppDelegate.swift */,
+				7B479DB32463D596000E89AB /* AerobaticView.swift */,
 				7B6DD21E22D3BF04009C6A7E /* SceneDelegate.swift */,
 				7B6DD22022D3BF04009C6A7E /* ContentView.swift */,
 				7B68430322D3F65300B421E1 /* GraphRepresentedView.swift */,
@@ -344,6 +347,7 @@
 				7B25BD5122E3D63400F83382 /* SplitGraphMapView.swift in Sources */,
 				7B5084FC2416DF640098BEA3 /* ActivityIndicator.swift in Sources */,
 				7B724F2222D8205000420373 /* PerformanceView.swift in Sources */,
+				7B479DB42463D596000E89AB /* AerobaticView.swift in Sources */,
 				7B7E8A742307B48E0012F2E3 /* DataPresentation.swift in Sources */,
 				7B7E8A762321CF800012F2E3 /* FlysightGraph.swift in Sources */,
 				7B2EAA2122D40567009BCC39 /* DataLoader.swift in Sources */,

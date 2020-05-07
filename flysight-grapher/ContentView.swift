@@ -24,11 +24,14 @@ struct ContentView : View {
                 TabView (selection: self.$defaultTab) {
                 self.views.graph.tabItem({ Text("Graph") }).tag(0);
                 self.views.map.tabItem({ Text("Map") }).tag(1);
-                    if !self.isiPhone {
+                if !self.isiPhone {
                     self.views.split.tabItem({ Text("Split") }).tag(2);
                 }
-                self.views.performance.tabItem({ Text("Performance") }).tag(3);
-                self.views.about.tabItem({ Text("About") }).tag(4);
+                    if !self.isiPhone && self.views.showAerobatics {
+                    self.views.aerobatics.tabItem({ Text("Aeros") }).tag(3);
+                }
+                self.views.performance.tabItem({ Text("Performance") }).tag(4);
+                self.views.about.tabItem({ Text("About") }).tag(5);
             };
             Button("Load Data") {
                 self.showFilePicker = true

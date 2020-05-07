@@ -22,6 +22,11 @@ struct AboutView : View {
     var body: some View {
         
         return List {
+            Section(header: Text("Display")) {
+                Toggle(isOn: $views.showAerobatics) {
+                    Text("Show aerobatic debrief")
+                }
+            }
             Section(header: Text("Support")) {
                 Button(action: {
                     self.openPowerSupportPage()

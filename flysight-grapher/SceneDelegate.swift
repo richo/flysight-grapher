@@ -13,8 +13,10 @@ class ViewContainer: ObservableObject {
     @State var graph = GraphView()
     @State var map = MapView()
     @State var performance = PerformanceView()
+    @State var aerobatics = AerobaticView()
     @State var about = AboutView()
-
+    
+    @Published var showAerobatics = false
     
     var split: SplitGraphMapView {
         get {
