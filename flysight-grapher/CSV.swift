@@ -314,9 +314,14 @@ public struct CSV {
                             fallthrough
                         case .endOfField:
                             
+                            // If there's another carriage return we'll eat that too fuck it why not
+                            if let next = reader.peek(), UnicodeScalar(next) == CarriageReturn {
+                                let _ = reader.pop()
+                            }
+
                             // If there is a \n after the carriage return, we read it.
                             // But that's optional
-                            if let next = reader.peek(), UnicodeScalar(next) == "\n" {
+                            if let next = reader.peek(), UnicodeScalar(next) == LineFeed {
                                 let _ = reader.pop()
                             }
                             
