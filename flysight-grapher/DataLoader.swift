@@ -153,7 +153,10 @@ class DataLoader: ParserDelegate {
         
         switch index {
         case 0: // time
-            let ts = dateFormatter.date(from: value)!
+            guard let ts = dateFormatter.date(from: value) else {
+                parser.cancel()
+                return
+            }
             let secs = ts.timeIntervalSince1970
             
             if self.currentLine == 2 {
@@ -200,7 +203,11 @@ class DataLoader: ParserDelegate {
         
         let parser = CSV.Parser(url: url, configuration: configuration)!
         parser.delegate = self
-        try! parser.parse()
+        try? parser.parse()
+        if parser.isCancelled() {
+            return nil
+        }
+        
         if self.dataSet.count == 0 {
             return nil
         }

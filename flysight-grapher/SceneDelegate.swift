@@ -39,7 +39,6 @@ class ViewContainer: ObservableObject {
 
     func fileUrlCallback(_ url: URL, _ cb: @escaping (Bool) -> ()) {
         DispatchQueue.main.async {
-
             guard let data = self.loadData(url) else {
                 print("No data loaded :(")
                 cb(false)

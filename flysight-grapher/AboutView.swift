@@ -11,6 +11,10 @@ import SwiftUI
 import MessageUI
 import Combine
 
+class SupportContact {
+    public static var email = "richo@psych0tik.net"
+}
+
 struct AboutView : View {
     @EnvironmentObject var views: ViewContainer
 
@@ -35,7 +39,7 @@ struct AboutView : View {
                         Text("Email the developer")
                     }
                 } else {
-                    Text("For support, contact richo@psych0tik.net")
+                    Text("For support, contact \(SupportContact.email)")
                 }
             }
             Section(header: Text("Open Source")) {
@@ -69,7 +73,7 @@ struct AboutView : View {
         let composeVC = MFMailComposeViewController()
         composeVC.mailComposeDelegate = mailComposeDelegate
         
-        composeVC.setToRecipients(["richo@psych0tik.net"])
+        composeVC.setToRecipients([SupportContact.email])
         composeVC.setSubject("Stoke Level feedback")
 
         vc?.present(composeVC, animated: true)

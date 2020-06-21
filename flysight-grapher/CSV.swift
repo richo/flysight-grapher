@@ -253,6 +253,10 @@ public struct CSV {
             self.cancelled = true
         }
         
+        public func isCancelled() -> Bool {
+            self.cancelled
+        }
+        
         
         /// Starts parsing the CSV data. Calling this method does nothing if the parser already finished parsing the data.
         ///

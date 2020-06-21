@@ -36,7 +36,11 @@ struct ContentView : View {
         }
         }
         .alert(isPresented: $showFileError) {
-            Alert(title: Text("Failed to load"), message: Text("Loaded data contained zero rows"), dismissButton: .default(Text("Ok :(")))
+            Alert(title: Text("Failed to load"), message: Text("""
+Invalid data.
+
+If you think this is in error, send the file to \(SupportContact.email) for debugging.
+"""), dismissButton: .default(Text("Ok :(")))
         }
         .sheet(isPresented: $showFilePicker, content: { PickerView(callback: self.fileUrlCallbackWrapper) })
 
